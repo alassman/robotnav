@@ -24,7 +24,7 @@
 //#include "Xg1300lGyro.h"
 //#include "LegoGyro.h"
 #include "Odometry.h"
-//#include "Control.h"
+#include "Control.h"
 #include "Keyboard.h"
 #include "IrRemote.h"
 //#include "Buttons.h"

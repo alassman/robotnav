@@ -10,8 +10,6 @@ Robot.o: Robot.cpp Robot.h
 	$(CC) $(CFLAGS) -c Robot.cpp 
 Archer.o: Archer.cpp Archer.h RoboteqDevice.o Robot.o MathFunctions.o
 	$(CC) $(CFLAGS) -c Archer.cpp
-Control.o: Control.cpp Control.h Odometry.o
-	$(CC) $(CFLAGS) -c Control.cpp
 Odometry.o: Odometry.cpp Odometry.h MathFunctions.o
 	$(CC) $(CFLAGS) -c Odometry.cpp
 Control.o: Control.cpp Control.h MathFunctions.o Odometry.o
