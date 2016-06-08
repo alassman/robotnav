@@ -123,11 +123,11 @@ void Archer::setActuators(vector<int> &MotorSpeed) {
 	cout << "\t\tLEFT RPM: " << MotorSpeed[0] << endl;
 	cout << "\t\tRIGHT RPM: " << MotorSpeed[1] << endl;
 
-	// bool stop = false;
-	// if(MotorSpeed[LEFT] == 0 && MotorSpeed[RIGHT] == 0) {
-	// 	device.SetCommand(_EX);
-	// 	stop = true;
-	// }
+	bool stop = false;
+	if(MotorSpeed[LEFT] == 0 && MotorSpeed[RIGHT] == 0) {
+		device.SetCommand(_EX);
+		stop = true;
+	}
 	
 	int status;
 	//left_motor command
@@ -143,9 +143,9 @@ void Archer::setActuators(vector<int> &MotorSpeed) {
 
 	cout << "ARCHER SET SPEED: " << MotorSpeed[LEFT] << " " << MotorSpeed[RIGHT] << endl;
 
-	// if(stop) {
-	// 	device.SetCommand(_MG);
-	// }
+	if(stop) {
+		device.SetCommand(_MG);
+	}
 	checkTimming();
 }
 
