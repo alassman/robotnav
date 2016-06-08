@@ -49,7 +49,7 @@ const float WHEEL_DIAMETER = 155.0; // [mm]
 const float ENCODER_SCALE_FACTOR = PI * WHEEL_DIAMETER / COUNTS_REVOLUTION; // [mm/count]
 
 // Runtime constant
-const float INC_SPEED_MM_SECOND = 75.0; //[mm/sec]
+const float INC_SPEED_MM_SECOND = 100.0; //[mm/sec]
 const float INC_RATE_RAD_SECOND = math_functions::deg2rad(20.0); //[rad/sec]
 const float PERIOD = 0.1; //[sec]
 
