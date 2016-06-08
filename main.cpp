@@ -20,6 +20,7 @@
  */
 
 #include "Archer.h"
+#include <iostream>
 //#include "Xg1300lGyro.h"
 //#include "LegoGyro.h"
 #include "Odometry.h"
@@ -29,7 +30,7 @@
 //#include "Buttons.h"
 #include "MathFunctions.h"
 
- using namespace std;
+using namespace std;
 
 //Left and right motor ports, as shown in EV3 brick labels
 //const char LEFT_MOTOR_PORT = 'D';
