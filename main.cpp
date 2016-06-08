@@ -109,6 +109,7 @@ int main()
 		//control.getTargetSpeedRate(speed, rate);
 		
 		//Execute the instructions
+		cout << "SPEED: " << speed << endl;
 		robot.setActuators(speed, rate);
 	}
 
