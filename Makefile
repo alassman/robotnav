@@ -1,4 +1,4 @@
-OBJS = Robot.o Ev3.o Xg1300lGyro.o LegoGyro.o Odometry.o Control.o InputKeys.o Keyboard.o IrRemote.o Buttons.o MathFunctions.o
+OBJS = Robot.o Archer.o Xg1300lGyro.o LegoGyro.o Odometry.o Control.o InputKeys.o Keyboard.o IrRemote.o Buttons.o MathFunctions.o
 CC = arm-none-linux-gnueabi-g++
 CFLAGS = -Wall -static
 TARGET = main
@@ -8,8 +8,8 @@ $(TARGET): $(OBJS) main.cpp
 	$(CC) $(CFLAGS) $(OBJS) main.cpp -o $@ 
 Robot.o: Robot.cpp Robot.h
 	$(CC) $(CFLAGS) -c Robot.cpp 
-Ev3.o: Ev3.cpp Ev3.h Robot.o MathFunctions.o
-	$(CC) $(CFLAGS) -c Ev3.cpp
+Archer.o: Archer.cpp Archer.h Robot.o MathFunctions.o
+	$(CC) $(CFLAGS) -c Archer.cpp
 Xg1300lGyro.o: Xg1300lGyro.cpp Xg1300lGyro.h Ev3.o MathFunctions.o
 	$(CC) $(CFLAGS) -c Xg1300lGyro.cpp
 LegoGyro.o: LegoGyro.cpp LegoGyro.h Ev3.o MathFunctions.o

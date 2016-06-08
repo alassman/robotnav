@@ -27,7 +27,7 @@
 const int MAX_ENCODER_CONT_SEC = 1000000; //The default limit used for the LEGO EV3 should be very large (infinite), this is only needed for high count encoders
 using namespace std;
 
-Robot::Robot(float period, float track, float encoderScaleFactor, char *pMotorInfo, char *sensorInfo)
+Robot::Robot(float period, float track, float encoderScaleFactor)
 {
 	//This constructor does not do anything with the motor and sensor information.
 	//That information is handled directly by each robot sub-class. This extra arguments are needed 
@@ -88,7 +88,7 @@ void Robot::speedRate2Counts(float speed, float rate, int *pCountSec)
 	//Compute left and right encoder counts per second
 	float left_speed = (speed - rate * mTrack / 2.0) / mEncoderScaleFactor;
 	float right_speed = (speed + rate * mTrack / 2.0) / mEncoderScaleFactor;
-	
+
 	//Round values to the clossest integer
 	pCountSec[LEFT] = (left_speed > 0) ? (left_speed + .5) : (left_speed - 0.5);
 	pCountSec[RIGHT] = (right_speed > 0) ? (right_speed + .5) : (right_speed - 0.5);
