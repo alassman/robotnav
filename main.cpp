@@ -29,6 +29,8 @@
 //#include "Buttons.h"
 #include "MathFunctions.h"
 
+ using namespace std;
+
 //Left and right motor ports, as shown in EV3 brick labels
 //const char LEFT_MOTOR_PORT = 'D';
 //const char RIGHT_MOTOR_PORT = 'A';
