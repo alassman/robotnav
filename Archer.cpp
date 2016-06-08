@@ -23,6 +23,7 @@ Archer::Archer(float period, float track, float encoderScaleFactor, int COUNTS_R
 	//set motor left_motor and right_motor
 	left_motor = 1;
 	right_motor= 2;
+	MAX_COMMAND_SPEED = 75;
 	//Set index
 	LEFT = 0;
 	RIGHT = 1;

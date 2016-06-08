@@ -40,7 +40,7 @@ class Archer : public Robot
 		int right_motor;
 		int RIGHT;
 
-		int MAX_COMMAND_SPEED = 75;
+		int MAX_COMMAND_SPEED;
 		double COUNTS_REVOLUTION;
 	public:
 		Archer(float period, float track, float encoderScaleFactor, int COUNTS_REVOLUTION);

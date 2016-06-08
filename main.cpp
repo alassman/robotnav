@@ -92,18 +92,18 @@ int main()
 		case TURN_RIGHT:
 			rate -= INC_RATE_RAD_SECOND;
 			break;
-		case ENABLE_CONTROL:
-			control.enable();
-			break;
+		// case ENABLE_CONTROL:
+		// 	control.enable();
+		// 	break;
 		case EXIT:
 			quit_program = true;
 		case RESET:
 			odometry.reset();
-		case STOP_ROBOT: 
-			speed = 0;
-			rate = 0;
-			control.disable();
-			break;
+		// case STOP_ROBOT: 
+		// 	speed = 0;
+		// 	rate = 0;
+		// 	control.disable();
+		// 	break;
 		}
 		//High level control
 		//control.getTargetSpeedRate(speed, rate);
