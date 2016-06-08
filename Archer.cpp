@@ -16,17 +16,10 @@ using namespace std;
 //multiply 2 or 4 by gear ratio for encoder scale factor
 //track=distance between two wheels
 
-Archer::Archer(float period, float track, float encoderScaleFactor, int COUNTS_REVOLUTION) 
-	:Robot(period, track, encoderScaleFactor)
-{
-
-	//set motor left_motor and right_motor
-	left_motor = 1;
-	right_motor= 2;
-	MAX_COMMAND_SPEED = 75;
-	//Set index
-	LEFT = 0;
-	RIGHT = 1;
+Archer::Archer(float period, float track, float encoderScaleFactor, int COUNTS_REVOLUTION_in) 
+	:Robot(period, track, encoderScaleFactor), COUNTS_REVOLUTION(COUNTS_REVOLUTION_in), 
+		MAX_COMMAND_SPEED(75), left_motor(1), right_motor(2), LEFT(0), RIGHT(1)
+{	
 	//establish connection with SDC21XX
 	int status = device.Connect("/dev/ttyACM0");
 	for(int i = 0; i < 10; ++i) {
@@ -130,11 +123,11 @@ void Archer::setActuators(vector<int> &MotorSpeed) {
 	cout << "\t\tLEFT RPM: " << MotorSpeed[0] << endl;
 	cout << "\t\tRIGHT RPM: " << MotorSpeed[1] << endl;
 
-	bool stop = false;
-	if(MotorSpeed[LEFT] == 0 && MotorSpeed[RIGHT] == 0) {
-		device.SetCommand(_EX);
-		stop = true;
-	}
+	// bool stop = false;
+	// if(MotorSpeed[LEFT] == 0 && MotorSpeed[RIGHT] == 0) {
+	// 	device.SetCommand(_EX);
+	// 	stop = true;
+	// }
 	
 	int status;
 	//left_motor command
@@ -150,9 +143,9 @@ void Archer::setActuators(vector<int> &MotorSpeed) {
 
 	cout << "ARCHER SET SPEED: " << MotorSpeed[LEFT] << " " << MotorSpeed[RIGHT] << endl;
 
-	if(stop) {
-		device.SetCommand(_MG);
-	}
+	// if(stop) {
+	// 	device.SetCommand(_MG);
+	// }
 	checkTimming();
 }
 
