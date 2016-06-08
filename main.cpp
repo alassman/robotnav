@@ -49,8 +49,8 @@ const float WHEEL_DIAMETER = 155.0; // [mm]
 const float ENCODER_SCALE_FACTOR = PI * WHEEL_DIAMETER / COUNTS_REVOLUTION; // [mm/count]
 
 // Runtime constant
-const float INC_SPEED_MM_SECOND = 10.0; //[mm/sec]
-const float INC_RATE_RAD_SECOND = math_functions::deg2rad(10.0); //[rad/sec]
+const float INC_SPEED_MM_SECOND = 75.0; //[mm/sec]
+const float INC_RATE_RAD_SECOND = math_functions::deg2rad(20.0); //[rad/sec]
 const float PERIOD = 0.1; //[sec]
 
 int main()
@@ -102,11 +102,15 @@ int main()
 			quit_program = true;
 		case RESET:
 			odometry.reset();
-		// case STOP_ROBOT: 
-		// 	speed = 0;
-		// 	rate = 0;
-		// 	control.disable();
-		// 	break;
+		case STOP_ROBOT: //space bar
+			// speed = 0;
+			// rate = 0;
+			// control.disable();
+			speed = 0;
+			rate = 0;
+			robot.setActuators(speed, rate);
+			quit_program = true;
+			break;
 		}
 		//High level control
 		//control.getTargetSpeedRate(speed, rate);
