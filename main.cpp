@@ -111,10 +111,9 @@ int main()
 			break;
 		}
 		//High level control
-		//control.getTargetSpeedRate(speed, rate);
+		control.getTargetSpeedRate(speed, rate);
 		
 		//Execute the instructions
-		cout << "SPEED: " << speed << endl;
 		robot.setActuators(speed, rate);
 	}
 
