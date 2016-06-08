@@ -35,13 +35,13 @@ class Archer : public Robot
 {
 	protected:
 		RoboteqDevice device;
-		int left_motor;
-		int LEFT;
-		int right_motor;
-		int RIGHT;
-
-		int MAX_COMMAND_SPEED;
 		double COUNTS_REVOLUTION;
+		int MAX_COMMAND_SPEED;
+		int left_motor;
+		int right_motor;
+		int LEFT;
+		int RIGHT;
+		
 	public:
 		Archer(float period, float track, float encoderScaleFactor, int COUNTS_REVOLUTION);
 		virtual ~Archer();
