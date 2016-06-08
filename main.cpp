@@ -63,7 +63,7 @@ int main()
 	//Xg1300lGyro robot(PERIOD, TRACK, ENCODER_SCALE_FACTOR, (char *)MOTOR_PORTS, (char *)&GYRO_PORT); //Gyro Enhanced
 	Odometry odometry(&robot); 
 	Keyboard user_input;
-	//Control control(&odometry);
+	Control control(&odometry);
 	
 	//Create and initialize speed variables
 	float speed = 0;
