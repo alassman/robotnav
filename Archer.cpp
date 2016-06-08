@@ -125,6 +125,10 @@ void Archer::setActuators(vector<int> &MotorSpeed) {
 		MotorSpeed[RIGHT] = MAX_COMMAND_SPEED;
 	}
 
+	cout << "speed received in vector function: " << endl;
+	cout << "\t\tLEFT RPM: " << MotorSpeed[0] << endl;
+	cout << "\t\tRIGHT RPM: " << MotorSpeed[1] << endl;
+
 	bool stop = false;
 	if(MotorSpeed[LEFT] == 0 && MotorSpeed[RIGHT] == 0) {
 		device.SetCommand(_EX);
@@ -143,7 +147,7 @@ void Archer::setActuators(vector<int> &MotorSpeed) {
 		exit(1);
 	}
 
-	//cout << "ARCHER SET SPEED: " << MotorSpeed[LEFT] << " " << MotorSpeed[RIGHT] << endl;
+	cout << "ARCHER SET SPEED: " << MotorSpeed[LEFT] << " " << MotorSpeed[RIGHT] << endl;
 
 	if(stop) {
 		device.SetCommand(_MG);

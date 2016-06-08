@@ -20,13 +20,13 @@
  */
 
 #include "Archer.h"
-#include "Xg1300lGyro.h"
-#include "LegoGyro.h"
+//#include "Xg1300lGyro.h"
+//#include "LegoGyro.h"
 #include "Odometry.h"
-#include "Control.h"
+//#include "Control.h"
 #include "Keyboard.h"
 #include "IrRemote.h"
-#include "Buttons.h"
+//#include "Buttons.h"
 #include "MathFunctions.h"
 
 //Left and right motor ports, as shown in EV3 brick labels
@@ -40,7 +40,7 @@
 //const char IR_PORT = 4;
 
 //Platform measurements
-const float TRACK = 347.0.0; // [mm]
+const float TRACK = 347.0; // [mm]
 const int COUNTS_REVOLUTION = 568; // [count/rev]
 const float WHEEL_DIAMETER = 155.0; // [mm]
 const float ENCODER_SCALE_FACTOR = PI * WHEEL_DIAMETER / COUNTS_REVOLUTION; // [mm/count]
@@ -53,14 +53,14 @@ const float PERIOD = 0.1; //[sec]
 int main()
 {
     //Only one robot can be created at the time
-    Archer device(PERIOD, TRACK, ENCODER_SCALE_FACTOR, COUNTS_REVOLUTION); //Odometry only
+    Archer robot(PERIOD, TRACK, ENCODER_SCALE_FACTOR, COUNTS_REVOLUTION); //Odometry only
     
 	//Only one robot can be created at the time
 	//Ev3 robot(PERIOD, TRACK, ENCODER_SCALE_FACTOR, (char *)MOTOR_PORTS); //Odometry only
 	//Xg1300lGyro robot(PERIOD, TRACK, ENCODER_SCALE_FACTOR, (char *)MOTOR_PORTS, (char *)&GYRO_PORT); //Gyro Enhanced
 	Odometry odometry(&robot); 
 	Keyboard user_input;
-	Control control(&odometry);
+	//Control control(&odometry);
 	
 	//Create and initialize speed variables
 	float speed = 0;
@@ -106,7 +106,7 @@ int main()
 			break;
 		}
 		//High level control
-		control.getTargetSpeedRate(speed, rate);
+		//control.getTargetSpeedRate(speed, rate);
 		
 		//Execute the instructions
 		robot.setActuators(speed, rate);
