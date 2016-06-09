@@ -1,4 +1,4 @@
-OBJS = Robot.o Archer.o Odometry.o Control.o RoboteqDevice.o InputKeys.o Keyboard.o IrRemote.o MathFunctions.o
+OBJS = Robot.o Archer.o Odometry.o Control.o CruizCoreGyro.o RoboteqDevice.o InputKeys.o Keyboard.o IrRemote.o MathFunctions.o
 CC = g++
 CFLAGS = -Wall -static
 TARGET = main
@@ -14,6 +14,8 @@ Odometry.o: Odometry.cpp Odometry.h MathFunctions.o
 	$(CC) $(CFLAGS) -c Odometry.cpp
 Control.o: Control.cpp Control.h MathFunctions.o Odometry.o
 	$(CC) $(CFLAGS) -c Control.cpp
+CruizCoreGyro.o: CruizCoreGyro.cpp CruizCoreGyro.h Archer.o
+	$(CC) $(CFLAGS) -c CruizCoreGyro.cpp
 InputKeys.o: InputKeys.cpp InputKeys.h
 	$(CC) $(CFLAGS) -c InputKeys.cpp
 Keyboard.o: Keyboard.cpp Keyboard.h InputKeys.o

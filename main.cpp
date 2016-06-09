@@ -39,8 +39,7 @@ using namespace std;
 //char MOTOR_PORTS[] = {LEFT_MOTOR_PORT, RIGHT_MOTOR_PORT};
 
 //Sensor ports, as shown in EV3 brick labels
-//const char GYRO_PORT = 1;
-//const char IR_PORT = 4;
+const char GYRO_PORT[] = "/dev/ttyUSB0";
 
 //Platform measurements
 const float TRACK = 347.0; // [mm]
@@ -59,8 +58,7 @@ int main()
     Archer robot(PERIOD, TRACK, ENCODER_SCALE_FACTOR, COUNTS_REVOLUTION); //Odometry only
     
 	//Only one robot can be created at the time
-	//Ev3 robot(PERIOD, TRACK, ENCODER_SCALE_FACTOR, (char *)MOTOR_PORTS); //Odometry only
-	//Xg1300lGyro robot(PERIOD, TRACK, ENCODER_SCALE_FACTOR, (char *)MOTOR_PORTS, (char *)&GYRO_PORT); //Gyro Enhanced
+	CruizCoreGyro robot(PERIOD, TRACK, ENCODER_SCALE_FACTOR, (char *)GYRO_PORT); //Gyro Enhanced
 	Odometry odometry(&robot); 
 	Keyboard user_input;
 	Control control(&odometry);
@@ -107,7 +105,6 @@ int main()
 			rate = 0;
 			control.disable();
 			robot.setActuators(speed, rate);
-			quit_program = true;
 			break;
 		}
 		//High level control

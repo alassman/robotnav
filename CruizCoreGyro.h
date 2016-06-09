@@ -18,20 +18,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef XGL1300_GYRO_H
-#define XGL1300_GYRO_H
+#ifndef CruizCore_GYRO_H
+#define CruizCore_GYRO_H
 
-#include "Ev3.h"
-#include "lms2012.h"
+#include "Archer.h"
 
-class Xg1300lGyro : public Ev3
+class CruizCoreGyro : public Archer
 {
 	IIC  *pIic;
 	int mXglDevFile;
 	int mGyroPort;
 	public:
-		Xg1300lGyro(float period, float track, float encoderScaleFactor, char *pMotorInfo, char *sensorInfo );
-		virtual ~Xg1300lGyro();
+		CruizCoreGyro(float period, float track, float encoderScaleFactor, int COUNTS_REVOLUTION_in, (char *)GYRO_PORT);
+		virtual ~CruizCoreGyro();
 		virtual int readSensors();
 };
 
