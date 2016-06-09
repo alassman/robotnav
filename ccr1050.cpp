@@ -7,8 +7,14 @@
 // 			g++ -o ccr1050 ccr1050.cpp
 
 #include <iostream>
-#include <fcntl.h>
+#include <unistd.h>
+#include <stdio.h>
 #include <string.h>
+#include <fcntl.h>
+#include <errno.h>
+#include <termios.h>
+#include <time.h>
+#include <sstream>
 
 using namespace std;
 
