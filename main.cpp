@@ -50,7 +50,7 @@ const float ENCODER_SCALE_FACTOR = PI * WHEEL_DIAMETER / COUNTS_REVOLUTION; // [
 // Runtime constant
 const float INC_SPEED_MM_SECOND = 100.0; //[mm/sec]
 const float INC_RATE_RAD_SECOND = math_functions::deg2rad(20.0); //[rad/sec]
-const float PERIOD = 0.01; //[sec]
+const float PERIOD = 0.1; //[sec]
 
 int main()
 {

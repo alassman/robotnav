@@ -83,7 +83,7 @@ int CruizCoreGyro::readSensors()
 	unsigned char data_packet[PACKET_SIZE*100];
 
 
-	//read(file_descriptor,data_packet,PACKET_SIZE*100);
+	read(file_descriptor,data_packet,PACKET_SIZE*100);
 	
 	if(PACKET_SIZE != read(file_descriptor,data_packet,PACKET_SIZE))
 		return false;
