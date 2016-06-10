@@ -103,7 +103,7 @@ int main()
 		case STOP_ROBOT: //space bar
 			speed = 0;
 			rate = 0;
-			control.disable();
+			//control.disable();
 			robot.setActuators(speed, rate);
 			break;
 		}
