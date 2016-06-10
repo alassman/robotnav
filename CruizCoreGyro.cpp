@@ -54,7 +54,7 @@ CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor
 	//Read sensors a first time in order to initialize some of the states
 	readSensors();
 	strcpy(mName,"CruizCore");
-	cout << "CruizCoreGyro Robot ready!\n";
+	cout << "CruizCore Gyro Robot ready!\n";
 }
 
 CruizCoreGyro::~CruizCoreGyro()
@@ -66,7 +66,7 @@ CruizCoreGyro::~CruizCoreGyro()
 int CruizCoreGyro::readSensors()
 {
 	//Get Encoder information
-	Ev3::readSensors();
+	Archer::readSensors();
 
 	//read from file
 	//8 bites

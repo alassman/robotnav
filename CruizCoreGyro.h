@@ -25,9 +25,6 @@
 
 class CruizCoreGyro : public Archer
 {
-	IIC  *pIic;
-	int mXglDevFile;
-	int mGyroPort;
 	public:
 		CruizCoreGyro(float period, float track, float encoderScaleFactor, int COUNTS_REVOLUTION_in, (char *)GYRO_PORT);
 		virtual ~CruizCoreGyro();
