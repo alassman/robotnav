@@ -58,7 +58,7 @@ int main()
     //Archer robot(PERIOD, TRACK, ENCODER_SCALE_FACTOR, COUNTS_REVOLUTION); //Odometry only
     
 	//Only one robot can be created at the time
-	CruizCoreGyro robot(PERIOD, TRACK, ENCODER_SCALE_FACTOR, GYRO_PORT); //Gyro Enhanced
+	CruizCoreGyro robot(PERIOD, TRACK, ENCODER_SCALE_FACTOR, COUNTS_REVOLUTION, (char *)GYRO_PORT); //Gyro Enhanced
 	Odometry odometry(&robot); 
 	Keyboard user_input;
 	Control control(&odometry);
