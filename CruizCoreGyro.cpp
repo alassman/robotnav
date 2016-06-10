@@ -83,7 +83,12 @@ int CruizCoreGyro::readSensors()
 	unsigned char data_packet[PACKET_SIZE*100];
 
 
-	read(file_descriptor,data_packet,PACKET_SIZE*100);
+	//read(file_descriptor,data_packet,PACKET_SIZE*100);
+
+	if (tcflush(file_descriptor, TCIOFLUSH) == 0)
+           printf("The input and output queues have been flushed.\n");
+        else
+           perror("tcflush error\n");
 	
 	if(PACKET_SIZE != read(file_descriptor,data_packet,PACKET_SIZE))
 		return false;
