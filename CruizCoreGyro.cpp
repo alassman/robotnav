@@ -95,9 +95,12 @@ int CruizCoreGyro::readSensors()
 
 
 	//read(file_descriptor,data_packet,PACKET_SIZE*100);
-	
-	if(PACKET_SIZE != read(file_descriptor,data_packet,PACKET_SIZE))
+	int hold;
+	hold = read(file_descriptor,data_packet,PACKET_SIZE)
+	if(PACKET_SIZE != hold)) {
+		cout << "# of bytes actually read(8): " << hold << endl;
 		return 0;
+	}
 
 	// Verify data packet header 
 	memcpy(&header,data_packet,sizeof(short));
