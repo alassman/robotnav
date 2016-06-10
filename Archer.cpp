@@ -46,12 +46,12 @@ Archer::~Archer() {
 	//left_motor command
 	if((status = device.SetCommand(_S, left_motor, 0)) != RQ_SUCCESS) {
 		cout<<"left_motor speed_set failed with exit status: " << status;
-		exit(1);
+		//exit(1);
 	}
 	//right_motorcommand
 	if((status = device.SetCommand(_S, right_motor, 0)) != RQ_SUCCESS) {
 		cout<<"right_motorspeed_set failed with exit status: " << status;
-		exit(1);
+		//exit(1);
 	}
 	sleepms(10);
 	device.SetCommand(_MG);
@@ -71,11 +71,11 @@ int Archer::readSensors()
 
 	if((status = device.GetValue(_CR, left_motor, rel_count_1)) != RQ_SUCCESS) {
 		cout <<"left_motor encoder reading failed with exit status: " << status << endl;
-		exit(1);
+		//exit(1);
 	}
 	if((status = device.GetValue(_CR, right_motor, rel_count_2)) != RQ_SUCCESS) {
 		cout <<"right_motorencoder reading failed with exit status: " << status << endl;
-		exit(1);
+		//exit(1);
 	}
 
 	//read RPM values
@@ -133,12 +133,12 @@ void Archer::setActuators(vector<int> &MotorSpeed) {
 	//left_motor command
 	if((status = device.SetCommand(_S, left_motor, MotorSpeed[LEFT])) != RQ_SUCCESS) {
 		cout<<"left_motor speed_set failed with exit status: " << status;
-		exit(1);
+		//exit(1);
 	}
 	//right_motorcommand
 	if((status = device.SetCommand(_S, right_motor, MotorSpeed[RIGHT])) != RQ_SUCCESS) {
 		cout<<"right_motorspeed_set failed with exit status: " << status;
-		exit(1);
+		//exit(1);
 	}
 
 	cout << "ARCHER SET SPEED: " << MotorSpeed[LEFT] << " " << MotorSpeed[RIGHT] << endl;
@@ -176,7 +176,7 @@ int Archer::read_encoders() {
 
 	if((status = device.GetValue(_CR, left_motor, rel_count_1)) != RQ_SUCCESS) {
 		cout <<"left_motor encoder reading failed with exit status: " << status << endl;
-		exit(1);
+		//exit(1);
 	}
 	
 
