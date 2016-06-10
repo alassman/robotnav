@@ -26,7 +26,7 @@
 class CruizCoreGyro : public Archer
 {
 	public:
-		CruizCoreGyro(float period, float track, float encoderScaleFactor, int COUNTS_REVOLUTION_in, (char *)GYRO_PORT[]);
+		CruizCoreGyro(float period, float track, float encoderScaleFactor, int COUNTS_REVOLUTION_in, char GYRO_PORT[]);
 		virtual ~CruizCoreGyro();
 		virtual int readSensors();
 };
