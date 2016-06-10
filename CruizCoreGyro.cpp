@@ -81,6 +81,8 @@ int CruizCoreGyro::readSensors()
 	float angle_float;
 	short check_sum;
 	unsigned char data_packet[PACKET_SIZE];
+
+	flush(file_descriptor);
 	
 	if(PACKET_SIZE != read(file_descriptor,data_packet,PACKET_SIZE))
 		return false;
