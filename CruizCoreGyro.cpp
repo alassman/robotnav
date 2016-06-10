@@ -67,10 +67,10 @@ CruizCoreGyro::~CruizCoreGyro()
 int CruizCoreGyro::readSensors()
 {
 
-	// if (tcflush(file_descriptor, TCIOFLUSH) == 0)
- //           printf("The input and output queues have been flushed.\n");
- //        else
- //           perror("tcflush error\n");
+	if (tcflush(file_descriptor, TCIOFLUSH) == 0)
+           printf("The input and output queues have been flushed.\n");
+        else
+           perror("tcflush error\n");
 
 	//Get Encoder information
 	Archer::readSensors();
