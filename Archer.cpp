@@ -22,7 +22,7 @@ Archer::Archer(float period, float track, float encoderScaleFactor, int COUNTS_R
 {	
 	//establish connection with SDC21XX
 	int status = device.Connect("/dev/ttyACM0");
-	int i = 0
+	int i = 0;
 	for(; i < 10; ++i) {
 		if(status != RQ_SUCCESS)
 		{
