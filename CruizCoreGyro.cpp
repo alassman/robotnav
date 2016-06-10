@@ -75,6 +75,11 @@ int CruizCoreGyro::readSensors()
 	//Get Encoder information
 	Archer::readSensors();
 
+	if (tcflush(file_descriptor, TCIOFLUSH) == 0)
+           printf("The input and output queues have been flushed.\n");
+        else
+           perror("tcflush error\n");
+
 	//read from file
 	//8 bites
 
