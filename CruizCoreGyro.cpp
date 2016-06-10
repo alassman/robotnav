@@ -75,42 +75,47 @@ int CruizCoreGyro::readSensors()
 	//Get angle from CruizCore gyro
 
 	short header;
-	short new_angle;
 	short rate_int;
+	short angle_int;
+	float rate_float;
+	float angle_float;
 	short check_sum;
 	unsigned char data_packet[PACKET_SIZE];
+	
+	if(PACKET_SIZE != read(file_descriptor,data_packet,PACKET_SIZE))
+		return false;
 
-	if(PACKET_SIZE != read(file_descriptor,data_packet,PACKET_SIZE)) {
-		cout << "error reading gyro due to malformed packet size\n";
-		return 1;
-	}
 	// Verify data packet header 
 	memcpy(&header,data_packet,sizeof(short));
 	if(header != (short)0xFFFF)
 	{
 		cout << "Header error !!!\n";
-		//return 1;
+		return false;
 	}
 
 	// Copy values from data string 
 	memcpy(&rate_int,data_packet+2,sizeof(short));
-	memcpy(&new_angle,data_packet+4,sizeof(short));
+	memcpy(&angle_int,data_packet+4,sizeof(short));
 	memcpy(&check_sum,data_packet+6,sizeof(short));
 
 	// Verify checksum
-	if(check_sum != (short)(0xFFFF + rate_int + new_angle))
+	if(check_sum != (short)(0xFFFF + rate_int + angle_int))
 	{
 		cout<< "Checksum error!!\n";
-		//return false;
+		return false;
 	}
 
-	mRotation = new_angle/100.0; //CruizCore angle must be inverted
-	mRotation = math_functions::deg2rad(mRotation);
-	mRotation = math_functions::unwrap(mRotation);
+	// Apply scale factors
+	rate_float = rate_int/100.0;
+ 	angle_float = angle_int/100.0;
+	
+	cout << "rate_float:" << rate_float << " [deg/sec]\t angle_float:" << angle_float << " [deg]\n";
 
- 	cout <<  "new_angle:" << new_angle << " [deg]\n";
+	//mRotation = new_angle/100.0; //CruizCore angle must be inverted
+	// mRotation = math_functions::deg2rad(mRotation);
+	// mRotation = math_functions::unwrap(mRotation);
 
- 	cout << "Gyro: " << math_functions::rad2deg(mRotation) << endl;
+ // 	cout << "Gyro: " << math_functions::rad2deg(mRotation) << endl;
 
 
 /*
