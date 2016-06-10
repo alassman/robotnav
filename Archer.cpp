@@ -22,7 +22,8 @@ Archer::Archer(float period, float track, float encoderScaleFactor, int COUNTS_R
 {	
 	//establish connection with SDC21XX
 	int status = device.Connect("/dev/ttyACM0");
-	for(int i = 0; i < 10; ++i) {
+	int i = 0
+	for(; i < 10; ++i) {
 		if(status != RQ_SUCCESS)
 		{
 			cout<<"Error connecting to device: "<<status<<"."<<endl;
@@ -31,6 +32,10 @@ Archer::Archer(float period, float track, float encoderScaleFactor, int COUNTS_R
 		}
 		else
 			break;
+	}
+	if(i == 10) {
+		cout << "connection failed, try again" << endl;
+		return 0;
 	}
 
 	strcpy(mName, "Archer");
@@ -45,12 +50,12 @@ Archer::~Archer() {
 	int status;
 	//left_motor command
 	if((status = device.SetCommand(_S, left_motor, 0)) != RQ_SUCCESS) {
-		cout<<"left_motor speed_set failed with exit status: " << status;
+		cout<<"left_motor speed_set failed with exit status: " << status << endl;
 		//exit(1);
 	}
 	//right_motorcommand
 	if((status = device.SetCommand(_S, right_motor, 0)) != RQ_SUCCESS) {
-		cout<<"right_motorspeed_set failed with exit status: " << status;
+		cout<<"right_motorspeed_set failed with exit status: " << status << endl;
 		//exit(1);
 	}
 	sleepms(10);
