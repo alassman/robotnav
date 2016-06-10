@@ -55,6 +55,7 @@ CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor
 	readSensors();
 	strcpy(mName,"CruizCore");
 	cout << "CruizCore Gyro Robot ready!\n";
+	cout << "GYRO_PORT: " << GYRO_PORT << endl;
 }
 
 CruizCoreGyro::~CruizCoreGyro()
