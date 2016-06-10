@@ -71,7 +71,7 @@ int CruizCoreGyro::readSensors()
            printf("The input and output queues have been flushed.\n");
         else
            perror("tcflush error\n");
-	
+
 	//Get Encoder information
 	Archer::readSensors();
 
@@ -86,7 +86,7 @@ int CruizCoreGyro::readSensors()
 	float rate_float;
 	float angle_float;
 	short check_sum;
-	unsigned char data_packet[PACKET_SIZE*100];
+	unsigned char data_packet[PACKET_SIZE];
 
 
 	//read(file_descriptor,data_packet,PACKET_SIZE*100);
