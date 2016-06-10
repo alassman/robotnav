@@ -88,7 +88,7 @@ int CruizCoreGyro::readSensors()
 	if(header != (short)0xFFFF)
 	{
 		cout << "Header error !!!\n";
-		return 1;
+		//return 1;
 	}
 
 	// Copy values from data string 
@@ -100,7 +100,7 @@ int CruizCoreGyro::readSensors()
 	if(check_sum != (short)(0xFFFF + rate_int + new_angle))
 	{
 		cout<< "Checksum error!!\n";
-		return false;
+		//return false;
 	}
 
 	mRotation = new_angle/100.0; //CruizCore angle must be inverted
