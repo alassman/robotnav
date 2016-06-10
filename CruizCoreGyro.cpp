@@ -75,6 +75,7 @@ int CruizCoreGyro::readSensors()
 
 	short header;
 	short new_angle;
+	short rate_int;
 	short check_sum;
 	unsigned char data_packet[PACKET_SIZE];
 
@@ -90,6 +91,8 @@ int CruizCoreGyro::readSensors()
 		return 1;
 	}
 
+	// Copy values from data string 
+	memcpy(&rate_int,data_packet+2,sizeof(short));
 	memcpy(&new_angle,data_packet+4,sizeof(short));
 	memcpy(&check_sum,data_packet+6,sizeof(short));
 
