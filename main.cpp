@@ -21,7 +21,7 @@
 
 #include "Archer.h"
 #include <iostream>
-//#include "Xg1300lGyro.h"
+#include "CruizCoreGyro.h"
 //#include "LegoGyro.h"
 #include "Odometry.h"
 #include "Control.h"
