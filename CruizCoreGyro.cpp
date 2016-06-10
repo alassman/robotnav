@@ -40,9 +40,9 @@ const int SAMPLES = 1000;
 //Define global variables
 int file_descriptor;
 
-CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor, int COUNTS_REVOLUTION_in, (char *)GYRO_PORT) : Ev3(period, track, encoderScaleFactor, COUNTS_REVOLUTION_in)
+CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor, int COUNTS_REVOLUTION_in, char *GYRO_PORT) : Ev3(period, track, encoderScaleFactor, COUNTS_REVOLUTION_in)
 {
-	if(-1 == (file_descriptor = open(COMM_PORT,O_RDONLY)))
+	if(-1 == (file_descriptor = open(GYRO_PORT,O_RDONLY)))
 	{
 		cout << "Error opening port \n";
 		cout << "Set port parameters using the following Linux command:\n stty -F /dev/ttyUSB0 115200 raw\n";
