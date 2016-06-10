@@ -90,6 +90,9 @@ int CruizCoreGyro::readSensors()
 
 
 	//read(file_descriptor,data_packet,PACKET_SIZE*100);
+
+	//if you flush right here then there is not enough time for the buffer to completely refill
+	//you only get a few bytes when readin, not a full 8
 	int hold;
 	hold = read(file_descriptor,data_packet,PACKET_SIZE);
 	if(PACKET_SIZE != hold) {
@@ -124,11 +127,11 @@ int CruizCoreGyro::readSensors()
 	
 	cout << "rate_float:" << rate_float << " [deg/sec]\t angle_float:" << angle_float << " [deg]\n";
 
-	//mRotation = new_angle/100.0; //CruizCore angle must be inverted
-	// mRotation = math_functions::deg2rad(mRotation);
-	// mRotation = math_functions::unwrap(mRotation);
+	mRotation = angle_float/100.0; //CruizCore angle must be inverted
+	mRotation = math_functions::deg2rad(mRotation);
+	mRotation = math_functions::unwrap(mRotation);
 
- // 	cout << "Gyro: " << math_functions::rad2deg(mRotation) << endl;
+ 	cout << "Gyro: " << math_functions::rad2deg(mRotation) << endl;
 
 
 /*
