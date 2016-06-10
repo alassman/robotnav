@@ -34,8 +34,9 @@ Archer::Archer(float period, float track, float encoderScaleFactor, int COUNTS_R
 			break;
 	}
 	if(i == 10) {
-		cout << "connection failed, try again" << endl;
-		return 0;
+		while(true) {
+		cout << "connection failed, end program" << endl;
+		}
 	}
 
 	strcpy(mName, "Archer");
