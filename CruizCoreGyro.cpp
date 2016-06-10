@@ -66,6 +66,12 @@ CruizCoreGyro::~CruizCoreGyro()
 
 int CruizCoreGyro::readSensors()
 {
+
+	if (tcflush(file_descriptor, TCIOFLUSH) == 0)
+           printf("The input and output queues have been flushed.\n");
+        else
+           perror("tcflush error\n");
+	
 	//Get Encoder information
 	Archer::readSensors();
 
@@ -84,21 +90,16 @@ int CruizCoreGyro::readSensors()
 
 
 	//read(file_descriptor,data_packet,PACKET_SIZE*100);
-
-	if (tcflush(file_descriptor, TCIOFLUSH) == 0)
-           printf("The input and output queues have been flushed.\n");
-        else
-           perror("tcflush error\n");
 	
 	if(PACKET_SIZE != read(file_descriptor,data_packet,PACKET_SIZE))
-		return false;
+		return 0;
 
 	// Verify data packet header 
 	memcpy(&header,data_packet,sizeof(short));
 	if(header != (short)0xFFFF)
 	{
 		cout << "Header error !!!\n";
-		return false;
+		return 0;
 	}
 
 	// Copy values from data string 
@@ -110,7 +111,7 @@ int CruizCoreGyro::readSensors()
 	if(check_sum != (short)(0xFFFF + rate_int + angle_int))
 	{
 		cout<< "Checksum error!!\n";
-		return false;
+		return 0;
 	}
 
 	// Apply scale factors
