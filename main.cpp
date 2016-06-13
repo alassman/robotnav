@@ -55,10 +55,10 @@ const float PERIOD = 0.01; //[sec]
 int main()
 {
     //Only one robot can be created at the time
-    //Archer robot(PERIOD, TRACK, ENCODER_SCALE_FACTOR, COUNTS_REVOLUTION); //Odometry only
+    Archer robot(PERIOD, TRACK, ENCODER_SCALE_FACTOR, COUNTS_REVOLUTION); //Odometry only
     
 	//Only one robot can be created at the time
-	CruizCoreGyro robot(PERIOD, TRACK, ENCODER_SCALE_FACTOR, COUNTS_REVOLUTION, (char *)GYRO_PORT); //Gyro Enhanced
+	//CruizCoreGyro robot(PERIOD, TRACK, ENCODER_SCALE_FACTOR, COUNTS_REVOLUTION, (char *)GYRO_PORT); //Gyro Enhanced
 	Odometry odometry(&robot); 
 	Keyboard user_input;
 	Control control(&odometry);
