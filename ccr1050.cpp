@@ -51,7 +51,7 @@ void ccr1050_close()
 // Get a data packet and parse it
 bool ccr1050_getvalue()
 {
-	usleep(100000);
+	//usleep(100000);
 	short header;
 	short rate_int;
 	short angle_int;
