@@ -65,7 +65,7 @@ CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor
     else
        perror("tcflush error\n");
 
-	
+
 }
 
 CruizCoreGyro::~CruizCoreGyro()
@@ -80,6 +80,10 @@ int CruizCoreGyro::readSensors()
  //           printf("The input and output queues have been flushed.\n");
  //        else
  //           perror("tcflush error\n");
+
+
+	//may need to double packet size to deal with extra info in buffer
+	//may need to do this because
 
 
 	//Get Encoder information
