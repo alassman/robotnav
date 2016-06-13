@@ -53,6 +53,7 @@ CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor
 
 	//Read sensors a first time in order to initialize some of the states
 	readSensors();
+	cout << "made it here" << endl;
 	strcpy(mName,"CruizCore");
 	cout << "CruizCore Gyro Robot ready!\n";
 	cout << "GYRO_PORT: " << GYRO_PORT << endl;
