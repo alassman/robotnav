@@ -111,7 +111,7 @@ int Archer::readSensors()
 
 	cout << "ARCHER ACTUAL SPEED: " << " " << mDisplacementLeft/mEncoderScaleFactor/mPeriod << " " << mDisplacementRight/mEncoderScaleFactor/mPeriod << " " << mDisplacement << " " << math_functions::rad2deg(mRotation) << endl;
 	cout << "blah" << endl;
-	return DATA_READY;
+	return 1;
 }
 
 void Archer::setActuators(vector<int> &MotorSpeed) {
