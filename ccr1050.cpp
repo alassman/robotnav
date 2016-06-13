@@ -97,9 +97,10 @@ int main()
 		return 0;
 	
 	// Get, parse and display data
-	for(int i=1; i<SAMPLES;i++)
+	for(int i=1; i<SAMPLES; i++) {
 		usleep(100000);
 		ccr1050_getvalue();
+	}
 	
 	// Close communication
 	ccr1050_close();
