@@ -68,6 +68,8 @@ int main()
 	float rate = 0;
 	bool quit_program = false;
 
+	cout << "made it here" << endl;
+
 	//Enter main loop
 	while(!quit_program)
 	{
