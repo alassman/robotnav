@@ -98,7 +98,7 @@ int main()
 	
 	// Get, parse and display data
 	for(int i=1; i<SAMPLES; i++) {
-		usleep(100000);
+		usleep(20000);
 		ccr1050_getvalue();
 	}
 	
