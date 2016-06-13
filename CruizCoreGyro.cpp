@@ -42,6 +42,7 @@ int file_descriptor;
 
 CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor, int COUNTS_REVOLUTION_in, char GYRO_PORT[]) : Archer(period, track, encoderScaleFactor, COUNTS_REVOLUTION_in)
 {
+
 	if(-1 == (file_descriptor = open(GYRO_PORT,O_RDONLY)))
 	{
 		cout << "Error opening port \n";
@@ -58,6 +59,13 @@ CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor
 	strcpy(mName,"CruizCore");
 	cout << "CruizCore Gyro Robot ready!\n";
 	cout << "GYRO_PORT: " << GYRO_PORT << endl;
+
+	if (tcflush(file_descriptor, TCIOFLUSH) == 0)
+       printf("The input and output queues have been flushed.\n");
+    else
+       perror("tcflush error\n");
+
+	
 }
 
 CruizCoreGyro::~CruizCoreGyro()
