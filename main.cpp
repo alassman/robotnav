@@ -105,7 +105,6 @@ int main()
 			rate = 0;
 			//control.disable();
 			robot.setActuators(speed, rate);
-			return 1;
 			break;
 		}
 		//High level control
