@@ -67,10 +67,14 @@ CruizCoreGyro::~CruizCoreGyro()
 int CruizCoreGyro::readSensors()
 {
 
+
+
+/*
 	if (tcflush(file_descriptor, TCIOFLUSH) == 0)
            printf("The input and output queues have been flushed.\n");
         else
            perror("tcflush error\n");
+*/
 
 	//Get Encoder information
 	Archer::readSensors();
@@ -96,7 +100,7 @@ int CruizCoreGyro::readSensors()
 	int hold;
 	hold = read(file_descriptor,data_packet,PACKET_SIZE);
 	if(PACKET_SIZE != hold) {
-		cout << "# of bytes actually read(8): " << hold << endl;
+		cout << "ERROR: # of bytes actually read(8): " << hold << endl;
 		return 0;
 	}
 
@@ -104,8 +108,7 @@ int CruizCoreGyro::readSensors()
 	memcpy(&header,data_packet,sizeof(short));
 	if(header != (short)0xFFFF)
 	{
-		cout << "Header error !!!\n";
-		cout << "HEADER(" << (short)0xFFFF << "): " << header << endl;
+		cout << "ERROR: HEADER(" << (short)0xFFFF << "): " << header << endl;
 		return 0;
 	}
 
@@ -117,7 +120,7 @@ int CruizCoreGyro::readSensors()
 	// Verify checksum
 	if(check_sum != (short)(0xFFFF + rate_int + angle_int))
 	{
-		cout<< "Checksum error!!\n";
+		cout<< "ERROR: checksum\n";
 		return 0;
 	}
 
@@ -125,7 +128,7 @@ int CruizCoreGyro::readSensors()
 	rate_float = rate_int/100.0;
  	angle_float = angle_int/100.0;
 	
-	cout << "rate_float:" << rate_float << " [deg/sec]\t angle_float:" << angle_float << " [deg]\n";
+	cout << "rate_float:" << rate_float << " [deg/sec]" << endl << "angle_float: " << angle_float << " [deg]\n";
 
 	mRotation = angle_float/100.0; //CruizCore angle must be inverted
 	mRotation = math_functions::deg2rad(mRotation);
