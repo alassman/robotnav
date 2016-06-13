@@ -77,10 +77,12 @@ int Archer::readSensors()
 
 	if((status = device.GetValue(_CR, left_motor, rel_count_1)) != RQ_SUCCESS) {
 		cout <<"left_motor encoder reading failed with exit status: " << status << endl;
+		cout << endl;
 		//exit(1);
 	}
 	if((status = device.GetValue(_CR, right_motor, rel_count_2)) != RQ_SUCCESS) {
 		cout <<"right_motorencoder reading failed with exit status: " << status << endl;
+		cout << endl;
 		//exit(1);
 	}
 
