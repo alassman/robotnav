@@ -106,17 +106,10 @@ int CruizCoreGyro::readSensors()
 
 	//if you flush right here then there is not enough time for the buffer to completely refill
 	//you only get a few bytes when readin, not a full 8
-	
-
-	cout << "1" << endl;
-
 	int hold;
-	cout << "file_descriptor: " << file_descriptor << endl;
-	cout << "data_packet: " << data_packet << endl;
-	cout << "PACKET_SIZE: " << PACKET_SIZE << endl;
-	
+	//if not making it past this line, dont forget to type into terminal:
+	// $stty -F /dev/ttyUSB0 115200 raw
 	hold = read(file_descriptor,data_packet,PACKET_SIZE);
-	cout << "1.5" << endl;
 	if(PACKET_SIZE != hold) {
 		cout << "ERROR: # of bytes actually read(8): " << hold << endl;
 		return 0;
