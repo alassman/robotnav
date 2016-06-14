@@ -34,14 +34,11 @@
 
 using namespace std;
 
-const int PACKET_SIZE = 8;
-const int SAMPLES = 1000;
-
-//Define global variables
-int file_descriptor;
-
 CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor, int COUNTS_REVOLUTION_in, char GYRO_PORT[]) : Archer(period, track, encoderScaleFactor, COUNTS_REVOLUTION_in)
 {
+	//initialize read_in variables
+	PACKET_SIZE = 8;
+	SAMPLES = 1000;
 
 	if(-1 == (file_descriptor = open(GYRO_PORT,O_RDONLY)))
 	{
@@ -50,6 +47,12 @@ CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor
 		cout << "You may need to have ROOT access";
 	}
 	cout << "CruizCoreR1050 communication port is ready\n";
+
+	if(write("$MIA,,,,R,10,,,*EA")) {
+		cout << "could not write to CruizCore" << endl;
+		cout << "output rate incorrect" << endl;
+		exit(1);
+	}
 
 	strcpy(mName,"CruizCore");
 	cout << "CruizCore Gyro Robot ready!\n";
@@ -166,5 +169,19 @@ int CruizCoreGyro::readSensors()
 	cout << "XG1300L: " << math_functions::rad2deg(mRotation) << endl;
 */
 	return DATA_READY;
+}
+
+int CruizCoreGyro::write(string str)
+{
+
+	//cout<<"Writing: "<<ReplaceString(str, "\r", "\r\n");
+	int countSent = write(file_descriptor, str.c_str(), str.length());
+
+	//Verify weather the Transmitting Data on UART was Successful or Not
+	if(countSent < 0) {
+		return 0;
+	}
+
+	return 1;
 }
 

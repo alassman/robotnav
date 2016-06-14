@@ -21,14 +21,20 @@
 #ifndef CruizCore_GYRO_H
 #define CruizCore_GYRO_H
 
+#include <string>
 #include "Archer.h"
 
 class CruizCoreGyro : public Archer
 {
-	public:
+private:
+	int PACKET_SIZE;
+	int SAMPLES;
+	int file_descriptor;
+public:
 		CruizCoreGyro(float period, float track, float encoderScaleFactor, int COUNTS_REVOLUTION_in, char GYRO_PORT[]);
 		virtual ~CruizCoreGyro();
 		virtual int readSensors();
+		int CruizCoreGyro::write(string str)
 };
 
 #endif
