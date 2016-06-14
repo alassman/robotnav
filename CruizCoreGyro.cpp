@@ -48,7 +48,7 @@ CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor
 	}
 	cout << "CruizCoreR1050 communication port is ready\n";
 
-	if(write("$MIA,,,,R,10,,,*EA")) {
+	if(Write("$MIA,,,,R,10,,,*EA")) {
 		cout << "could not write to CruizCore" << endl;
 		cout << "output rate incorrect" << endl;
 		exit(1);
