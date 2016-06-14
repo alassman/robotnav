@@ -48,6 +48,7 @@ CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor
 	}
 	cout << "CruizCoreR1050 communication port is ready\n";
 
+	//change output rate of gyro to 10Hz
 	if(Write("$MIA,,,,R,10,,,*EA")) {
 		cout << "could not write to CruizCore" << endl;
 		cout << "output rate incorrect" << endl;
@@ -111,6 +112,7 @@ int CruizCoreGyro::readSensors()
 
 	int hold;
 	hold = read(file_descriptor,data_packet,PACKET_SIZE);
+	cout << "1.5" << endl;
 	if(PACKET_SIZE != hold) {
 		cout << "ERROR: # of bytes actually read(8): " << hold << endl;
 		return 0;
