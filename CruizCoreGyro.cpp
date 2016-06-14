@@ -171,7 +171,7 @@ int CruizCoreGyro::readSensors()
 	return DATA_READY;
 }
 
-bool CruizCoreGyro::write(string str)
+bool CruizCoreGyro::Write(string str)
 {
 
 	//cout<<"Writing: "<<ReplaceString(str, "\r", "\r\n");

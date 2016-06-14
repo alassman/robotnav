@@ -22,6 +22,7 @@
 #define CruizCore_GYRO_H
 
 #include <string>
+#include <stdlib.h> 
 #include "Archer.h"
 
 class CruizCoreGyro : public Archer
@@ -34,7 +35,7 @@ public:
 		CruizCoreGyro(float period, float track, float encoderScaleFactor, int COUNTS_REVOLUTION_in, char GYRO_PORT[]);
 		virtual ~CruizCoreGyro();
 		virtual int readSensors();
-		bool write(string str);
+		bool Write(string str);
 };
 
 #endif
