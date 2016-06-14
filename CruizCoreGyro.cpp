@@ -102,12 +102,18 @@ int CruizCoreGyro::readSensors()
 
 	//if you flush right here then there is not enough time for the buffer to completely refill
 	//you only get a few bytes when readin, not a full 8
+	
+
+	cout << "1" << endl;
+
 	int hold;
 	hold = read(file_descriptor,data_packet,PACKET_SIZE);
 	if(PACKET_SIZE != hold) {
 		cout << "ERROR: # of bytes actually read(8): " << hold << endl;
 		return 0;
 	}
+
+	cout << "2" << endl;
 
 	// Verify data packet header 
 	memcpy(&header,data_packet,sizeof(short));
@@ -117,10 +123,14 @@ int CruizCoreGyro::readSensors()
 		return 0;
 	}
 
+	cout << "3" << endl;
+
 	// Copy values from data string 
 	memcpy(&rate_int,data_packet+2,sizeof(short));
 	memcpy(&angle_int,data_packet+4,sizeof(short));
 	memcpy(&check_sum,data_packet+6,sizeof(short));
+
+	cout << "4" << endl;
 
 	// Verify checksum
 	if(check_sum != (short)(0xFFFF + rate_int + angle_int))
@@ -128,6 +138,8 @@ int CruizCoreGyro::readSensors()
 		cout<< "ERROR: checksum\n";
 		return 0;
 	}
+
+	cout << "5" << endl;
 
 	// Apply scale factors
 	rate_float = rate_int/100.0;

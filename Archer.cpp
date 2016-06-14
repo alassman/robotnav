@@ -41,7 +41,7 @@ Archer::Archer(float period, float track, float encoderScaleFactor, int COUNTS_R
 
 	strcpy(mName, "Archer");
 	//to initialize encoder readings because each read is relative to the last read
-	readSensors();
+	this->readSensors();
 	cout << "Archer is ready!\n";
 }
 
