@@ -171,7 +171,7 @@ int CruizCoreGyro::readSensors()
 	return DATA_READY;
 }
 
-int CruizCoreGyro::write(string str)
+bool CruizCoreGyro::write(string str)
 {
 
 	//cout<<"Writing: "<<ReplaceString(str, "\r", "\r\n");
@@ -179,9 +179,9 @@ int CruizCoreGyro::write(string str)
 
 	//Verify weather the Transmitting Data on UART was Successful or Not
 	if(countSent < 0) {
-		return 0;
+		return false;
 	}
 
-	return 1;
+	return true;
 }
 
