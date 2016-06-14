@@ -26,7 +26,9 @@ MathFunctions.o: MathFunctions.cpp MathFunctions.h
 	$(CC) $(CFLAGS) -c MathFunctions.cpp
 RoboteqDevice.o: RoboteqDevice.cpp RoboteqDevice.h ErrorCodes.h Constants.h
 	$(CC) $(CFLAGS) -c RoboteqDevice.cpp
-test_connection: Robot.o Archer.o RoboteqDevice.o MathFunctions.o test_connection.cpp
+test_MC_connection: Robot.o Archer.o RoboteqDevice.o MathFunctions.o test_connection.cpp
 	$(CC) $(CFLAGS) Robot.o Archer.o RoboteqDevice.o MathFunctions.o test_connection.cpp -o $@ 
+test_Gyro_connection: ccr1050.cpp
+	g++ ccr1050.cpp -o test_Gyro_connection
 clean:
-	\rm *.o $(TARGET) test_connection
+	\rm *.o $(TARGET)
