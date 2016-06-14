@@ -51,11 +51,6 @@ CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor
 	}
 	cout << "CruizCoreR1050 communication port is ready\n";
 
-
-	//Read sensors a first time in order to initialize some of the states
-	if(readSensors()) {
-		cout << "sensors read" << endl;
-	}
 	strcpy(mName,"CruizCore");
 	cout << "CruizCore Gyro Robot ready!\n";
 	cout << "GYRO_PORT: " << GYRO_PORT << endl;
