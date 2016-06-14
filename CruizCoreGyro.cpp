@@ -111,6 +111,9 @@ int CruizCoreGyro::readSensors()
 	cout << "1" << endl;
 
 	int hold;
+	cout << "file_descriptor: " << file_descriptor << endl;
+	cout << "data_packet: " << data_packet << endl;
+	cout << "PACKET_SIZE: " << PACKET_SIZE << endl;
 	hold = read(file_descriptor,data_packet,PACKET_SIZE);
 	cout << "1.5" << endl;
 	if(PACKET_SIZE != hold) {
