@@ -49,7 +49,7 @@ CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor
 	cout << "CruizCoreR1050 communication port is ready\n";
 
 
-	char buffer[19]; = "$MIA,,,,R,10,,,*EA\n";
+	char buffer[19] = "$MIA,,,,R,10,,,*EA\n";
 	ssize_t ret_in;
 	int countSent = write(file_descriptor, &buffer, (ssize_t) ret_in);
 	//Verify weather the Transmitting Data on UART was Successful or Not
@@ -77,7 +77,7 @@ CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor
 		cout << "CruizCore outout set to 10Hz" << endl;
 	}
 */
-	
+
 	strcpy(mName,"CruizCore");
 	cout << "CruizCore Gyro Robot ready!\n";
 	cout << "GYRO_PORT: " << GYRO_PORT << endl;
