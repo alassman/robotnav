@@ -73,7 +73,6 @@ int main()
 	{
 		//Read sensors
 		robot.readSensors();
-		cout << "two step" << endl;
 
 		//Compute position
 		odometry.updatePosition();

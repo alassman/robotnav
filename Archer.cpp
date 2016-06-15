@@ -106,12 +106,22 @@ int Archer::readSensors()
 	
 	//Compute robot average displacement and rotation
 	mDisplacement = (mDisplacementLeft + mDisplacementRight) / 2.0;
-	//mRotation = (mDisplacementRight - mDisplacementLeft) / mTrack;
+	mRotation = (mDisplacementRight - mDisplacementLeft) / mTrack;
 	
-
-
-
 	cout << "ARCHER ACTUAL SPEED: " << " " << mDisplacementLeft/mEncoderScaleFactor/mPeriod << " " << mDisplacementRight/mEncoderScaleFactor/mPeriod << " " << mDisplacement << " " << math_functions::rad2deg(mRotation) << endl;
+	
+	//*****************//
+	//CHECK _ANAIN -- IF IT'S A CORRECT KEYWORD
+	int left_motor_amps;
+	int analog_input_channel = 3;
+	if((status = device.GetValue(_AI, analog_input_channel, left_motor_amps)) != RQ_SUCCESS)
+		cout<<"failed --> "<<status<<endl;
+
+
+	cout << "Motor Amps: " << left_motor_amps << endl;
+	//****************//
+
+
 	return DATA_READY;
 }
 

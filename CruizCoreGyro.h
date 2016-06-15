@@ -35,7 +35,6 @@ public:
 		CruizCoreGyro(float period, float track, float encoderScaleFactor, int COUNTS_REVOLUTION_in, char GYRO_PORT[]);
 		virtual ~CruizCoreGyro();
 		virtual int readSensors();
-		bool Write(string str);
 };
 
 #endif

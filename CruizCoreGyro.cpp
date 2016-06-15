@@ -48,11 +48,18 @@ CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor
 	}
 	cout << "CruizCoreR1050 communication port is ready\n";
 
-	//change output rate of gyro to 10Hz
-	if(Write("$MIA,,,,R,10,,,*EA")) {
+
+	//cout<<"Writing: "<<ReplaceString(str, "\r", "\r\n");
+	string str = "$MIA,,,,R,10,,,*EA";
+	int countSent = write(file_descriptor, str.c_str(), str.length());
+	//Verify weather the Transmitting Data on UART was Successful or Not
+	if(countSent < 0) {
 		cout << "could not write to CruizCore" << endl;
 		cout << "output rate incorrect" << endl;
 		exit(1);
+	}
+	else {
+		cout << "CruizCore outout set to 10Hz" << endl;
 	}
 
 	strcpy(mName,"CruizCore");
@@ -160,19 +167,5 @@ int CruizCoreGyro::readSensors()
 	cout << "XG1300L: " << math_functions::rad2deg(mRotation) << endl;
 */
 	return DATA_READY;
-}
-
-bool CruizCoreGyro::Write(string str)
-{
-
-	//cout<<"Writing: "<<ReplaceString(str, "\r", "\r\n");
-	int countSent = write(file_descriptor, str.c_str(), str.length());
-
-	//Verify weather the Transmitting Data on UART was Successful or Not
-	if(countSent < 0) {
-		return false;
-	}
-
-	return true;
 }
 
