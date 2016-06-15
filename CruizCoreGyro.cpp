@@ -118,7 +118,7 @@ int CruizCoreGyro::readSensors()
 	short rate_int;
 	short angle_int;
 	float rate_float;
-	float angle_float;
+	//float angle_float;
 	short check_sum;
 	unsigned char data_packet[PACKET_SIZE];
 
@@ -164,12 +164,12 @@ int CruizCoreGyro::readSensors()
 	
 	//cout << "rate_float:" << rate_float << " [deg/sec]" << endl << "angle_float: " << angle_float << " [deg]\n";
 
-	mRotation = - (angle_float - s_last_angle)/100.0;
+	mRotation = - (angle_int - s_last_angle)/100.0;
 
 	mRotation = math_functions::deg2rad(mRotation);
 	mRotation = math_functions::unwrap(mRotation);
 
-	s_last_angle = angle_float;
+	s_last_angle = angle_int;
 
  	cout << "Gyro: " << math_functions::rad2deg(mRotation) << endl;
 
