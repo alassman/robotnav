@@ -48,6 +48,21 @@ CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor
 	}
 	cout << "CruizCoreR1050 communication port is ready\n";
 
+	//software reset
+	string str1 = "$MIB,RESET*87";
+	int countSent = write(file_descriptor, str1.c_str(), str1.length());
+	//Verify weather the Transmitting Data on UART was Successful or Not
+	if(countSent < 0) {
+		cout << "could not write to CruizCore" << endl;
+		cout << "could not reset software" << endl;
+		exit(1);
+	}
+	else {
+		cout << "CruizCore reset" << endl;
+	}
+
+	usleep(1500);
+
 	//cout<<"Writing: "<<ReplaceString(str, "\r", "\r\n");
 	string str = "$MIA,,,,R,10,,,*EA";
 	int countSent = write(file_descriptor, str.c_str(), str.length());
