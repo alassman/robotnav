@@ -40,7 +40,7 @@ CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor
 	PACKET_SIZE = 8;
 	SAMPLES = 1000;
 
-	if(-1 == (file_descriptor = open(GYRO_PORT,O_RDONLY)))
+	if(-1 == (file_descriptor = open(GYRO_PORT,O_RDWR)))
 	{
 		cout << "Error opening port \n";
 		cout << "Set port parameters using the following Linux command:\n stty -F /dev/ttyUSB0 115200 raw\n";
