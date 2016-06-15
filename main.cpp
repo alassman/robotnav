@@ -45,7 +45,7 @@ const char GYRO_PORT[] = "/dev/ttyUSB0";
 const float TRACK = 347.0; // [mm]
 const int COUNTS_REVOLUTION = 568; // [count/rev]
 const float WHEEL_DIAMETER = 155.0; // [mm]
-const float ENCODER_SCALE_FACTOR = PI * WHEEL_DIAMETER / (COUNTS_REVOLUTION*4); // [mm/count]
+const float ENCODER_SCALE_FACTOR = PI * WHEEL_DIAMETER / (COUNTS_REVOLUTION); // [mm/count]
 
 // Runtime constant
 const float INC_SPEED_MM_SECOND = 100.0; //[mm/sec]
