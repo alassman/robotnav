@@ -164,7 +164,7 @@ int CruizCoreGyro::readSensors()
 	
 	//cout << "rate_float:" << rate_float << " [deg/sec]" << endl << "angle_float: " << angle_float << " [deg]\n";
 
-	mRotation = - (angle_int - s_last_angle)/100.0;
+	mRotation = (angle_int - s_last_angle)/100.0;
 
 	mRotation = math_functions::deg2rad(mRotation);
 	mRotation = math_functions::unwrap(mRotation);
