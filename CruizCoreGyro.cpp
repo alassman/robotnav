@@ -48,22 +48,6 @@ CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor
 	}
 	cout << "CruizCoreR1050 communication port is ready\n";
 
-
-	char buffer[20] = "$MIA,,,,R,10,,,*EA\n";
-	ssize_t ret_in;
-	int countSent = write(file_descriptor, &buffer, (ssize_t) ret_in);
-	//Verify weather the Transmitting Data on UART was Successful or Not
-	if(countSent < 0) {
-		cout << "could not write to CruizCore" << endl;
-		cout << "output rate incorrect" << endl;
-		exit(1);
-	}
-	else {
-		cout << "CruizCore outout set to 10Hz" << endl;
-	}
-
-
-/*
 	//cout<<"Writing: "<<ReplaceString(str, "\r", "\r\n");
 	string str = "$MIA,,,,R,10,,,*EA";
 	int countSent = write(file_descriptor, str.c_str(), str.length());
@@ -76,7 +60,6 @@ CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor
 	else {
 		cout << "CruizCore outout set to 10Hz" << endl;
 	}
-*/
 
 	strcpy(mName,"CruizCore");
 	cout << "CruizCore Gyro Robot ready!\n";
