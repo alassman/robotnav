@@ -156,16 +156,20 @@ int CruizCoreGyro::readSensors()
 		return 0;
 	}
 
+	static float s_last_angle = 0;
+
 	// Apply scale factors
 	rate_float = rate_int/100.0;
- 	angle_float = angle_int/100.0;
+ 	//angle_float = angle_int/100.0;
 	
-	cout << "rate_float:" << rate_float << " [deg/sec]" << endl << "angle_float: " << angle_float << " [deg]\n";
+	//cout << "rate_float:" << rate_float << " [deg/sec]" << endl << "angle_float: " << angle_float << " [deg]\n";
 
-	mRotation = angle_float; //CruizCore angle must be inverted
+	mRotation = - (angle_float - s_last_angle)/100.0;
 
 	mRotation = math_functions::deg2rad(mRotation);
 	mRotation = math_functions::unwrap(mRotation);
+
+	s_last_angle = angle_float;
 
  	cout << "Gyro: " << math_functions::rad2deg(mRotation) << endl;
 
