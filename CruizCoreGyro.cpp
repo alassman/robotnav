@@ -85,6 +85,10 @@ CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor
     else
        perror("tcflush error\n");
 
+   	readSensors();
+
+   	cout << "CruizCore Robot ready!" << endl;
+
 
 }
 
