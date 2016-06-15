@@ -50,9 +50,9 @@ CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor
 
 	//software reset
 	string str1 = "$MIB,RESET*87";
-	int countSent = write(file_descriptor, str1.c_str(), str1.length());
+	int countSent1 = write(file_descriptor, str1.c_str(), str1.length());
 	//Verify weather the Transmitting Data on UART was Successful or Not
-	if(countSent < 0) {
+	if(countSent1 < 0) {
 		cout << "could not write to CruizCore" << endl;
 		cout << "could not reset software" << endl;
 		exit(1);
