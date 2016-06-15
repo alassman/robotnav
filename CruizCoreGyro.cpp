@@ -117,7 +117,7 @@ int CruizCoreGyro::readSensors()
 	short header;
 	short rate_int;
 	short angle_int;
-	float rate_float;
+	//float rate_float;
 	//float angle_float;
 	short check_sum;
 	unsigned char data_packet[PACKET_SIZE];
@@ -159,7 +159,7 @@ int CruizCoreGyro::readSensors()
 	static float s_last_angle = 0;
 
 	// Apply scale factors
-	rate_float = rate_int/100.0;
+	//rate_float = rate_int/100.0;
  	//angle_float = angle_int/100.0;
 	
 	//cout << "rate_float:" << rate_float << " [deg/sec]" << endl << "angle_float: " << angle_float << " [deg]\n";
