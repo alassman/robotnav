@@ -64,6 +64,6 @@ void Odometry::updatePosition()
 	//Convert from displacement to displacement/time
 	mSpeed = mDisplacement / mPeriod;
 	mRate = mRotation / mPeriod;
-	cout << "POSITION " << mpSensors->getName() << ": " <<mX << " " << mY << " " << math_functions::rad2deg(mHeading) << " " << mSpeed << " " << math_functions::rad2deg(mRate) << endl;
+	cout << "POSITION " << mpSensors->getName() << ": X: " <<mX << " Y: " << mY << " heading: " << math_functions::rad2deg(mHeading) << " speed: " << mSpeed << " rate: " << math_functions::rad2deg(mRate) << endl;
 }
 
