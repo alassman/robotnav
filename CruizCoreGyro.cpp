@@ -18,6 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include <stdio.h>
+ #include <stdlib.h> 
 #include <errno.h>
 #include <termios.h>
 #include <time.h>
@@ -39,6 +40,13 @@ CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor
 	//initialize read_in variables
 	PACKET_SIZE = 8;
 	SAMPLES = 1000;
+
+	int i = system("./init_gyro_port.sh");
+ 	if(i != 0) {
+  		cout << "failure to initialize gyro port" << endl;
+  		exit(1);
+ 	}
+
 
 	if(-1 == (file_descriptor = open(GYRO_PORT,O_RDWR)))
 	{
@@ -82,8 +90,10 @@ CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor
 
 	if (tcflush(file_descriptor, TCIOFLUSH) == 0)
        printf("The input and output queues have been flushed.\n");
-    else
+    else {
        perror("tcflush error\n");
+       exit(1);
+   	}
 
    	readSensors();
 
