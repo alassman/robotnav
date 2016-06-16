@@ -43,7 +43,7 @@ const char GYRO_PORT[] = "/dev/ttyUSB0";
 
 //Platform measurements
 const float TRACK = 347.0; // [mm]
-const int COUNTS_REVOLUTION = 1905; // [count/rev] was 568
+const int COUNTS_REVOLUTION = 1920; // [count/rev] was 568
 const float WHEEL_DIAMETER = 155.0; // [mm]
 const float ENCODER_SCALE_FACTOR = PI * WHEEL_DIAMETER / (COUNTS_REVOLUTION); // [mm/count]
 
