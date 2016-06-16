@@ -46,7 +46,9 @@ CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor
   		cout << "failure to initialize gyro port" << endl;
   		exit(1);
  	}
- 	cout << "response to init_gyro command(0): " << i << endl;
+ 	else if(i == 0){
+ 		cout << "success" << endl;
+ 	}
 
 
 	if(-1 == (file_descriptor = open(GYRO_PORT,O_RDWR)))
