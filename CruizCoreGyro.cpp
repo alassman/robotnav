@@ -47,7 +47,7 @@ CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor
   		exit(1);
  	}
  	else if(i == 0){
- 		cout << "success" << endl;
+ 		cout << "BAUD RATE SET" << endl;
  	}
 
 
