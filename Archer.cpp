@@ -29,7 +29,7 @@ Archer::Archer(float period, float track, float encoderScaleFactor, int COUNTS_R
 	cout << "Archer is ready!\n";
 }
 
-Archer::make_connection() {
+void Archer::make_connection() {
 	int status = device.Connect("/dev/ttyACM0");
 	if(status != RQ_SUCCESS)
 	{
