@@ -48,7 +48,7 @@ class Archer : public Robot
 		virtual int readSensors();
 		virtual void setActuators(vector<int> &MotorSpeed);
 		virtual void setActuators(float speed, float rate);
-		virtual void make_connection(string port);
+		virtual void make_connection();
 		virtual int read_encoders();
 };
 
