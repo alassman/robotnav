@@ -34,10 +34,10 @@ void Archer::make_connection() {
 	if(status != RQ_SUCCESS)
 	{
 		cout<<"Error connecting to device..."<<endl;
-		cout << "Running ./test_MC_connection 5 times" << endl;
-		for (int i = 0; i < 5; ++i)
+		cout << "testing connection 2 times" << endl;
+		for (int i = 0; i < 2; ++i)
 		{
-			system("./test_MC_connection");
+			status = device.Connect("/dev/ttyACM0");
 			usleep(1000);
 		}
 		status = device.Connect("/dev/ttyACM0");
