@@ -21,7 +21,7 @@ Archer::Archer(float period, float track, float encoderScaleFactor, int COUNTS_R
 		MAX_COMMAND_SPEED(75), left_motor(1), right_motor(2), LEFT(0), RIGHT(1)
 {	
 	//establish connection with SDC21XX
-	make_connection("/dev/ttyACM0");
+	make_connection();
 
 	strcpy(mName, "Archer");
 	//to initialize encoder readings because each read is relative to the last read
