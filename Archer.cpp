@@ -21,28 +21,31 @@ Archer::Archer(float period, float track, float encoderScaleFactor, int COUNTS_R
 		MAX_COMMAND_SPEED(75), left_motor(1), right_motor(2), LEFT(0), RIGHT(1)
 {	
 	//establish connection with SDC21XX
-	int status = device.Connect("/dev/ttyACM0");
-	int i = 0;
-	for(; i < 10; ++i) {
-		if(status != RQ_SUCCESS)
-		{
-			cout<<"Error connecting to device: "<<status<<"."<<endl;
-			cout << "Trying again..." << endl;
-			status = device.Connect("/dev/ttyACM0");
-		}
-		else
-			break;
-	}
-	if(i == 10) {
-		while(true) {
-		cout << "connection failed, end program" << endl;
-		}
-	}
+	make_connection("/dev/ttyACM0");
 
 	strcpy(mName, "Archer");
 	//to initialize encoder readings because each read is relative to the last read
 	this->readSensors();
 	cout << "Archer is ready!\n";
+}
+
+Archer::make_connection(string port) {
+	int status = device.Connect("/dev/ttyACM0");
+	if(status != RQ_SUCCESS)
+	{
+		cout<<"Error connecting to device..."<<endl;
+		cout << "Running ./test_MC_connection 2 times" << endl;
+		for (int i = 0; i < 2; ++i)
+		{
+			system("./test_MC_connection");
+			usleep(1000);
+		}
+		status = device.Connect("/dev/ttyACM0");
+		if(status != RQ_SUCCESS) {
+			cout << "Check power connection for MC" << endl;
+			exit(1);
+		}
+	}	
 }
 
 Archer::~Archer() {
