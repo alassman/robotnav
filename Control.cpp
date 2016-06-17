@@ -33,11 +33,11 @@ const float DIST_ANGLE_ANGLE_RATE_GAIN = 0.5; //Rate control
 const float ANGLE_RATE_GAIN = 1.5; 
 
 //Dynamic constants
-const float	MAX_RATE = math_functions::deg2rad(40.0); //[deg/sec]
-const float	MAX_SPEED = 50.0; //[mm/sec]
-const float	MIN_SPEED = 30.0; //[mm/sec]
-const float	TARGET_DIST = 15.0; //[mm]
-const float	MIN_TARGET_DIST = 4.0;  //[mm]
+const float	MAX_RATE = math_functions::deg2rad(90.0); //[deg/sec]
+const float	MAX_SPEED = 200.0; //[mm/sec]
+const float	MIN_SPEED = 100.0; //[mm/sec]
+const float	TARGET_DIST = 100.0; //[mm]
+const float	MIN_TARGET_DIST = 50.0;  //[mm]
 const float	TARGET_ANGLE = math_functions::deg2rad(5.0); //[deg]
 const float	MIN_TARGET_ANGLE = TARGET_ANGLE / 2.0; //[deg]
 
@@ -103,7 +103,7 @@ int Control::freeHeading()
 	cmpTargetDirDist(target_dist, target_ang);
 
 	//Compute control errors or difference to reach correct target angle at current point
-	float target_ang_err = math_functions::unwrap(target_ang - mpOdometry->mHeading);
+	float target_ang_err = - math_functions::unwrap(target_ang - mpOdometry->mHeading);
 	float speed = mpOdometry->mSpeed;
 	float accel = DIST_ANGLE_SPEED_GAIN * target_dist * cos(target_ang_err) - CURRENT_SPEED_GAIN * speed;
 
@@ -147,7 +147,7 @@ bool Control::faceTarget(float targetAngle)
 		cout << "WPT: " << mpWaypoints[mpWaypointIndex][X_AXIS] << " " << mpWaypoints[mpWaypointIndex][Y_AXIS] << " " << mpWaypointIndex << " " << mWaypointLength << endl;
 		cmpTargetDirDist(target_dist, targetAngle);
 	}
-	float target_ang_err = math_functions::unwrap(targetAngle - mpOdometry->mHeading);
+	float target_ang_err = - math_functions::unwrap(targetAngle - mpOdometry->mHeading);
 	cout << "FACING Target: " << math_functions::rad2deg(targetAngle) << " Current: " << math_functions::rad2deg(mpOdometry->mHeading) << " Diff: " << math_functions::rad2deg(target_ang_err) << endl;
 	mRate = target_ang_err * ANGLE_RATE_GAIN;
 	
