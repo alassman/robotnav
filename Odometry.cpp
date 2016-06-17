@@ -54,10 +54,7 @@ void Odometry::updatePosition()
 	mX += mDisplacement * cos(mHeading + mRotation/2.0);
 	mY += mDisplacement * sin(mHeading + mRotation/2.0);
 
-	cout << "Gyro2: " << mRotation << endl;
-
 	//Update heading
-	cout << "POSITION ... mRotation" << mRotation << endl;
 	mHeading += mRotation;
 	//mHeading = unwrapAngle(mHeading);
 	mHeading = math_functions::unwrap(mHeading);
