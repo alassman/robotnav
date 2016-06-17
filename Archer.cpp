@@ -34,8 +34,8 @@ void Archer::make_connection() {
 	if(status != RQ_SUCCESS)
 	{
 		cout<<"Error connecting to device..."<<endl;
-		cout << "Running ./test_MC_connection 2 times" << endl;
-		for (int i = 0; i < 2; ++i)
+		cout << "Running ./test_MC_connection 5 times" << endl;
+		for (int i = 0; i < 5; ++i)
 		{
 			system("./test_MC_connection");
 			usleep(1000);
