@@ -31,6 +31,8 @@ private:
 	int PACKET_SIZE;
 	int SAMPLES;
 	int file_descriptor;
+	unsigned char data_packet[80]; //PACKET_SIZE * 10 = 80
+	char* beg;
 public:
 		CruizCoreGyro(float period, float track, float encoderScaleFactor, int COUNTS_REVOLUTION_in, char GYRO_PORT[]);
 		virtual ~CruizCoreGyro();
