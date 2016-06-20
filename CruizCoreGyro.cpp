@@ -137,7 +137,7 @@ int CruizCoreGyro::readSensors()
 	//float rate_float;
 	//float angle_float;
 	short check_sum;
-	unsigned char data_packet[PACKET_SIZE*10];
+	unsigned char data_packet[PACKET_SIZE * 10];
 
 
 	//read(file_descriptor,data_packet,PACKET_SIZE*100);
@@ -147,7 +147,7 @@ int CruizCoreGyro::readSensors()
 	int hold;
 	//if not making it past this line, dont forget to type into terminal:
 	// $stty -F /dev/ttyUSB0 115200 raw
-	hold = read(file_descriptor,data_packet,PACKET_SIZE*3);
+	hold = read(file_descriptor,data_packet,PACKET_SIZE * 10);
 	if(PACKET_SIZE != hold) {
 		cout << "ERROR: # of bytes actually read(8): " << hold << endl;
 		return 0;
