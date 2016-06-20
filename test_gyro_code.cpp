@@ -37,13 +37,23 @@ int file_descriptor;
 // Open serial port
 bool ccr1050_init()
 {
-	if(-1 == (file_descriptor = open(COMM_PORT,O_RDONLY)))
+	int i = system("./init_gyro_port.sh");
+ 	if(i != 0) {
+  		cout << "failure to initialize gyro port" << endl;
+  		exit(1);
+ 	}
+ 	else if(i == 0){
+ 		cout << "BAUD RATE SET" << endl;
+ 	}
+
+
+	if(-1 == (file_descriptor = open(GYRO_PORT,O_RDWR)))
 	{
 		cout << "Error opening port \n";
 		cout << "Set port parameters using the following Linux command:\n stty -F /dev/ttyUSB0 115200 raw\n";
 		cout << "You may need to have ROOT access";
-		return false;
 	}
+	cout << "CruizCoreR1050 communication port is ready\n";
 
 	//software reset
 	string str1 = "$MIB,RESET*87";
@@ -56,7 +66,6 @@ bool ccr1050_init()
 	}
 	else {
 		cout << "CruizCore reset" << endl;
-	}
 
 	usleep(1500);
 
