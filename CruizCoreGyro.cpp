@@ -137,7 +137,7 @@ int CruizCoreGyro::readSensors()
 	//float rate_float;
 	//float angle_float;
 	short check_sum;
-	unsigned char data_packet[PACKET_SIZE];
+	unsigned char data_packet[PACKET_SIZE*10];
 
 
 	//read(file_descriptor,data_packet,PACKET_SIZE*100);
