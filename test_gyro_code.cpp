@@ -66,6 +66,7 @@ bool ccr1050_init()
 	}
 	else {
 		cout << "CruizCore reset" << endl;
+	}
 
 	usleep(1500);
 
