@@ -47,7 +47,7 @@ bool ccr1050_init()
  	}
 
 
-	if(-1 == (file_descriptor = open(GYRO_PORT,O_RDWR)))
+	if(-1 == (file_descriptor = open(COMM_PORT,O_RDWR)))
 	{
 		cout << "Error opening port \n";
 		cout << "Set port parameters using the following Linux command:\n stty -F /dev/ttyUSB0 115200 raw\n";
