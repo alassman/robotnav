@@ -29,6 +29,8 @@ RoboteqDevice.o: RoboteqDevice.cpp RoboteqDevice.h ErrorCodes.h Constants.h
 test_MC_connection: Robot.o Archer.o RoboteqDevice.o MathFunctions.o test_connection.cpp
 	$(CC) $(CFLAGS) Robot.o Archer.o RoboteqDevice.o MathFunctions.o test_connection.cpp -o $@ 
 test_Gyro_connection: ccr1050.cpp
-	g++ ccr1050.cpp -o test_Gyro_connection
+	g++ ccr1050.cpp -o $@
+test_Gyro_code: test_gyro_code.cpp
+	g++ test_gyro_code.cpp -o $@
 clean:
 	\rm *.o $(TARGET)

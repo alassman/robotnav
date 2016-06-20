@@ -18,9 +18,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include <stdio.h>
- #include <stdlib.h> 
+#include <stdlib.h> 
 #include <errno.h>
 #include <termios.h>
+#include <algorithm>    // std::copy
 #include <time.h>
 #include <sstream>
 #include <iostream>
@@ -35,12 +36,13 @@
 
 using namespace std;
 
-CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor, int COUNTS_REVOLUTION_in, char GYRO_PORT[]) : Archer(period, track, encoderScaleFactor, COUNTS_REVOLUTION_in)
+CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor, int COUNTS_REVOLUTION_in, char GYRO_PORT[]) 
+: Archer(period, track, encoderScaleFactor, COUNTS_REVOLUTION_in)
 {
 	//initialize read_in variables
 	PACKET_SIZE = 8;
 	SAMPLES = 1000;
-	beg = data_packet;
+	packet_read_in = data_packet;
 
 	int i = system("./init_gyro_port.sh");
  	if(i != 0) {
@@ -127,39 +129,51 @@ int CruizCoreGyro::readSensors()
 	//float angle_float;
 	short check_sum;
 
-
-	//read(file_descriptor,data_packet,PACKET_SIZE*100);
-
-	//if you flush right here then there is not enough time for the buffer to completely refill
-	//you only get a few bytes when readin, not a full 8
 	int actual_packet_size;
-	actual_packet_size = read(file_descriptor,data_packet,PACKET_SIZE * 10);
+	actual_packet_size = read(file_descriptor,packet_read_in,PACKET_SIZE * 10);
 
+	if(actual_packet_size != PACKET_SIZE) {
+		int difference = packet_read_in - data_packet;
+		int current_size = difference + actual_packet_size;	//current size of packet
 
-	if(actual_packet_size == 8)
-		// Verify data packet header 
-		memcpy(&header,data_packet,sizeof(short));
-		if(header != (short)0xFFFF)
-		{
-			cout << "ERROR: HEADER(" << (short)0xFFFF << "): " << header << endl;
+		if(current_size < PACKET_SIZE) {	//cant form full packet
+			packet_read_in += actual_packet_size;
+			cout << "ERROR: packet size too small -- not enough bytes in buffer" << endl;
 			return 0;
 		}
-		// Copy values from data string 
-		memcpy(&rate_int,data_packet+2,sizeof(short));
-		memcpy(&angle_int,data_packet+4,sizeof(short));
-		memcpy(&check_sum,data_packet+6,sizeof(short));
-		//checksum
-		if(check_sum != (short)(0xFFFF + rate_int + angle_int))
-		{
-			cout<< "ERROR: checksum\n";
-			return 0;
+		else if(current_size % PACKET_SIZE == 0) {	//if packet size is a multiple of 8
+			//copy last packet into packet_use
+			copy(data_packet + current_size - PACKET_SIZE, data_packet + current_size + PACKET_SIZE, packet_use);
+			//reset packet_read_in to beg of data_packet
+			packet_read_in = data_packet;
+		}
+		else if(current_size % PACKET_SIZE != 0) {	//this implies left over bytes were read
+			switch(current_size / PACKET_SIZE) {
+				case 1: {	//there is at most 1 packet
+					copy(data_packet, data_packet + PACKET_SIZE, packet_use);				//copy first 8 bytes to packet_use
+					copy(packet_read_in, packet_read_in + actual_packet_size, data_packet);	//copy unused bytes from end of data_packet to beginning
+					packet_read_in = data_packet + actual_packet_size;						//set packet_read_in ptr to end of valid data
+				}
+				break;
+				case 2: {	//there is at most 2 packets
+					copy(data_packet + PACKET_SIZE, data_packet + (2 * PACKET_SIZE), packet_use); 
+					copy(packet_read_in, packet_read_in + actual_packet_size, data_packet);
+					packet_read_in = data_packet + actual_packet_size;
+				}
+				break;
+				case 3: {	//there is at most 3 packets
+					copy(data_packet + (2 * PACKET_SIZE), data_packet + (3 * PACKET_SIZE), packet_use);
+					copy(packet_read_in, packet_read_in + actual_packet_size, data_packet);
+					packet_read_in = data_packet + actual_packet_size;
+				}
+				break;
+			}
 		}
 	}
-	else if()
 
 
 	// Verify data packet header 
-	memcpy(&header,data_packet,sizeof(short));
+	memcpy(&header,packet_use,sizeof(short));
 	if(header != (short)0xFFFF)
 	{
 		cout << "ERROR: HEADER(" << (short)0xFFFF << "): " << header << endl;
@@ -167,9 +181,9 @@ int CruizCoreGyro::readSensors()
 	}
 
 	// Copy values from data string 
-	memcpy(&rate_int,data_packet+2,sizeof(short));
-	memcpy(&angle_int,data_packet+4,sizeof(short));
-	memcpy(&check_sum,data_packet+6,sizeof(short));
+	memcpy(&rate_int,packet_use+2,sizeof(short));
+	memcpy(&angle_int,packet_use+4,sizeof(short));
+	memcpy(&check_sum,packet_use+6,sizeof(short));
 
 	// Verify checksum
 	if(check_sum != (short)(0xFFFF + rate_int + angle_int))
