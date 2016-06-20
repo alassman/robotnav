@@ -40,6 +40,7 @@ CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor
 	//initialize read_in variables
 	PACKET_SIZE = 8;
 	SAMPLES = 1000;
+	beg = data_packet;
 
 	int i = system("./init_gyro_port.sh");
  	if(i != 0) {
@@ -113,23 +114,11 @@ CruizCoreGyro::~CruizCoreGyro()
 
 int CruizCoreGyro::readSensors()
 {
-	// if (tcflush(file_descriptor, TCIOFLUSH) == 0)
- //           printf("The input and output queues have been flushed.\n");
- //        else
- //           perror("tcflush error\n");
-
-
-	//may need to double packet size to deal with extra info in buffer
-	//may need to do this because
-
-
 	//Get Encoder information
 	Archer::readSensors();
 
 	//read from file
 	//8 bites
-
-	//Get angle from CruizCore gyro
 
 	short header;
 	short rate_int;
@@ -137,21 +126,37 @@ int CruizCoreGyro::readSensors()
 	//float rate_float;
 	//float angle_float;
 	short check_sum;
-	unsigned char data_packet[PACKET_SIZE * 10];
 
 
 	//read(file_descriptor,data_packet,PACKET_SIZE*100);
 
 	//if you flush right here then there is not enough time for the buffer to completely refill
 	//you only get a few bytes when readin, not a full 8
-	int hold;
-	//if not making it past this line, dont forget to type into terminal:
-	// $stty -F /dev/ttyUSB0 115200 raw
-	hold = read(file_descriptor,data_packet,PACKET_SIZE * 10);
-	if(PACKET_SIZE != hold) {
-		cout << "ERROR: # of bytes actually read(8): " << hold << endl;
-		return 0;
+	int actual_packet_size;
+	actual_packet_size = read(file_descriptor,data_packet,PACKET_SIZE * 10);
+
+
+	if(actual_packet_size == 8)
+		// Verify data packet header 
+		memcpy(&header,data_packet,sizeof(short));
+		if(header != (short)0xFFFF)
+		{
+			cout << "ERROR: HEADER(" << (short)0xFFFF << "): " << header << endl;
+			return 0;
+		}
+		// Copy values from data string 
+		memcpy(&rate_int,data_packet+2,sizeof(short));
+		memcpy(&angle_int,data_packet+4,sizeof(short));
+		memcpy(&check_sum,data_packet+6,sizeof(short));
+		//checksum
+		if(check_sum != (short)(0xFFFF + rate_int + angle_int))
+		{
+			cout<< "ERROR: checksum\n";
+			return 0;
+		}
 	}
+	else if()
+
 
 	// Verify data packet header 
 	memcpy(&header,data_packet,sizeof(short));
@@ -175,10 +180,6 @@ int CruizCoreGyro::readSensors()
 
 	static float s_last_angle = 0;
 
-	// Apply scale factors
-	//rate_float = rate_int/100.0;
- 	//angle_float = angle_int/100.0;
-	
 	//cout << "rate_float:" << rate_float << " [deg/sec]" << endl << "angle_float: " << angle_float << " [deg]\n";
 
 	mRotation = (angle_int - s_last_angle)/100.0;
@@ -190,18 +191,6 @@ int CruizCoreGyro::readSensors()
 
  	cout << "Gyro: " << math_functions::rad2deg(mRotation) << endl;
 
-
-/*
-
-	static float s_last_angle = 0;
-	short new_angle = pIic->Raw[mGyroPort][pIic->Actual[mGyroPort]][0]*256 + pIic->Raw[mGyroPort][pIic->Actual[mGyroPort]][1];
-	mRotation = - (new_angle - s_last_angle)/100.0; //XGL angle must be inverted
-	mRotation = math_functions::deg2rad(mRotation);
-	mRotation = math_functions::unwrap(mRotation);
-	s_last_angle = new_angle;
-	
-	cout << "XG1300L: " << math_functions::rad2deg(mRotation) << endl;
-*/
 	return DATA_READY;
 }
 
