@@ -42,7 +42,7 @@ CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor
 	//initialize read_in variables
 	PACKET_SIZE = 8;
 	SAMPLES = 1000;
-	packet_read_in = data_packet;
+	packet_read_in = &data_packet[0];
 
 	int i = system("./init_gyro_port.sh");
  	if(i != 0) {
@@ -129,13 +129,11 @@ int CruizCoreGyro::readSensors()
 	//float angle_float;
 	short check_sum;
 
-	cout << "does packet_read_in == data_packet?: " << packet_read_in == data_packet << endl;
-
 	int actual_packet_size;
 	actual_packet_size = read(file_descriptor,packet_read_in,PACKET_SIZE * 10);
 	//deal with packet role over
 	if(actual_packet_size != PACKET_SIZE) {
-		int difference = packet_read_in - data_packet;
+		int difference = packet_read_in - &data_packet[0];
 		cout << "difference between old and new packet: " << difference << endl;
 		int current_size = difference + actual_packet_size;	//current size of packet
 
@@ -146,38 +144,38 @@ int CruizCoreGyro::readSensors()
 			packet_read_in += actual_packet_size;
 			cout << "ERROR: packet size too small -- not enough bytes in buffer" << endl;
 			cout << "-------------------------------------------" << endl;
-			cout << "their difference: " << packet_read_in - data_packet << endl;
+			cout << "their difference: " << packet_read_in - &data_packet[0] << endl;
 			cout << "-------------------------------------------" << endl;
 			return 0;
 		}
 		else if(current_size % PACKET_SIZE == 0) {	//if packet size is a multiple of 8
 			cout << "packet size is multiple of 8" << endl;
 			//copy last packet into packet_use
-			copy(data_packet + current_size - PACKET_SIZE, data_packet + current_size + PACKET_SIZE, packet_use);
+			copy(&data_packet[0] + current_size - PACKET_SIZE, &data_packet[0] + current_size + PACKET_SIZE, packet_use);
 			//reset packet_read_in to beg of data_packet
-			packet_read_in = data_packet;
+			packet_read_in = &data_packet[0];
 		}
 		else if(current_size % PACKET_SIZE != 0) {	//this implies left over bytes were read
 			switch(current_size / PACKET_SIZE) {
 				case 1: {	//there is at most 1 packet
 					cout << "at most 1 packet in data_packet" << endl;
-					copy(data_packet, data_packet + PACKET_SIZE, packet_use);				//copy first 8 bytes to packet_use
+					copy(&data_packet[0], &data_packet[0] + PACKET_SIZE, packet_use);				//copy first 8 bytes to packet_use
 					copy(packet_read_in, packet_read_in + actual_packet_size, data_packet);	//copy unused bytes from end of data_packet to beginning
-					packet_read_in = data_packet + actual_packet_size;						//set packet_read_in ptr to end of valid data
+					packet_read_in = &data_packet[0] + actual_packet_size;						//set packet_read_in ptr to end of valid data
 				}
 				break;
 				case 2: {	//there is at most 2 packets
 					cout << "at most 2 packets in data_packet" << endl;
-					copy(data_packet + PACKET_SIZE, data_packet + (2 * PACKET_SIZE), packet_use); 
+					copy(&data_packet[0] + PACKET_SIZE, &data_packet[0] + (2 * PACKET_SIZE), packet_use); 
 					copy(packet_read_in, packet_read_in + actual_packet_size, data_packet);
-					packet_read_in = data_packet + actual_packet_size;
+					packet_read_in = &data_packet[0] + actual_packet_size;
 				}
 				break;
 				case 3: {	//there is at most 3 packets
 					cout << "at most 3 packets in data_packet" << endl;
-					copy(data_packet + (2 * PACKET_SIZE), data_packet + (3 * PACKET_SIZE), packet_use);
+					copy(&data_packet[0] + (2 * PACKET_SIZE), &data_packet[0] + (3 * PACKET_SIZE), packet_use);
 					copy(packet_read_in, packet_read_in + actual_packet_size, data_packet);
-					packet_read_in = data_packet + actual_packet_size;
+					packet_read_in = &data_packet[0] + actual_packet_size;
 				}
 				break;
 			}
