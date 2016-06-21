@@ -191,7 +191,7 @@ int CruizCoreGyro::readSensors()
 	else if(actual_packet_size == PACKET_SIZE) {
 		copy(packet_read_in, packet_read_in + PACKET_SIZE, packet_use);
 		cout << "packet is right size" << endl;
-		cout << packet_read_in[0] << " =? " data_packet[0] << endl;
+		cout << *packet_read_in << " =? " data_packet[0] << endl;
 	}
 
 
