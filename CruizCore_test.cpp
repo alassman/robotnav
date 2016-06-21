@@ -188,6 +188,10 @@ int CruizCoreGyro::readSensors()
 			}
 		}
 	}
+	else if(actual_packet_size != PACKET_SIZE) {
+		copy(packet_read_in, packet_read_in + PACKET_SIZE, packet_use);
+	}
+
 
 
 	// Verify data packet header 
