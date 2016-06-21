@@ -136,7 +136,7 @@ int CruizCoreGyro::readSensors()
 
 
 
-	actual_packet_size = read(file_descriptor,data_packet[mIndex],PACKET_SIZE * 3);
+	actual_packet_size = read(file_descriptor,data_packet + mIndex,PACKET_SIZE * 3);
 	cout << "actual_packet_size: " << actual_packet_size << endl;
 	//deal with packet role over
 	if(actual_packet_size != PACKET_SIZE) {
@@ -157,7 +157,7 @@ int CruizCoreGyro::readSensors()
 			//copy last packet into packet_use
 				//copy(data_packet + current_size - PACKET_SIZE, data_packet + current_size, packet_use);
 			//reset packet_read_in to beg of data_packet
-			index = 0;
+			mIndex = 0;
 		}
 		else if(current_size % PACKET_SIZE != 0) {	//this implies left over bytes were read
 			int num_packets = current_size / PACKET_SIZE;
