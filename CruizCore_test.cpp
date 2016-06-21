@@ -31,7 +31,7 @@
 #include <sys/mman.h>
 #include <sys/ioctl.h>
 #include <string.h>
-#include "CruizCoreGyro.h"
+#include "CruizCore_test.h"
 #include "MathFunctions.h"
 
 using namespace std;
