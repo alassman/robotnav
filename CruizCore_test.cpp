@@ -143,6 +143,11 @@ int CruizCoreGyro::readSensors()
 		if(current_size < PACKET_SIZE) {	//cant form full packet
 			packet_read_in += actual_packet_size;
 			cout << "ERROR: packet size too small -- not enough bytes in buffer" << endl;
+			cout << "-------------------------------------------" << endl;
+			cout << "packet_read_in set to: " << packet_read_in << endl;
+			cout << "data_packet set to: " << data_packet << endl;
+			cout << "their difference: " << packet_read_in - data_packet << endl;
+			cout << "-------------------------------------------" << endl;
 			return 0;
 		}
 		else if(current_size % PACKET_SIZE == 0) {	//if packet size is a multiple of 8
