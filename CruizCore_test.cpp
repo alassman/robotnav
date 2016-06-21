@@ -151,7 +151,7 @@ int CruizCoreGyro::readSensors()
 			packet_read_in += actual_packet_size;
 			cout << "ERROR: packet size too small -- not enough bytes in buffer" << endl;
 			cout << "-------------------------------------------" << endl;
-			cout << "their difference: " << packet_read_in - data_packet << endl;
+			cout << *packet_read_in << " =? " << data_packet[0] << endl;
 			cout << "-------------------------------------------" << endl;
 			return 0;
 		}
