@@ -1,11 +1,16 @@
 OBJS = Robot.o Archer.o Odometry.o Control.o CruizCoreGyro.o RoboteqDevice.o InputKeys.o Keyboard.o IrRemote.o MathFunctions.o
+OBJS_t = Robot.o Archer.o Odometry.o Control.o CruizCore_test.o RoboteqDevice.o InputKeys.o Keyboard.o IrRemote.o MathFunctions.o
 CC = g++
-CFLAGS = -Wall -static
+CFLAGS = -Wall -Werror -static
 TARGET = main
 
 all: $(TARGET)
 $(TARGET): $(OBJS) main.cpp
 	$(CC) $(CFLAGS) $(OBJS) main.cpp -o $@ 
+Gyro_test: $(OBJS_t) main.cpp
+	$(CC) $(CFLAGS) $(OBJS_t) main.cpp -o $@ 
+CruizCore_test.o: CruizCore_test.cpp CruizCore_test.h
+	$(CC) $(CFLAGS) -c CruizCore_test.cpp 	
 Robot.o: Robot.cpp Robot.h
 	$(CC) $(CFLAGS) -c Robot.cpp 
 Archer.o: Archer.cpp Archer.h RoboteqDevice.o Robot.o MathFunctions.o

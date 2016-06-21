@@ -79,12 +79,12 @@ int Archer::readSensors()
 	int status;
 
 	if((status = device.GetValue(_CR, left_motor, rel_count_1)) != RQ_SUCCESS) {
-		cout <<"left_motor encoder reading failed with exit status: " << status << endl;
+		cout <<"ERROR: left_motor encoder reading failed with exit status: " << status << endl;
 		cout << endl;
 		//exit(1);
 	}
 	if((status = device.GetValue(_CR, right_motor, rel_count_2)) != RQ_SUCCESS) {
-		cout <<"right_motorencoder reading failed with exit status: " << status << endl;
+		cout <<"ERROR: right_motorencoder reading failed with exit status: " << status << endl;
 		cout << endl;
 		//exit(1);
 	}
@@ -115,13 +115,13 @@ int Archer::readSensors()
 	
 	//*****************//
 	//CHECK _ANAIN -- IF IT'S A CORRECT KEYWORD
-	int left_motor_amps;
+	int motor_amps;
 	int analog_input_channel = 3;
-	if((status = device.GetValue(_AI, analog_input_channel, left_motor_amps)) != RQ_SUCCESS)
-		cout<<"failed --> "<<status<<endl;
+	if((status = device.GetValue(_AI, analog_input_channel, motor_amps)) != RQ_SUCCESS)
+		cout<<"ERROR: could not retrieve motor amps: "<<status<<endl;
 
 
-	cout << "Motor Amps: " << left_motor_amps << endl;
+	cout << "Motor Amps: " << motor_amps << endl;
 	//****************//
 
 
