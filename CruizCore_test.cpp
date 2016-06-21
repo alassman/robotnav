@@ -134,6 +134,7 @@ int CruizCoreGyro::readSensors()
 	//deal with packet role over
 	if(actual_packet_size != PACKET_SIZE) {
 		int difference = packet_read_in - data_packet;
+		cout << "difference between old and new packet: " << difference << endl;
 		int current_size = difference + actual_packet_size;	//current size of packet
 
 		cout << "read packet size not equal to 8: " << actual_packet_size << endl;
