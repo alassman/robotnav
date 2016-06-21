@@ -36,6 +36,7 @@ class Archer : public Robot
 	protected:
 		RoboteqDevice device;
 		double COUNTS_REVOLUTION;
+		int mCurrent;
 		int MAX_COMMAND_SPEED;
 		int left_motor;
 		int right_motor;

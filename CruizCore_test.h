@@ -31,9 +31,8 @@ private:
 	int PACKET_SIZE;
 	int SAMPLES;
 	int file_descriptor;
-	unsigned char data_packet[24]; //3*DATA_PACKET = 24
-	unsigned char *packet_read_in; //pointer to beginning of data_packet
-	unsigned char packet_use[8];
+	unsigned char data_packet[80]; //3*DATA_PACKET = 24
+	int mIndex; //pointer to beginning of data_packet
 
 public:
 		CruizCoreGyro(float period, float track, float encoderScaleFactor, int COUNTS_REVOLUTION_in, char GYRO_PORT[]);

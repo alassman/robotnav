@@ -42,7 +42,8 @@ CruizCoreGyro::CruizCoreGyro(float period, float track, float encoderScaleFactor
 	//initialize read_in variables
 	PACKET_SIZE = 8;
 	SAMPLES = 1000;
-	packet_read_in = &data_packet[0];
+	mIndex = 0;
+
 
 	int i = system("./init_gyro_port.sh");
  	if(i != 0) {
@@ -129,66 +130,53 @@ int CruizCoreGyro::readSensors()
 	//float angle_float;
 	short check_sum;
 
+	unsigned char packet_use[8];
+
 	int actual_packet_size;
 
-	cout << "difference between old and new packet: " << packet_read_in - data_packet << endl;
 
 
-
-
-	actual_packet_size = read(file_descriptor,packet_read_in,PACKET_SIZE * 10);
+	actual_packet_size = read(file_descriptor,data_packet[mIndex],PACKET_SIZE * 3);
 	cout << "actual_packet_size: " << actual_packet_size << endl;
 	//deal with packet role over
 	if(actual_packet_size != PACKET_SIZE) {
-		int difference = packet_read_in - data_packet;
-		cout << "difference between old and new packet: " << difference << endl;
-		int current_size = difference + actual_packet_size;	//current size of packet
+		int current_size = mIndex + actual_packet_size;	//current size of packet
 
 		cout << "read packet size not equal to 8: " << actual_packet_size << endl;
 		cout << "current packet size: " << current_size << endl;
 
 		if(current_size < PACKET_SIZE) {	//cant form full packet
-			packet_read_in += actual_packet_size;
+			mIndex = current_size;
 			cout << "ERROR: packet size too small -- not enough bytes in buffer" << endl;
 			return 0;
 		}
 		else if(current_size % PACKET_SIZE == 0) {	//if packet size is a multiple of 8
 			cout << "packet size is multiple of 8" << endl;
+			//just take first packet
+			copy(data_packet, data_packet + PACKET_SIZE, packet_use);
 			//copy last packet into packet_use
-			copy(data_packet + current_size - PACKET_SIZE, data_packet + current_size + PACKET_SIZE, packet_use);
+				//copy(data_packet + current_size - PACKET_SIZE, data_packet + current_size, packet_use);
 			//reset packet_read_in to beg of data_packet
-			packet_read_in = data_packet;
+			index = 0;
 		}
 		else if(current_size % PACKET_SIZE != 0) {	//this implies left over bytes were read
-			switch(current_size / PACKET_SIZE) {
-				case 1: {	//there is at most 1 packet
-					cout << "at most 1 packet in data_packet" << endl;
-					copy(data_packet, data_packet + PACKET_SIZE, packet_use);				//copy first 8 bytes to packet_use
-					copy(packet_read_in, packet_read_in + actual_packet_size, data_packet);	//copy unused bytes from end of data_packet to beginning
-					packet_read_in = data_packet + actual_packet_size;						//set packet_read_in ptr to end of valid data
-				}
-				break;
-				case 2: {	//there is at most 2 packets
-					cout << "at most 2 packets in data_packet" << endl;
-					copy(data_packet + PACKET_SIZE, data_packet + (2 * PACKET_SIZE), packet_use); 
-					copy(packet_read_in, packet_read_in + actual_packet_size, data_packet);
-					packet_read_in = data_packet + actual_packet_size;
-				}
-				break;
-				case 3: {	//there is at most 3 packets
-					cout << "at most 3 packets in data_packet" << endl;
-					copy(data_packet + (2 * PACKET_SIZE), data_packet + (3 * PACKET_SIZE), packet_use);
-					copy(packet_read_in, packet_read_in + actual_packet_size, data_packet);
-					packet_read_in = data_packet + actual_packet_size;
-				}
-				break;
-			}
+			int num_packets = current_size / PACKET_SIZE;
+			//take first full packet
+			copy(data_packet, data_packet + PACKET_SIZE, packet_use);
+			//to take last full packet
+			//copy(data_packet + (num_packets-1 * PACKET_SIZE), data_packet + (num_packets * PACKET_SIZE), packet_use);
+
+			//bytes between end of current packet and last full packet
+			int difference = current_size - num_packets * PACKET_SIZE;
+
+			copy(data_packet + (current_size - difference), data_packet + current_size, data_packet);
+			mIndex = difference;
 		}
 	}
 	else if(actual_packet_size == PACKET_SIZE) {
-		copy(packet_read_in, packet_read_in + PACKET_SIZE, packet_use);
+		copy(data_packet, data_packet + PACKET_SIZE, packet_use);
 		cout << "packet is right size" << endl;
-		packet_read_in = data_packet;
+		mIndex = 0;
 	}
 
 

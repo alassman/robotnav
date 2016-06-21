@@ -114,14 +114,13 @@ int Archer::readSensors()
 	cout << "ARCHER ACTUAL SPEED: " << " " << mDisplacementLeft/mEncoderScaleFactor/mPeriod << " " << mDisplacementRight/mEncoderScaleFactor/mPeriod << " " << mDisplacement << " " << math_functions::rad2deg(mRotation) << endl;
 	
 	//*****************//
-	//CHECK _ANAIN -- IF IT'S A CORRECT KEYWORD
-	int motor_amps;
+	//CHECK analog sensors
 	int analog_input_channel = 3;
-	if((status = device.GetValue(_AI, analog_input_channel, motor_amps)) != RQ_SUCCESS)
-		cout<<"ERROR: could not retrieve motor amps: "<<status<<endl;
+	if((status = device.GetValue(_AI, analog_input_channel, mCurrent)) != RQ_SUCCESS)
+		cout<<"ERROR: could not retrieve motor amps: "<< status << endl;
 
 
-	cout << "Motor Amps: " << motor_amps << endl;
+	cout << "Motor Amps: " << mCurrent << endl;
 	//****************//
 
 
