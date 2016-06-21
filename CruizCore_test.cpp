@@ -130,6 +130,10 @@ int CruizCoreGyro::readSensors()
 	short check_sum;
 
 	int actual_packet_size;
+
+	cout << "data_packet: " << data_packet << endl;
+	cout << "packet_read_in: " << packet_read_in << endl;
+
 	actual_packet_size = read(file_descriptor,packet_read_in,PACKET_SIZE * 10);
 	//deal with packet role over
 	if(actual_packet_size != PACKET_SIZE) {
