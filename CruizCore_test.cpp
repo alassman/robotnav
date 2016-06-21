@@ -227,7 +227,7 @@ int CruizCoreGyro::readSensors()
 
 	s_last_angle = angle_int;
 
- 	cout << "Gyro: " << math_functions::rad2deg(mRotation) << endl;
+ 	cout << "Gyro packet: " << math_functions::rad2deg(mRotation) << endl;
 
 	return DATA_READY;
 }
