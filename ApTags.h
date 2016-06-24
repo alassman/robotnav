@@ -21,20 +21,17 @@
 #ifndef APTAGS_H
 #define APTAGS_H
 
-#include <string>
-#include <stdlib.h> 
-#include "Archer.h"
+#include "Robot.h"
+#include "MathFunctions.h"
+#include "Odometry.h"
 
 class ApTags : public Odometry
 {
 private:
-	int PACKET_SIZE;
-	int SAMPLES;
-	int file_descriptor;
+	int idk1;
 public:
-		ApTags(float period, float track, float encoderScaleFactor, int COUNTS_REVOLUTION_in, char GYRO_PORT[]);
-		virtual ~CruizCoreGyro();
-		virtual int readSensors();
+		ApTags(Robot *pSensors);
+		virtual void updateTagpos();
 };
 
 #endif

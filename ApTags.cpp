@@ -1,0 +1,64 @@
+/*
+ * Robot Navigation Program
+ * www.robotnav.com
+ *
+ * (C) Copyright 2010 - 2014 Lauro Ojeda
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#include <iostream>
+#include <cmath>
+#include <cstring>
+#include <vector>
+#include <list>
+#include <sys/time.h>
+//#include "Odometry.h"
+#include "MathFunctions.h"
+using namespace std;
+
+
+ApTags::ApTags(Robot *pSensors)
+{
+	mpSensors = pSensors;
+	mPeriod = mpSensors->getPeriod();
+	reset();
+	cout << "Odometry is ready! T=" << mPeriod << " [s]" << endl;
+}
+
+void ApTags::getDisplacements()
+{
+	//Compute linear and angular displacements
+	mDisplacement = mpSensors->getDisplacement();
+	mRotation = mpSensors->getAngle();
+}
+
+void ApTags::updateTagpos()
+{
+	getDisplacements();
+	//Update positions
+	mX += mDisplacement * cos(mHeading + mRotation/2.0);
+	mY += mDisplacement * sin(mHeading + mRotation/2.0);
+
+	//Update heading
+	mHeading += mRotation;
+	//mHeading = unwrapAngle(mHeading);
+	mHeading = math_functions::unwrap(mHeading);
+
+	//Convert from displacement to displacement/time
+	mSpeed = mDisplacement / mPeriod;
+	mRate = mRotation / mPeriod;
+	cout << "POSITION " << mpSensors->getName() << ": X: " <<mX << " Y: " << mY << " heading: " << math_functions::rad2deg(mHeading) << " speed: " << mSpeed << " rate: " << math_functions::rad2deg(mRate) << endl;
+}
+
