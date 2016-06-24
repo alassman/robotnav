@@ -167,7 +167,7 @@ public:
 
     m_width(640),
     m_height(480),
-    m_tagSize(0.166),
+    m_tagSize(0.045),
     m_fx(600),
     m_fy(600),
     m_px(m_width/2),
