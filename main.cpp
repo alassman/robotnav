@@ -61,7 +61,7 @@ int main()
 	//Only one robot can be created at the time
 	CruizCoreGyro robot(PERIOD, TRACK, ENCODER_SCALE_FACTOR, COUNTS_REVOLUTION, (char *)GYRO_PORT); //Gyro Enhanced
 	
-	// Odometry without  apriltags
+	// Odometry without  apriltags test
 	// Odometry odometry(&robot); 
 	ApTags aptags(&robot);
 
