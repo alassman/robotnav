@@ -1,0 +1,46 @@
+$ ssh barton@35.2.115.47
+$1010barton
+
+To Access Git Repo on Think Pad:
+$ cd ~/Documents/archer/robotnav
+
+$ make all
+$ ./main
+
+This will compile cruizcore instance of archer.
+In this case, the code reads three packets from the buffer everytime, cleaning out extra messages sent from the gyro so that heading data does not fall behind.
+The only issue is if half a package is sent, then the header and checksum fail as half a package is wiped out. (this issue resolves itself after to reads of the buffer and happens very infrequently)
+
+$ make test_Gyro_code
+$ ./test_Gyro_code
+
+this command will also create an instance of cruizcore archer, however, this code attempts to deal with partially transmitted packages by saving segments and piecing them togther for the next read. I did not thoroughly test this code but it did seem to be working last tuesday when I tested it.
+
+$ make test_MC_connection
+$ ./test_MC_connection
+this will compile and run a test connection program with MC
+should return version number and OK status
+
+$ make test_Gyro_connection
+$ ./test_Gyro_connection
+this will compile and run a program that will read the angle and rate of the gyro.
+If this code is run before ./main, you will need to type the following command:
+$ ./init_gyro_port.sh
+this shell script will initialize the gyro port to the proper baud rate among other settings that Lauro and I dont really know what they do but we set them anyways because it works.
+
+
+to add files to staging area and push them to the master branch:
+$ ./push
+
+to pull changes from master branhc:
+$ git pull
+
+to check if origin and master are the same or if there are untracked changes:
+$ git status
+
+**Never Push before checking upstream and either pulling or editing master versions**
+
+Current Sensor:
+in Archer.cpp, search for "analog sensors"
+this will bring you to the location in the code where analog input3 is read using the GetValue() command and where the current is printed.
+The current will be printed as an int, so some conversions will need to be done to convert to amps.
