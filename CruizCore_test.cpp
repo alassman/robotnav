@@ -139,44 +139,39 @@ int CruizCoreGyro::readSensors()
 	actual_packet_size = read(file_descriptor,data_packet + mIndex,PACKET_SIZE * 3);
 	cout << "actual_packet_size: " << actual_packet_size << endl;
 	//deal with packet role over
-	if(actual_packet_size != PACKET_SIZE) {
-		int current_size = mIndex + actual_packet_size;	//current size of packet
+	int current_size = mIndex + actual_packet_size;	//current size of packet
 
-		cout << "read packet size not equal to 8: " << actual_packet_size << endl;
-		cout << "current packet size: " << current_size << endl;
+	cout << "read packet size not equal to 8: " << actual_packet_size << endl;
+	cout << "current packet size: " << current_size << endl;
 
-		if(current_size < PACKET_SIZE) {	//cant form full packet
-			mIndex = current_size;
-			cout << "ERROR: packet size too small -- not enough bytes in buffer" << endl;
-			return 0;
-		}
-		else if(current_size % PACKET_SIZE == 0) {	//if packet size is a multiple of 8
-			cout << "packet size is multiple of 8" << endl;
-			//just take first packet
-			copy(data_packet, data_packet + PACKET_SIZE, packet_use);
-			//copy last packet into packet_use
-				//copy(data_packet + current_size - PACKET_SIZE, data_packet + current_size, packet_use);
-			//reset packet_read_in to beg of data_packet
-			mIndex = 0;
-		}
-		else if(current_size % PACKET_SIZE != 0) {	//this implies left over bytes were read
-			int num_packets = current_size / PACKET_SIZE;
-			//take first full packet
-			copy(data_packet, data_packet + PACKET_SIZE, packet_use);
-			//to take last full packet
-			//copy(data_packet + (num_packets-1 * PACKET_SIZE), data_packet + (num_packets * PACKET_SIZE), packet_use);
-
-			//bytes between end of current packet and last full packet
-			int difference = current_size - num_packets * PACKET_SIZE;
-
-			copy(data_packet + (current_size - difference), data_packet + current_size, data_packet);
-			mIndex = difference;
-		}
+	if(current_size < PACKET_SIZE) {	//cant form full packet
+		mIndex = current_size;
+		cout << "ERROR: packet size too small -- not enough bytes in buffer" << endl;
+		return 0;
 	}
-	else if(actual_packet_size == PACKET_SIZE) {
+	else if(current_size % PACKET_SIZE == 0) {	//if packet size is a multiple of 8
+		cout << "packet size is multiple of 8" << endl;
+		//just take first packet
 		copy(data_packet, data_packet + PACKET_SIZE, packet_use);
-		cout << "packet is right size" << endl;
+		//copy last packet into packet_use
+			//copy(data_packet + current_size - PACKET_SIZE, data_packet + current_size, packet_use);
+		//reset packet_read_in to beg of data_packet
 		mIndex = 0;
+	}
+	else if(current_size % PACKET_SIZE != 0) {	//this implies left over bytes were read
+		//take first full packet
+		copy(data_packet, data_packet + PACKET_SIZE, packet_use);
+
+		int max_num_packets = current_size / PACKET_SIZE;
+		//to take last full packet
+		//copy(data_packet + (num_packets-1 * PACKET_SIZE), data_packet + (num_packets * PACKET_SIZE), packet_use);
+
+		//bytes between end of current packet and last full packet
+		int difference = current_size - max_num_packets * PACKET_SIZE;
+		assert(difference < 8 && "max_num_packets is mal-kept");
+
+		copy(data_packet + (current_size - difference), data_packet + current_size, data_packet);
+		mIndex = difference;
 	}
 
 
