@@ -22,6 +22,7 @@
 #include "Archer.h"
 #include <iostream>
 #include "CruizCoreGyro.h"
+#include "ApTags.h"
 //#include "LegoGyro.h"
 #include "Odometry.h"
 #include "Control.h"
@@ -59,7 +60,11 @@ int main()
     
 	//Only one robot can be created at the time
 	CruizCoreGyro robot(PERIOD, TRACK, ENCODER_SCALE_FACTOR, COUNTS_REVOLUTION, (char *)GYRO_PORT); //Gyro Enhanced
-	Odometry odometry(&robot); 
+	
+	// Odometry without  apriltags
+	// Odometry odometry(&robot); 
+	ApTags aptags(&robot);
+
 	Keyboard user_input;
 	Control control(&odometry);
 	
