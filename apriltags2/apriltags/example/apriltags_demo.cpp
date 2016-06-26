@@ -24,7 +24,7 @@ using namespace std;
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
-#include "../../tcpconnector.h"
+#include "tcpconnector.h"
 
 const string usage = "\n"
   "Usage:\n"
