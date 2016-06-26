@@ -4,7 +4,13 @@ CC = g++
 CFLAGS = -Wall -Werror -static
 TARGET = main
 
-all: $(TARGET)
+all: 
+	make -f Makefile.client
+	make -f Makefile.client_timeout
+	make -f Makefile.server
+	make -f Makefile.server_timeout
+	make -f Makefile.server_pause
+	$(TARGET)
 $(TARGET): $(OBJS) main.cpp
 	$(CC) $(CFLAGS) $(OBJS) main.cpp -o $@ 
 Gyro_test: $(OBJS_t) main.cpp
@@ -38,4 +44,9 @@ test_Gyro_connection: ccr1050.cpp
 test_Gyro_code: test_gyro_code.cpp
 	g++ test_gyro_code.cpp -o $@
 clean:
+	make -f Makefile.client clean
+	make -f Makefile.client_timeout clean
+	make -f Makefile.server clean	
+	make -f Makefile.server_timeout clean
+	make -f Makefile.server_pause clean
 	\rm *.o $(TARGET)
