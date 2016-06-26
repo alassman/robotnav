@@ -406,6 +406,27 @@ public:
       cout << "Extracting tags took " << dt << " seconds." << endl;
     }
 
+    // TCP Setup
+    const char* server = "localhost";
+    int port = 9999;
+
+      // TCP Setup
+    int len;
+    string message;
+    char line[256];
+    TCPConnector* connector = new TCPConnector();
+    TCPStream* stream = connector->connect(server, port);
+
+    if (stream) {
+      message = "Is there life on Mars?";
+      stream->send(message.c_str(), message.size());
+      printf("sent - %s\n", message.c_str());
+      len = stream->receive(line, sizeof(line));
+      line[len] = 0;
+      printf("received - %s\n", line);
+      delete stream;
+    }
+
     // print out each detection
     cout << detections.size() << " tags detected:" << endl;
     for (int i=0; i<detections.size(); i++) {
@@ -495,9 +516,6 @@ public:
 
 // here is were everything begins
 int main(int argc, char* argv[]) {
-  // TCP Setup
-  const char* server = "localhost";
-  int port = 9999;
 
   Demo demo;
 
@@ -506,22 +524,7 @@ int main(int argc, char* argv[]) {
 
   demo.setup();
 
-  // TCP Setup
-  int len;
-  string message;
-  char line[256];
-  TCPConnector* connector = new TCPConnector();
-  TCPStream* stream = connector->connect(server, port);
 
-  if (stream) {
-    message = "Is there life on Mars?";
-    stream->send(message.c_str(), message.size());
-    printf("sent - %s\n", message.c_str());
-    len = stream->receive(line, sizeof(line));
-    line[len] = 0;
-    printf("received - %s\n", line);
-    delete stream;
-  }
 
 
   if (demo.isVideo()) {
