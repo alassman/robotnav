@@ -28,15 +28,15 @@ The CXX compiler identification is GNU, found in "/home/barton/Documents/archer/
 Determining if the C compiler works passed with the following output:
 Change Dir: /home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_9cd2a/fast"
+Run Build Command:"/usr/bin/make" "cmTC_814eb/fast"
 make[2]: Entering directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTC_9cd2a.dir/build.make CMakeFiles/cmTC_9cd2a.dir/build
+/usr/bin/make -f CMakeFiles/cmTC_814eb.dir/build.make CMakeFiles/cmTC_814eb.dir/build
 make[3]: Entering directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_9cd2a.dir/testCCompiler.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_9cd2a.dir/testCCompiler.c.o   -c /home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTC_9cd2a
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9cd2a.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_9cd2a.dir/testCCompiler.c.o  -o cmTC_9cd2a -rdynamic 
+Building C object CMakeFiles/cmTC_814eb.dir/testCCompiler.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_814eb.dir/testCCompiler.c.o   -c /home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_814eb
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_814eb.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_814eb.dir/testCCompiler.c.o  -o cmTC_814eb -rdynamic 
 make[3]: Leaving directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
 make[2]: Leaving directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
 
@@ -44,15 +44,15 @@ make[2]: Leaving directory '/home/barton/Documents/archer/Archer3/robotnav/april
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: /home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_baf95/fast"
+Run Build Command:"/usr/bin/make" "cmTC_81f12/fast"
 make[2]: Entering directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTC_baf95.dir/build.make CMakeFiles/cmTC_baf95.dir/build
+/usr/bin/make -f CMakeFiles/cmTC_81f12.dir/build.make CMakeFiles/cmTC_81f12.dir/build
 make[3]: Entering directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_baf95.dir/CMakeCCompilerABI.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_baf95.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c
-Linking C executable cmTC_baf95
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_baf95.dir/link.txt --verbose=1
-/usr/bin/cc      -v CMakeFiles/cmTC_baf95.dir/CMakeCCompilerABI.c.o  -o cmTC_baf95 -rdynamic  
+Building C object CMakeFiles/cmTC_81f12.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_81f12.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_81f12
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_81f12.dir/link.txt --verbose=1
+/usr/bin/cc      -v CMakeFiles/cmTC_81f12.dir/CMakeCCompilerABI.c.o  -o cmTC_81f12 -rdynamic  
 Using built-in specs.
 COLLECT_GCC=/usr/bin/cc
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper
@@ -62,8 +62,8 @@ Thread model: posix
 gcc version 5.3.1 20160413 (Ubuntu 5.3.1-14ubuntu2.1) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_baf95' '-rdynamic' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/cclyvHCI.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_baf95 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_baf95.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_81f12' '-rdynamic' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccWofNit.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_81f12 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_81f12.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
 make[3]: Leaving directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
 make[2]: Leaving directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
 
@@ -72,15 +72,15 @@ Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_baf95/fast"]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_81f12/fast"]
   ignore line: [make[2]: Entering directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp']
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_baf95.dir/build.make CMakeFiles/cmTC_baf95.dir/build]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_81f12.dir/build.make CMakeFiles/cmTC_81f12.dir/build]
   ignore line: [make[3]: Entering directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp']
-  ignore line: [Building C object CMakeFiles/cmTC_baf95.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/usr/bin/cc     -o CMakeFiles/cmTC_baf95.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTC_baf95]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_baf95.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/cc      -v CMakeFiles/cmTC_baf95.dir/CMakeCCompilerABI.c.o  -o cmTC_baf95 -rdynamic  ]
+  ignore line: [Building C object CMakeFiles/cmTC_81f12.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc     -o CMakeFiles/cmTC_81f12.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_81f12]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_81f12.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc      -v CMakeFiles/cmTC_81f12.dir/CMakeCCompilerABI.c.o  -o cmTC_81f12 -rdynamic  ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/cc]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper]
@@ -90,13 +90,13 @@ Parsed C implicit link information from above output:
   ignore line: [gcc version 5.3.1 20160413 (Ubuntu 5.3.1-14ubuntu2.1) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_baf95' '-rdynamic' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/cclyvHCI.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_baf95 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_baf95.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_81f12' '-rdynamic' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccWofNit.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_81f12 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_81f12.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/cclyvHCI.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccWofNit.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -114,7 +114,7 @@ Parsed C implicit link information from above output:
     arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_baf95] ==> ignore
+    arg [cmTC_81f12] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o] ==> ignore
@@ -126,7 +126,7 @@ Parsed C implicit link information from above output:
     arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/5/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../..]
-    arg [CMakeFiles/cmTC_baf95.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTC_81f12.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--as-needed] ==> ignore
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -160,15 +160,15 @@ Parsed C implicit link information from above output:
 Detecting C [-std=c11] compiler features compiled with the following output:
 Change Dir: /home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_a785e/fast"
+Run Build Command:"/usr/bin/make" "cmTC_4976c/fast"
 make[2]: Entering directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTC_a785e.dir/build.make CMakeFiles/cmTC_a785e.dir/build
+/usr/bin/make -f CMakeFiles/cmTC_4976c.dir/build.make CMakeFiles/cmTC_4976c.dir/build
 make[3]: Entering directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_a785e.dir/feature_tests.c.o
-/usr/bin/cc    -std=c11 -o CMakeFiles/cmTC_a785e.dir/feature_tests.c.o   -c /home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_a785e
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a785e.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_a785e.dir/feature_tests.c.o  -o cmTC_a785e -rdynamic 
+Building C object CMakeFiles/cmTC_4976c.dir/feature_tests.c.o
+/usr/bin/cc    -std=c11 -o CMakeFiles/cmTC_4976c.dir/feature_tests.c.o   -c /home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_4976c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4976c.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_4976c.dir/feature_tests.c.o  -o cmTC_4976c -rdynamic 
 make[3]: Leaving directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
 make[2]: Leaving directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
 
@@ -182,15 +182,15 @@ make[2]: Leaving directory '/home/barton/Documents/archer/Archer3/robotnav/april
 Detecting C [-std=c99] compiler features compiled with the following output:
 Change Dir: /home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_74e7c/fast"
+Run Build Command:"/usr/bin/make" "cmTC_4d50c/fast"
 make[2]: Entering directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTC_74e7c.dir/build.make CMakeFiles/cmTC_74e7c.dir/build
+/usr/bin/make -f CMakeFiles/cmTC_4d50c.dir/build.make CMakeFiles/cmTC_4d50c.dir/build
 make[3]: Entering directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_74e7c.dir/feature_tests.c.o
-/usr/bin/cc    -std=c99 -o CMakeFiles/cmTC_74e7c.dir/feature_tests.c.o   -c /home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_74e7c
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_74e7c.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_74e7c.dir/feature_tests.c.o  -o cmTC_74e7c -rdynamic 
+Building C object CMakeFiles/cmTC_4d50c.dir/feature_tests.c.o
+/usr/bin/cc    -std=c99 -o CMakeFiles/cmTC_4d50c.dir/feature_tests.c.o   -c /home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_4d50c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4d50c.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_4d50c.dir/feature_tests.c.o  -o cmTC_4d50c -rdynamic 
 make[3]: Leaving directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
 make[2]: Leaving directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
 
@@ -204,15 +204,15 @@ make[2]: Leaving directory '/home/barton/Documents/archer/Archer3/robotnav/april
 Detecting C [-std=c90] compiler features compiled with the following output:
 Change Dir: /home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_832c7/fast"
+Run Build Command:"/usr/bin/make" "cmTC_9de28/fast"
 make[2]: Entering directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTC_832c7.dir/build.make CMakeFiles/cmTC_832c7.dir/build
+/usr/bin/make -f CMakeFiles/cmTC_9de28.dir/build.make CMakeFiles/cmTC_9de28.dir/build
 make[3]: Entering directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_832c7.dir/feature_tests.c.o
-/usr/bin/cc    -std=c90 -o CMakeFiles/cmTC_832c7.dir/feature_tests.c.o   -c /home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_832c7
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_832c7.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_832c7.dir/feature_tests.c.o  -o cmTC_832c7 -rdynamic 
+Building C object CMakeFiles/cmTC_9de28.dir/feature_tests.c.o
+/usr/bin/cc    -std=c90 -o CMakeFiles/cmTC_9de28.dir/feature_tests.c.o   -c /home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_9de28
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9de28.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_9de28.dir/feature_tests.c.o  -o cmTC_9de28 -rdynamic 
 make[3]: Leaving directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
 make[2]: Leaving directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
 
@@ -224,15 +224,15 @@ make[2]: Leaving directory '/home/barton/Documents/archer/Archer3/robotnav/april
 Determining if the CXX compiler works passed with the following output:
 Change Dir: /home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_ad0e1/fast"
+Run Build Command:"/usr/bin/make" "cmTC_351c7/fast"
 make[2]: Entering directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTC_ad0e1.dir/build.make CMakeFiles/cmTC_ad0e1.dir/build
+/usr/bin/make -f CMakeFiles/cmTC_351c7.dir/build.make CMakeFiles/cmTC_351c7.dir/build
 make[3]: Entering directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_ad0e1.dir/testCXXCompiler.cxx.o
-/usr/bin/c++      -o CMakeFiles/cmTC_ad0e1.dir/testCXXCompiler.cxx.o -c /home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTC_ad0e1
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ad0e1.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_ad0e1.dir/testCXXCompiler.cxx.o  -o cmTC_ad0e1 -rdynamic 
+Building CXX object CMakeFiles/cmTC_351c7.dir/testCXXCompiler.cxx.o
+/usr/bin/c++      -o CMakeFiles/cmTC_351c7.dir/testCXXCompiler.cxx.o -c /home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_351c7
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_351c7.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_351c7.dir/testCXXCompiler.cxx.o  -o cmTC_351c7 -rdynamic 
 make[3]: Leaving directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
 make[2]: Leaving directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
 
@@ -240,15 +240,15 @@ make[2]: Leaving directory '/home/barton/Documents/archer/Archer3/robotnav/april
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: /home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_6ce14/fast"
+Run Build Command:"/usr/bin/make" "cmTC_7eff0/fast"
 make[2]: Entering directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTC_6ce14.dir/build.make CMakeFiles/cmTC_6ce14.dir/build
+/usr/bin/make -f CMakeFiles/cmTC_7eff0.dir/build.make CMakeFiles/cmTC_7eff0.dir/build
 make[3]: Entering directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_6ce14.dir/CMakeCXXCompilerABI.cpp.o
-/usr/bin/c++      -o CMakeFiles/cmTC_6ce14.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.5/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_6ce14
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6ce14.dir/link.txt --verbose=1
-/usr/bin/c++       -v CMakeFiles/cmTC_6ce14.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_6ce14 -rdynamic  
+Building CXX object CMakeFiles/cmTC_7eff0.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++      -o CMakeFiles/cmTC_7eff0.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.5/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_7eff0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7eff0.dir/link.txt --verbose=1
+/usr/bin/c++       -v CMakeFiles/cmTC_7eff0.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_7eff0 -rdynamic  
 Using built-in specs.
 COLLECT_GCC=/usr/bin/c++
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper
@@ -258,8 +258,8 @@ Thread model: posix
 gcc version 5.3.1 20160413 (Ubuntu 5.3.1-14ubuntu2.1) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_6ce14' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccAGfjSb.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_6ce14 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_6ce14.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_7eff0' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccQSkgJP.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_7eff0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_7eff0.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
 make[3]: Leaving directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
 make[2]: Leaving directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
 
@@ -268,15 +268,15 @@ Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_6ce14/fast"]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_7eff0/fast"]
   ignore line: [make[2]: Entering directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp']
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_6ce14.dir/build.make CMakeFiles/cmTC_6ce14.dir/build]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_7eff0.dir/build.make CMakeFiles/cmTC_7eff0.dir/build]
   ignore line: [make[3]: Entering directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp']
-  ignore line: [Building CXX object CMakeFiles/cmTC_6ce14.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/usr/bin/c++      -o CMakeFiles/cmTC_6ce14.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.5/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTC_6ce14]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6ce14.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/c++       -v CMakeFiles/cmTC_6ce14.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_6ce14 -rdynamic  ]
+  ignore line: [Building CXX object CMakeFiles/cmTC_7eff0.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/c++      -o CMakeFiles/cmTC_7eff0.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.5/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTC_7eff0]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7eff0.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/c++       -v CMakeFiles/cmTC_7eff0.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_7eff0 -rdynamic  ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/c++]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper]
@@ -286,13 +286,13 @@ Parsed CXX implicit link information from above output:
   ignore line: [gcc version 5.3.1 20160413 (Ubuntu 5.3.1-14ubuntu2.1) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_6ce14' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccAGfjSb.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_6ce14 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_6ce14.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_7eff0' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccQSkgJP.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_7eff0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_7eff0.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccAGfjSb.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccQSkgJP.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -310,7 +310,7 @@ Parsed CXX implicit link information from above output:
     arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_6ce14] ==> ignore
+    arg [cmTC_7eff0] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o] ==> ignore
@@ -322,7 +322,7 @@ Parsed CXX implicit link information from above output:
     arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/5/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../..]
-    arg [CMakeFiles/cmTC_6ce14.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [CMakeFiles/cmTC_7eff0.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -354,15 +354,15 @@ Parsed CXX implicit link information from above output:
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
 Change Dir: /home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_c1885/fast"
+Run Build Command:"/usr/bin/make" "cmTC_c093c/fast"
 make[2]: Entering directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTC_c1885.dir/build.make CMakeFiles/cmTC_c1885.dir/build
+/usr/bin/make -f CMakeFiles/cmTC_c093c.dir/build.make CMakeFiles/cmTC_c093c.dir/build
 make[3]: Entering directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_c1885.dir/feature_tests.cxx.o
-/usr/bin/c++     -std=c++14 -o CMakeFiles/cmTC_c1885.dir/feature_tests.cxx.o -c /home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_c1885
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c1885.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_c1885.dir/feature_tests.cxx.o  -o cmTC_c1885 -rdynamic 
+Building CXX object CMakeFiles/cmTC_c093c.dir/feature_tests.cxx.o
+/usr/bin/c++     -std=c++14 -o CMakeFiles/cmTC_c093c.dir/feature_tests.cxx.o -c /home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_c093c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c093c.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_c093c.dir/feature_tests.cxx.o  -o cmTC_c093c -rdynamic 
 make[3]: Leaving directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
 make[2]: Leaving directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
 
@@ -429,15 +429,15 @@ make[2]: Leaving directory '/home/barton/Documents/archer/Archer3/robotnav/april
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
 Change Dir: /home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_e5b34/fast"
+Run Build Command:"/usr/bin/make" "cmTC_e9770/fast"
 make[2]: Entering directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTC_e5b34.dir/build.make CMakeFiles/cmTC_e5b34.dir/build
+/usr/bin/make -f CMakeFiles/cmTC_e9770.dir/build.make CMakeFiles/cmTC_e9770.dir/build
 make[3]: Entering directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_e5b34.dir/feature_tests.cxx.o
-/usr/bin/c++     -std=c++11 -o CMakeFiles/cmTC_e5b34.dir/feature_tests.cxx.o -c /home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_e5b34
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e5b34.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_e5b34.dir/feature_tests.cxx.o  -o cmTC_e5b34 -rdynamic 
+Building CXX object CMakeFiles/cmTC_e9770.dir/feature_tests.cxx.o
+/usr/bin/c++     -std=c++11 -o CMakeFiles/cmTC_e9770.dir/feature_tests.cxx.o -c /home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_e9770
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e9770.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_e9770.dir/feature_tests.cxx.o  -o cmTC_e9770 -rdynamic 
 make[3]: Leaving directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
 make[2]: Leaving directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
 
@@ -504,15 +504,15 @@ make[2]: Leaving directory '/home/barton/Documents/archer/Archer3/robotnav/april
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
 Change Dir: /home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_4af05/fast"
+Run Build Command:"/usr/bin/make" "cmTC_22333/fast"
 make[2]: Entering directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTC_4af05.dir/build.make CMakeFiles/cmTC_4af05.dir/build
+/usr/bin/make -f CMakeFiles/cmTC_22333.dir/build.make CMakeFiles/cmTC_22333.dir/build
 make[3]: Entering directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_4af05.dir/feature_tests.cxx.o
-/usr/bin/c++     -std=c++98 -o CMakeFiles/cmTC_4af05.dir/feature_tests.cxx.o -c /home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_4af05
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4af05.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_4af05.dir/feature_tests.cxx.o  -o cmTC_4af05 -rdynamic 
+Building CXX object CMakeFiles/cmTC_22333.dir/feature_tests.cxx.o
+/usr/bin/c++     -std=c++98 -o CMakeFiles/cmTC_22333.dir/feature_tests.cxx.o -c /home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_22333
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_22333.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_22333.dir/feature_tests.cxx.o  -o cmTC_22333 -rdynamic 
 make[3]: Leaving directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
 make[2]: Leaving directory '/home/barton/Documents/archer/Archer3/robotnav/apriltags2/apriltags/pod-build/CMakeFiles/CMakeTmp'
 
