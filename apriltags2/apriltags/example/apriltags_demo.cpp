@@ -20,6 +20,10 @@ using namespace std;
 #include <vector>
 #include <list>
 #include <sys/time.h>
+//TCP
+#include <stdio.h>
+#include <stdlib.h>
+#include <string>
 #include "../../tcpconnector.h"
 
 const string usage = "\n"
@@ -491,12 +495,34 @@ public:
 
 // here is were everything begins
 int main(int argc, char* argv[]) {
+  // TCP Setup
+  const char* server = "localhost";
+  int port = 9999;
+
   Demo demo;
 
   // process command line options
   demo.parseOptions(argc, argv);
 
   demo.setup();
+
+  // TCP Setup
+  int len;
+  string message;
+  char line[256];
+  TCPConnector* connector = new TCPConnector();
+  TCPStream* stream = connector->connect(server, port);
+
+  if (stream) {
+    message = "Is there life on Mars?";
+    stream->send(message.c_str(), message.size());
+    printf("sent - %s\n", message.c_str());
+    len = stream->receive(line, sizeof(line));
+    line[len] = 0;
+    printf("received - %s\n", line);
+    delete stream;
+  }
+
 
   if (demo.isVideo()) {
     cout << "Processing video" << endl;
