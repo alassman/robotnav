@@ -20,6 +20,7 @@ using namespace std;
 #include <vector>
 #include <list>
 #include <sys/time.h>
+#include "tcpconnector.h"
 
 const string usage = "\n"
   "Usage:\n"
