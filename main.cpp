@@ -95,7 +95,6 @@ int main()
 	while(!quit_program)
 	{
 		//TCP instructions
-		stream = NULL;
 		stream = acceptor->accept();
 		if (stream != NULL) {
 			size_t len;
