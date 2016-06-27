@@ -81,10 +81,10 @@ int main()
 
 	acceptor = new TCPAcceptor(port, server);
 	if (acceptor->start() == 0) {
-		printf("Connection made")
+		printf("Server Started");
 	}
 	else {
-		perror("Connection failed")
+		perror("Could not start the server");
 	}
 
 	//Create and initialize speed variables
@@ -101,12 +101,12 @@ int main()
 		if (stream != NULL) {
 			size_t len;
 			char line[256];
-			while ((len = stream->receive(line,sizeof(line))) > 0) {
+			while ((len = stream->receive(line, sizeof(line))) > 0) {
 				line[len] = NULL;
 				printf("received - %s\n", line);
 				stream->send(line, len);
 			}
-			delete stream
+			delete stream;
 		}
 		
 
