@@ -115,7 +115,7 @@ int Archer::readSensors()
 	
 	//*****************//
 	//CHECK analog sensors
-	int analog_input_channel = 3;
+	int analog_input_channel = 2;
 	if((status = device.GetValue(_AI, analog_input_channel, mCurrent)) != RQ_SUCCESS)
 		cout<<"ERROR: could not retrieve motor amps: "<< status << endl;
 
