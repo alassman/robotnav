@@ -76,6 +76,7 @@ int main()
 	
 
 	//TCP Server Setup
+	printf("Starting initilization");
 	TCPStream* stream = NULL;
 	TCPAcceptor* acceptor = NULL;
 	printf("initializing acceptor");
