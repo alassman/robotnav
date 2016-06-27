@@ -30,17 +30,17 @@ Archer::Archer(float period, float track, float encoderScaleFactor, int COUNTS_R
 }
 
 void Archer::make_connection() {
-	int status = device.Connect("/dev/ttyACM1");
+	int status = device.Connect("/dev/ttyACM0");
 	if(status != RQ_SUCCESS)
 	{
 		cout<<"Error connecting to device..."<<endl;
 		cout << "testing connection 2 times" << endl;
 		for (int i = 0; i < 2; ++i)
 		{
-			status = device.Connect("/dev/ttyACM1");
+			status = device.Connect("/dev/ttyACM0");
 			usleep(1000);
 		}
-		status = device.Connect("/dev/ttyACM1");
+		status = device.Connect("/dev/ttyACM0");
 		if(status != RQ_SUCCESS) {
 			cout << "Check power connection for MC" << endl;
 			exit(1);
