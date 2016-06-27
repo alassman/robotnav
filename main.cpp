@@ -76,12 +76,9 @@ int main()
 	
 
 	//TCP Server Setup
-	printf("Starting initilization");
 	TCPStream* stream = NULL;
 	TCPAcceptor* acceptor = NULL;
-	printf("initializing acceptor");
 	acceptor = new TCPAcceptor(port, server);
-	printf("acceptor initialize");
 	if (acceptor->start() == 0) {
 		printf("Server Started");
 	}
@@ -98,7 +95,7 @@ int main()
 	while(!quit_program)
 	{
 		//TCP instructions
-		
+		stream = NULL
 		stream = acceptor->accept();
 		if (stream != NULL) {
 			size_t len;
