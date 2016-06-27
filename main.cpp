@@ -103,7 +103,7 @@ int main()
 		if (stream != NULL) {
 			size_t len;
 			char line[256];
-			while ((len = stream->receive(line, sizeof(line))) > 0) {
+			if ((len = stream->receive(line, sizeof(line))) > 0) {
 				line[len] = 0;
 				printf("received - %s\n", line);
 				stream->send(line, len);
