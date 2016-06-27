@@ -30,6 +30,11 @@
 //#include "Buttons.h"
 #include "MathFunctions.h"
 
+// TCP Changes
+#include <stdio.h>
+#include <stdlib.h>
+#include "tcpacceptor.h"
+
 using namespace std;
 
 //Left and right motor ports, as shown in EV3 brick labels
@@ -52,6 +57,11 @@ const float INC_SPEED_MM_SECOND = 100.0; //[mm/sec]
 const float INC_RATE_RAD_SECOND = math_functions::deg2rad(10.0); //[rad/sec]
 const float PERIOD = 0.1; //[sec]
 
+// TCP Setup
+const char* server = "localhost";
+const int port = 9999;
+
+
 int main()
 {
     //Only one robot can be created at the time
@@ -64,6 +74,19 @@ int main()
 	Keyboard user_input;
 	Control control(&odometry);
 	
+
+	//TCP Server Setup
+	TCPStream* stream = NULL;
+	TCPAcceptor* acceptor = NULL;
+
+	acceptor = new TCPAcceptor(port, server);
+	if (acceptor->start() == 0) {
+		printf("Connection made")
+	}
+	else {
+		perror("Connection failed")
+	}
+
 	//Create and initialize speed variables
 	float speed = 0;
 	float rate = 0;
@@ -72,6 +95,22 @@ int main()
 	//Enter main loop
 	while(!quit_program)
 	{
+		//TCP instructions
+		
+		stream = acceptor->accept();
+		if (stream != NULL) {
+			size_t len;
+			char line[256];
+			while ((len = stream->receive(line,sizeof(line))) > 0) {
+				line[len] = NULL;
+				printf("received - %s\n", line);
+				stream->send(line, len);
+			}
+			delete stream
+		}
+		
+
+
 		//Read sensors
 		robot.readSensors();
 
