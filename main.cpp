@@ -137,7 +137,7 @@ int main()
 		TCPConnector* connector = new TCPConnector();
 		TCPStream* stream = connector->connect(server, port, 1);
     	if (stream) {
-      		message = "%i\n",mCurrent;
+      		message = "%i\n",device.mCurrent;
       		stream->send(message.c_str(), message.size());
       		printf("sent - %s\n", message.c_str());
       		//len = stream->receive(line, sizeof(line));
