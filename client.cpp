@@ -52,15 +52,18 @@ int main(int argc, char** argv)
 
     stream = connector->connect(argv[2], atoi(argv[1]));
     if (stream) {
+        size_t buffsize = 50;
         message = "Why is there air?";
-        string str1;
-        str1 = sprintf(message, "%d", 42)
+        char str1 [buffsize];
+        sprintf(str1, "%d", 42)
         //stringstream ss;
         //ss << 42;
         //string str1 = ss.str();
-        message += str1;
-        stream->send(message.c_str(), message.size());
-        printf("sent - %s\n", message.c_str());
+        //message += str1;
+        //stream->send(message.c_str(), message.size());
+        //printf("sent - %s\n", message.c_str());
+        stream->send(str1, buffsize);
+        printf("sent - %s\n", str1);
         len = stream->receive(line, sizeof(line));
         line[len] = 0;
         printf("received - %s\n", line);
