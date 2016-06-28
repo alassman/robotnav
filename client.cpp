@@ -56,7 +56,7 @@ int main(int argc, char** argv)
         stringstream ss;
         ss << 42;
         string str1 = ss.str();
-        message += str1
+        message += str1;
         stream->send(message.c_str(), message.size());
         printf("sent - %s\n", message.c_str());
         len = stream->receive(line, sizeof(line));
