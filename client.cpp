@@ -23,6 +23,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
+#include <sstream>
 #include "tcpconnector.h"
 
 using namespace std;
@@ -52,10 +53,10 @@ int main(int argc, char** argv)
     stream = connector->connect(argv[2], atoi(argv[1]));
     if (stream) {
         message = "Why is there air?";
-        //message += std::to_string(42)
-        ostringstream  oss;
-        oss << 42;
-        message += oss.str();
+        stringstream ss;
+        ss << 42;
+        string str1 = ss.str();
+        message += str1
         stream->send(message.c_str(), message.size());
         printf("sent - %s\n", message.c_str());
         len = stream->receive(line, sizeof(line));
