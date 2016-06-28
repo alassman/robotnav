@@ -1,5 +1,5 @@
-OBJS = Robot.o Archer.o Odometry.o Control.o CruizCoreGyro.o RoboteqDevice.o InputKeys.o Keyboard.o IrRemote.o MathFunctions.o tcpacceptor.o tcpstream.o
-OBJS_t = Robot.o Archer.o Odometry.o Control.o CruizCore_test.o RoboteqDevice.o InputKeys.o Keyboard.o IrRemote.o MathFunctions.o tcpacceptor.o tcpstream.o
+OBJS = Robot.o Archer.o Odometry.o Control.o CruizCoreGyro.o RoboteqDevice.o InputKeys.o Keyboard.o IrRemote.o MathFunctions.o tcpconnector.o tcpstream.o
+OBJS_t = Robot.o Archer.o Odometry.o Control.o CruizCore_test.o RoboteqDevice.o InputKeys.o Keyboard.o IrRemote.o MathFunctions.o tcpconnector.o tcpstream.o
 CC = g++
 CFLAGS = -Wall -Werror -static
 TARGET = main
