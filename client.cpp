@@ -55,7 +55,7 @@ int main(int argc, char** argv)
         size_t buffsize = 50;
         message = "Why is there air?";
         char str1 [buffsize];
-        sprintf(str1, "%d", 42)
+        sprintf(str1, "%d", 42);
         //stringstream ss;
         //ss << 42;
         //string str1 = ss.str();
