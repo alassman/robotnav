@@ -77,7 +77,7 @@ int main()
 	int port = 9999;
     // TCP Setup
     //int len;
-    //string message;
+    string message;
     //char line[256];
     TCPConnector* connector = new TCPConnector();
     //TCPStream* stream = connector->connect(server, port);
