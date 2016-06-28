@@ -76,11 +76,11 @@ int main()
 	const char* server = "35.2.51.190";
 	int port = 9999;
     // TCP Setup
-    int len;
-    string message;
-    char line[256];
+    //int len;
+    //string message;
+    //char line[256];
     TCPConnector* connector = new TCPConnector();
-    TCPStream* stream = connector->connect(server, port);
+    //TCPStream* stream = connector->connect(server, port);
 
 	//Create and initialize speed variables
 	float speed = 0;
