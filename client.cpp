@@ -54,7 +54,7 @@ int main(int argc, char** argv)
     if (stream) {
         message = "Why is there air?";
         string str1;
-        str1 = sprintf(message, "%i", 42)
+        str1 = sprintf(message, "%d", 42)
         //stringstream ss;
         //ss << 42;
         //string str1 = ss.str();
