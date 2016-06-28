@@ -58,10 +58,6 @@ const float INC_SPEED_MM_SECOND = 100.0; //[mm/sec]
 const float INC_RATE_RAD_SECOND = math_functions::deg2rad(10.0); //[rad/sec]
 const float PERIOD = 0.1; //[sec]
 
-// TCP Setup
-const char* server = "35.2.51.190";
-const int port = 9999;
-
 
 int main()
 {
@@ -76,7 +72,9 @@ int main()
 	Keyboard user_input;
 	Control control(&odometry);
 	
-
+	// TCP Setup
+	const char* server = "35.2.51.190";
+	int port = 9999;
     // TCP Setup
     int len;
     string message;
