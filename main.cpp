@@ -135,14 +135,14 @@ int main()
 
 		// TCP Instructions
 
-
+		TCPStream* stream = connector->connect(server, port);
     	if (stream) {
       		message = "Is there life on Mars?";
       		stream->send(message.c_str(), message.size());
       		printf("sent - %s\n", message.c_str());
-      		len = stream->receive(line, sizeof(line));
-      		line[len] = 0;
-      		printf("received - %s\n", line);
+      		//len = stream->receive(line, sizeof(line));
+      		//line[len] = 0;
+      		//printf("received - %s\n", line);
       		delete stream;
     	}
 	}
