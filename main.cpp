@@ -79,7 +79,7 @@ int main()
     //int len;
     string message;
     //char line[256];
-    TCPConnector* connector = new TCPConnector();
+    //TCPConnector* connector = new TCPConnector();
     //TCPStream* stream = connector->connect(server, port);
 
 	//Create and initialize speed variables
@@ -134,7 +134,7 @@ int main()
 
 
 		// TCP Instructions
-
+		TCPConnector* connector = new TCPConnector();
 		TCPStream* stream = connector->connect(server, port);
     	if (stream) {
       		message = "Is there life on Mars?";
