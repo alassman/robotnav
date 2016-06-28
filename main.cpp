@@ -78,11 +78,9 @@ int main()
 	int port = 9999;
     // TCP Setup
     //int len;
-    string message;
-    stringstream mCurStr;
-    stringstream mCurStr;
-    stringstream mCurStr;
-    //char line[256];
+    //string message;
+    size_t buffsize = 50;
+    char str1 [buffsize];    //char line[256];
     //TCPConnector* connector = new TCPConnector();
     //TCPStream* stream = connector->connect(server, port);
 
@@ -142,10 +140,11 @@ int main()
 		TCPStream* stream = connector->connect(server, port, 1);
     	if (stream) {
       		//message("%i", robot.mCurrent);
-      		
-        	mCurStr << robot.mCurrent;
-        	message = "Current: "+mCurStr.str();
-      		stream->send(message.c_str(), message.size());
+
+        	sprintf(str1, "Current: %d ", robot.mCurrent, " X: %f", robot.mX, " Y: %f", robot.mY);
+        	//mCurStr << robot.mCurrent;
+        	//message = "Current: "+mCurStr.str();
+      		stream->send(str1, buffsize);
       		printf("sent - %s\n", message.c_str());
       		//len = stream->receive(line, sizeof(line));
       		//line[len] = 0;
