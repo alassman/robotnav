@@ -141,11 +141,11 @@ int main()
     	if (stream) {
       		//message("%i", robot.mCurrent);
 
-        	sprintf(str1, "Current: %d ", robot.mCurrent, " X: %f", robot.mX, " Y: %f", robot.mY);
+        	sprintf(str1, "Current: %d ", robot.mCurrent, " X: %f", odometry.mX, " Y: %f", odometry.mY);
         	//mCurStr << robot.mCurrent;
         	//message = "Current: "+mCurStr.str();
       		stream->send(str1, buffsize);
-      		printf("sent - %s\n", message.c_str());
+      		printf("sent - %s\n", str1);
       		//len = stream->receive(line, sizeof(line));
       		//line[len] = 0;
       		//printf("received - %s\n", line);
