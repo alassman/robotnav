@@ -135,7 +135,7 @@ int main()
 
 		// TCP Instructions
 		TCPConnector* connector = new TCPConnector();
-		TCPStream* stream = connector->connect(server, port);
+		TCPStream* stream = connector->connect(server, port, 1);
     	if (stream) {
       		message = "Is there life on Mars?";
       		stream->send(message.c_str(), message.size());
