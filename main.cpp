@@ -34,6 +34,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
+#include <sstream>
 #include "tcpconnector.h"
 
 using namespace std;
@@ -78,6 +79,9 @@ int main()
     // TCP Setup
     //int len;
     string message;
+    stringstream mCurStr;
+    stringstream mCurStr;
+    stringstream mCurStr;
     //char line[256];
     //TCPConnector* connector = new TCPConnector();
     //TCPStream* stream = connector->connect(server, port);
@@ -137,7 +141,10 @@ int main()
 		TCPConnector* connector = new TCPConnector();
 		TCPStream* stream = connector->connect(server, port, 1);
     	if (stream) {
-      		message("%i", robot.mCurrent);
+      		//message("%i", robot.mCurrent);
+      		
+        	mCurStr << robot.mCurrent;
+        	message = "Current: "+mCurStr.str();
       		stream->send(message.c_str(), message.size());
       		printf("sent - %s\n", message.c_str());
       		//len = stream->receive(line, sizeof(line));
