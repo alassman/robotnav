@@ -139,11 +139,7 @@ int main()
 		TCPConnector* connector = new TCPConnector();
 		TCPStream* stream = connector->connect(server, port, 1);
     	if (stream) {
-      		//message("%i", robot.mCurrent);
-
         	sprintf(str1, "Current: %d X: %f Y: %f", robot.mCurrent, odometry.mX, odometry.mY);
-        	//mCurStr << robot.mCurrent;
-        	//message = "Current: "+mCurStr.str();
       		stream->send(str1, buffsize);
       		printf("sent - %s\n", str1);
       		//len = stream->receive(line, sizeof(line));

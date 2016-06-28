@@ -381,6 +381,24 @@ public:
          << ", roll=" << roll
          << endl;
 
+    // TCP Setup
+    const char* server = "35.2.51.190";
+    int port = 9999;
+    size_t buffsize = 50;
+    char str2 [buffsize]; 
+
+    // TCP Instructions
+    TCPConnector* connector = new TCPConnector();
+    TCPStream* stream = connector->connect(server, port, 1);
+    if (stream) {
+        sprintf(str2, "x= %f y= %f z= %f", translation(0), translation(1), translation(2));
+        stream->send(str2, buffsize);
+        printf("sent - %s\n", str2);
+        //len = stream->receive(line, sizeof(line));
+        //line[len] = 0;
+        //printf("received - %s\n", line);
+        delete stream;
+    }
     // Also note that for SLAM/multi-view application it is better to
     // use reprojection error of corner points, because the noise in
     // this relative pose is very non-Gaussian; see iSAM source code
@@ -406,26 +424,6 @@ public:
       cout << "Extracting tags took " << dt << " seconds." << endl;
     }
 
-    // TCP Setup
-    const char* server = "localhost";
-    int port = 9999;
-
-      // TCP Setup
-    int len;
-    string message;
-    char line[256];
-    TCPConnector* connector = new TCPConnector();
-    TCPStream* stream = connector->connect(server, port);
-
-    if (stream) {
-      message = "Is there life on Mars?";
-      stream->send(message.c_str(), message.size());
-      printf("sent - %s\n", message.c_str());
-      len = stream->receive(line, sizeof(line));
-      line[len] = 0;
-      printf("received - %s\n", line);
-      delete stream;
-    }
 
     // print out each detection
     cout << detections.size() << " tags detected:" << endl;
