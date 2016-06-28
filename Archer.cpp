@@ -45,7 +45,8 @@ void Archer::make_connection() {
 			cout << "Check power connection for MC" << endl;
 			exit(1);
 		}
-	}	
+	}
+	device.SetConfig(_AMOD, 3, 1);	
 }
 
 Archer::~Archer() {
@@ -115,7 +116,7 @@ int Archer::readSensors()
 	
 	//*****************//
 	//CHECK analog sensors
-	int analog_input_channel = 2;
+	int analog_input_channel = 3;
 	if((status = device.GetValue(_AI, analog_input_channel, mCurrent)) != RQ_SUCCESS)
 		cout<<"ERROR: could not retrieve motor amps: "<< status << endl;
 
