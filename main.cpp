@@ -141,7 +141,7 @@ int main()
     	if (stream) {
       		//message("%i", robot.mCurrent);
 
-        	sprintf(str1, "Current: %d ", robot.mCurrent, " X: %f", odometry.mX, " Y: %f", odometry.mY);
+        	sprintf(str1, "Current: %d X: %f Y: %f", robot.mCurrent, odometry.mX, odometry.mY);
         	//mCurStr << robot.mCurrent;
         	//message = "Current: "+mCurStr.str();
       		stream->send(str1, buffsize);
