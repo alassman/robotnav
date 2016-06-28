@@ -30,10 +30,11 @@
 //#include "Buttons.h"
 #include "MathFunctions.h"
 
-// TCP Changes
+//TCP
 #include <stdio.h>
 #include <stdlib.h>
-#include "tcpacceptor.h"
+#include <string>
+#include "tcpconnector.h"
 
 using namespace std;
 
@@ -58,7 +59,7 @@ const float INC_RATE_RAD_SECOND = math_functions::deg2rad(10.0); //[rad/sec]
 const float PERIOD = 0.1; //[sec]
 
 // TCP Setup
-const char* server = "localhost";
+const char* server = "35.2.51.190";
 const int port = 9999;
 
 
@@ -69,23 +70,19 @@ int main()
     
 	//Only one robot can be created at the time
 	CruizCoreGyro robot(PERIOD, TRACK, ENCODER_SCALE_FACTOR, COUNTS_REVOLUTION, (char *)GYRO_PORT); //Gyro Enhanced
-	
+
 	Odometry odometry(&robot); 
 
 	Keyboard user_input;
 	Control control(&odometry);
 	
 
-	//TCP Server Setup
-	TCPStream* stream = NULL;
-	TCPAcceptor* acceptor = NULL;
-	acceptor = new TCPAcceptor(port, server);
-	if (acceptor->start() == 0) {
-		printf("Server Started");
-	}
-	else {
-		perror("Could not start the server");
-	}
+    // TCP Setup
+    int len;
+    string message;
+    char line[256];
+    TCPConnector* connector = new TCPConnector();
+    TCPStream* stream = connector->connect(server, port);
 
 	//Create and initialize speed variables
 	float speed = 0;
@@ -95,21 +92,6 @@ int main()
 	//Enter main loop
 	while(!quit_program)
 	{
-		//TCP instructions
-		stream = acceptor->accept();
-		if (stream != NULL) {
-			size_t len;
-			char line[256];
-			if ((len = stream->receive(line, sizeof(line))) > 0) {
-				line[len] = 0;
-				printf("received - %s\n", line);
-				stream->send(line, len);
-			}
-			delete stream;
-		}
-		
-
-
 		//Read sensors
 		robot.readSensors();
 
@@ -151,6 +133,20 @@ int main()
 		
 		//Execute the instructions
 		robot.setActuators(speed, rate);
+
+
+		// TCP Instructions
+
+
+    	if (stream) {
+      		message = "Is there life on Mars?";
+      		stream->send(message.c_str(), message.size());
+      		printf("sent - %s\n", message.c_str());
+      		len = stream->receive(line, sizeof(line));
+      		line[len] = 0;
+      		printf("received - %s\n", line);
+      		delete stream;
+    	}
 	}
 
 	return 1;

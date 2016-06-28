@@ -33,7 +33,7 @@ RoboteqDevice.o: RoboteqDevice.cpp RoboteqDevice.h ErrorCodes.h Constants.h
 	$(CC) $(CFLAGS) -c RoboteqDevice.cpp
 tcpstream.o: tcpstream.cpp tcpstream.h
 	$(CC) $(CFLAGS) -c tcpstream.cpp
-tcpacceptor.o: tcpacceptor.cpp tcpacceptor.h tcpstream.o
+tcpconnector.o: tcpconnector.cpp tcpconnector.h tcpstream.o
 	$(CC) $(CFLAGS) -c tcpacceptor.cpp
 test_MC_connection: Robot.o Archer.o RoboteqDevice.o MathFunctions.o test_connection.cpp
 	$(CC) $(CFLAGS) Robot.o Archer.o RoboteqDevice.o MathFunctions.o test_connection.cpp -o $@ 
