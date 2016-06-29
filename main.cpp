@@ -79,7 +79,7 @@ int main()
     // TCP Setup
     //int len;
     //string message;
-    size_t buffsize = 50;
+    size_t buffsize = 1024;
     char str1 [buffsize];    //char line[256];
     //TCPConnector* connector = new TCPConnector();
     //TCPStream* stream = connector->connect(server, port);
