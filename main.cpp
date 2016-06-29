@@ -81,6 +81,7 @@ int main()
     //string message;
     size_t buffsize = 50;
     char str1 [buffsize];    //char line[256];
+    TCPConnector* connector = new TCPConnector();
     //TCPConnector* connector = new TCPConnector();
     //TCPStream* stream = connector->connect(server, port);
 
@@ -136,7 +137,7 @@ int main()
 
 
 		// TCP Instructions
-		TCPConnector* connector = new TCPConnector();
+		
 		TCPStream* stream = connector->connect(server, port, 100000);
     	if (stream) {
         	sprintf(str1, "Current: %d X: %f Y: %f", robot.mCurrent, odometry.mX, odometry.mY);
