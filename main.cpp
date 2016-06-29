@@ -74,14 +74,7 @@ int main()
 	Control control(&odometry);
 	
 	// TCP Setup
-	const char* server = "35.2.51.190";
-	int port = 9999;
-    // TCP Setup
-    //int len;
-    //string message;
-    size_t buffsize = 50;
-    char str1 [buffsize];    //char line[256];
-    TCPConnector* connector = new TCPConnector();
+
     //TCPConnector* connector = new TCPConnector();
     //TCPStream* stream = connector->connect(server, port);
 
@@ -137,6 +130,11 @@ int main()
 
 
 		// TCP Instructions
+		const char* server = "35.2.51.190";
+		int port = 9999;
+    	size_t buffsize = 50;
+    	char str1 [buffsize];    //char line[256];
+    	TCPConnector* connector = new TCPConnector();
 		
 		TCPStream* stream = connector->connect(server, port, 100000);
     	if (stream) {
