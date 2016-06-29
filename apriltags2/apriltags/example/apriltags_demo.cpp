@@ -389,7 +389,7 @@ public:
 
     // TCP Instructions
     TCPConnector* connector = new TCPConnector();
-    TCPStream* stream = connector->connect(server, port, 1);
+    TCPStream* stream = connector->connect(server, port, 100000);
     if (stream) {
         sprintf(str2, "x= %f y= %f z= %f", translation(0), translation(1), translation(2));
         stream->send(str2, buffsize);
