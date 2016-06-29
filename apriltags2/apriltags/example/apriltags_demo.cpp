@@ -383,7 +383,7 @@ public:
 
     // TCP Setup
     const char* server = "35.2.51.190";
-    int port = 9999;
+    int port = 9998;
     size_t buffsize = 50;
     char str2 [buffsize]; 
 
