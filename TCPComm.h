@@ -22,6 +22,7 @@
 #define TCPCOMM_H
 
 #include "Odometry.h"
+#include "Archer.h"
 
 class TCPComm : public Odometry
 {
@@ -34,7 +35,8 @@ class TCPComm : public Odometry
 	public:
 		TCPConnector* connector;
 		TCPStream* stream;
-		TCPComm(Robot *pSensors, char* server, int port);
+		//TCPComm(Robot *pSensors, char* server, int port);
+		TCPComm(Archer *pSensors, char* server, int port);
 		virtual void sndMessage();
 		virtual void rcvMessage();
 		virtual void closeConn();

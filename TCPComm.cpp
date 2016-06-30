@@ -21,6 +21,7 @@
 #include <iostream>
 #include <cmath>
 #include "Odometry.h"
+#include "Archer.h"
 
  //TCP
 #include <stdio.h>
@@ -32,7 +33,7 @@
 
 using namespace std;
 
-TCPComm::TCPComm(Robot *pSensors, char* server, int port) : Odometry(pSensors)
+TCPComm::TCPComm(Archer *pSensors, char* server, int port) : Odometry(pSensors)
 {
     TCPConnector* connector = new TCPConnector();
 	TCPStream* stream = connector->connect(server, port);
