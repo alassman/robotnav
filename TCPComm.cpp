@@ -36,8 +36,8 @@ using namespace std;
 TCPComm::TCPComm(Archer *pSensors, char* server, int port) : Odometry(pSensors)
 {
 	archSensors = pSensors;
-    TCPConnector* connector = new TCPConnector();
-	TCPStream* stream = connector->connect(server, port);
+    connector = new TCPConnector();
+	stream = connector->connect(server, port);
 
 }
 
