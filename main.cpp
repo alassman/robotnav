@@ -35,7 +35,8 @@
 #include <stdlib.h>
 #include <string>
 #include <sstream>
-#include "tcpconnector.h"
+//#include "tcpconnector.h"
+#include "TCPComm.h"
 
 using namespace std;
 
@@ -59,6 +60,9 @@ const float INC_SPEED_MM_SECOND = 100.0; //[mm/sec]
 const float INC_RATE_RAD_SECOND = math_functions::deg2rad(10.0); //[rad/sec]
 const float PERIOD = 0.1; //[sec]
 
+// TCP Connection info
+const char* server = "35.2.120.213";
+const int port = 9999;
 
 int main()
 {
@@ -68,7 +72,8 @@ int main()
 	//Only one robot can be created at the time
 	CruizCoreGyro robot(PERIOD, TRACK, ENCODER_SCALE_FACTOR, COUNTS_REVOLUTION, (char *)GYRO_PORT); //Gyro Enhanced
 
-	Odometry odometry(&robot); 
+	//Odometry odometry(&robot); 
+	TCPComm odometry(&robot, server, port);
 
 	Keyboard user_input;
 	Control control(&odometry);
@@ -92,6 +97,8 @@ int main()
 		//Compute position
 		odometry.updatePosition();
 
+		odometry.sndMessage();
+
 		//Define control instructions
 		//User interaction 
 		switch(user_input.getKey())
@@ -112,6 +119,7 @@ int main()
 			control.enable();
 			break;
 		case EXIT:
+			odometry.closeConn();
 			quit_program = true;
 		case RESET:
 			odometry.reset();
@@ -127,25 +135,6 @@ int main()
 		
 		//Execute the instructions
 		robot.setActuators(speed, rate);
-
-
-		// TCP Instructions
-		const char* server = "35.2.120.213";
-		int port = 9999;
-    	size_t buffsize = 60;
-    	char str1 [buffsize];    //char line[256];
-    	TCPConnector* connector = new TCPConnector();
-		
-		TCPStream* stream = connector->connect(server, port, 100000);
-    	if (stream) {
-        	sprintf(str1, "Current: %d X: %f Y: %f Speed:%f", robot.mCurrent, odometry.mX, odometry.mY, odometry.mSpeed);
-      		stream->send(str1, buffsize);
-      		printf("sent - %s\n", str1);
-      		//len = stream->receive(line, sizeof(line));
-      		//line[len] = 0;
-      		//printf("received - %s\n", line);
-      		delete stream;
-    	}
 	}
 
 	return 1;

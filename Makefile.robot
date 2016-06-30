@@ -1,5 +1,5 @@
-OBJS = Robot.o Archer.o Odometry.o Control.o CruizCoreGyro.o RoboteqDevice.o InputKeys.o Keyboard.o IrRemote.o MathFunctions.o tcpconnector.o tcpstream.o
-OBJS_t = Robot.o Archer.o Odometry.o Control.o CruizCore_test.o RoboteqDevice.o InputKeys.o Keyboard.o IrRemote.o MathFunctions.o tcpconnector.o tcpstream.o
+OBJS = Robot.o Archer.o Odometry.o Control.o CruizCoreGyro.o RoboteqDevice.o InputKeys.o Keyboard.o IrRemote.o MathFunctions.o tcpconnector.o tcpstream.o TCPComm.o
+OBJS_t = Robot.o Archer.o Odometry.o Control.o CruizCore_test.o RoboteqDevice.o InputKeys.o Keyboard.o IrRemote.o MathFunctions.o tcpconnector.o tcpstream.o TCPComm.o
 CC = g++
 CFLAGS = -Wall -Werror -static
 TARGET = main
@@ -35,6 +35,7 @@ tcpstream.o: tcpstream.cpp tcpstream.h
 	$(CC) $(CFLAGS) -c tcpstream.cpp
 tcpconnector.o: tcpconnector.cpp tcpconnector.h tcpstream.o
 	$(CC) $(CFLAGS) -c tcpacceptor.cpp
+TCPComm.o: TCPComm.cpp TCPComm.h Odometry.o
 test_MC_connection: Robot.o Archer.o RoboteqDevice.o MathFunctions.o test_connection.cpp
 	$(CC) $(CFLAGS) Robot.o Archer.o RoboteqDevice.o MathFunctions.o test_connection.cpp -o $@ 
 test_Gyro_connection: ccr1050.cpp
