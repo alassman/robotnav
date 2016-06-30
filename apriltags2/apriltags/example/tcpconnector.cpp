@@ -90,8 +90,8 @@ TCPStream* TCPConnector::connect(const char* server, int port, int timeout)
     {
         if (errno == EINPROGRESS)
         {
-            tv.tv_sec = timeout;
-            tv.tv_usec = 0;
+            tv.tv_sec = 0;
+            tv.tv_usec = timeout;
             FD_ZERO(&sdset);
             FD_SET(sd, &sdset);
             int s = -1;
