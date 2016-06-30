@@ -130,7 +130,7 @@ int main()
 
 
 		// TCP Instructions
-		const char* server = "35.2.51.190";
+		const char* server = "35.2.120.213";
 		int port = 9999;
     	size_t buffsize = 60;
     	char str1 [buffsize];    //char line[256];

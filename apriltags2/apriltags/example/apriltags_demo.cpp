@@ -382,7 +382,7 @@ public:
          << endl;
 
     // TCP Setup
-    const char* server = "35.2.51.190";
+    const char* server = "35.2.120.213";
     int port = 9998;
     size_t buffsize = 60;
     char str2 [buffsize]; 
