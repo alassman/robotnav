@@ -35,7 +35,7 @@ tcpstream.o: tcpstream.cpp tcpstream.h
 	$(CC) $(CFLAGS) -c tcpstream.cpp
 tcpconnector.o: tcpconnector.cpp tcpconnector.h tcpstream.o
 	$(CC) $(CFLAGS) -c tcpacceptor.cpp
-TCPComm.o: TCPComm.cpp TCPComm.h Odometry.o Archer.o
+TCPComm.o: TCPComm.cpp TCPComm.h Odometry.o Archer.o tcpconnector.o
 test_MC_connection: Robot.o Archer.o RoboteqDevice.o MathFunctions.o test_connection.cpp
 	$(CC) $(CFLAGS) Robot.o Archer.o RoboteqDevice.o MathFunctions.o test_connection.cpp -o $@ 
 test_Gyro_connection: ccr1050.cpp
