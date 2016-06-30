@@ -89,6 +89,8 @@ extern char *optarg;
 const char* windowName = "apriltags_demo";
 
 
+TCPStream* stream;
+
 // utility function to provide current system time (used below in
 // determining frame rate at which images are being processed)
 double tic() {
@@ -508,7 +510,7 @@ public:
 }; // Demo
 
 
-TCPStream* stream;
+
 
 
 // here is were everything begins
