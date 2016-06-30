@@ -23,6 +23,7 @@
 
 #include "Odometry.h"
 #include "Archer.h"
+#include "tcpconnector.h"
 
 class TCPComm : public Odometry
 {
