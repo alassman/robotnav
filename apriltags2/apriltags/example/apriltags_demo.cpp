@@ -527,7 +527,7 @@ int main(int argc, char* argv[]) {
 
         // TCP Instructions
     TCPConnector* connector = new TCPConnector();
-    stream = connector->connect(server, port, 100000);
+    stream = connector->connect(server, port);
 
 
   if (demo.isVideo()) {
@@ -548,6 +548,7 @@ int main(int argc, char* argv[]) {
   }
 
   delete stream;
+  delete connector;
   
   return 0;
 }
