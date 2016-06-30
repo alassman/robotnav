@@ -45,7 +45,7 @@ void TCPComm::sndMessage()
 	buffsize = 60;
     char str1 [buffsize];    //char line[256];
     if (stream) {
-       	sprintf(str1, "Current: %d X: %f Y: %f Speed:%f", robot.mCurrent, odometry.mX, odometry.mY, odometry.mSpeed);
+       	sprintf(str1, "Current: %d X: %f Y: %f Speed:%f", mpSensors.mCurrent, mX, mY, mSpeed);
     	stream->send(str1, buffsize);
      	printf("sent - %s\n", str1);
       	//len = stream->receive(line, sizeof(line));
@@ -60,7 +60,7 @@ void TCPComm::rcvMessage()
 	buffsize = 60;
     char str1 [buffsize];    //char line[256];
     if (stream) {
-       	sprintf(str1, "Current: %d X: %f Y: %f Speed:%f", robot.mCurrent, odometry.mX, odometry.mY, odometry.mSpeed);
+       	sprintf(str1, "Current: %d X: %f Y: %f Speed:%f", mpSensors.mCurrent, mX, mY, mSpeed);
     	stream->send(str1, buffsize);
      	printf("sent - %s\n", str1);
       	//len = stream->receive(line, sizeof(line));
@@ -74,5 +74,3 @@ void TCPComm::closeConn()
     delete stream;
     delete connector;
 }
-
-delete stream;
