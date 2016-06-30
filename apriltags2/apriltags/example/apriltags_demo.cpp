@@ -89,8 +89,6 @@ extern char *optarg;
 const char* windowName = "apriltags_demo";
 
 
-TCPStream* stream;
-
 // utility function to provide current system time (used below in
 // determining frame rate at which images are being processed)
 double tic() {
@@ -185,6 +183,10 @@ public:
     m_brightness(-1),
 
     m_deviceId(0)
+
+
+    TCPStream* stream;
+    TCPConnector* connector;
   {}
 
   // changing the tag family
@@ -528,7 +530,7 @@ int main(int argc, char* argv[]) {
     int port = 9998;
 
         // TCP Instructions
-    TCPConnector* connector = new TCPConnector();
+    connector = new TCPConnector();
     stream = connector->connect(server, port);
 
 
