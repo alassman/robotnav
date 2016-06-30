@@ -41,7 +41,9 @@ TCPComm::TCPComm(Robot *pSensors, char* server, int port) : Odometry(Robot *pSen
 
 void TCPComm::sndMessage()
 {
+	size_t buffsize;
 	buffsize = 60;
+    char str1 [buffsize];    //char line[256];
     if (stream) {
        	sprintf(str1, "Current: %d X: %f Y: %f Speed:%f", robot.mCurrent, odometry.mX, odometry.mY, odometry.mSpeed);
     	stream->send(str1, buffsize);
@@ -54,6 +56,9 @@ void TCPComm::sndMessage()
 
 void TCPComm::rcvMessage()
 {
+	size_t buffsize;
+	buffsize = 60;
+    char str1 [buffsize];    //char line[256];
     if (stream) {
        	sprintf(str1, "Current: %d X: %f Y: %f Speed:%f", robot.mCurrent, odometry.mX, odometry.mY, odometry.mSpeed);
     	stream->send(str1, buffsize);

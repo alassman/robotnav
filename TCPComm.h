@@ -32,8 +32,8 @@ class TCPComm : public Odometry
 	//	float mPeriod;
 	//	virtual void getDisplacements();
 	public:
-	   	size_t buffsize;
-    	char str1 [buffsize];    //char line[256];
+		TCPConnector* connector;
+		TCPStream* stream;
 		TCPComm(Robot *pSensors, char* server, int port);
 		virtual void sndMessage();
 		virtual void rcvMessage();
