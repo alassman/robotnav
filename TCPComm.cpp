@@ -32,7 +32,7 @@
 
 using namespace std;
 
-TCPComm::TCPComm(Robot *pSensors, char* server, int port) : Odometry(*pSensors)
+TCPComm::TCPComm(Robot *pSensors, char* server, int port) : Odometry(pSensors)
 {
     TCPConnector* connector = new TCPConnector();
 	TCPStream* stream = connector->connect(server, port);
