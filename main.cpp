@@ -61,7 +61,7 @@ const float INC_RATE_RAD_SECOND = math_functions::deg2rad(10.0); //[rad/sec]
 const float PERIOD = 0.1; //[sec]
 
 // TCP Connection info
-const char server = "35.2.120.213";
+const char server[] = "35.2.120.213";
 const int port = 9999;
 
 int main()
