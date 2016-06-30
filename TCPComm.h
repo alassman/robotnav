@@ -27,6 +27,7 @@
 class TCPComm : public Odometry
 {
 	//Robot *mpSensors;
+	Archer *archSensors;
 	//protected:
 	//	float mDisplacement;
 	//	float mRotation;
