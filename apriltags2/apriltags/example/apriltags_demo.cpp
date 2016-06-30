@@ -381,15 +381,11 @@ public:
          << ", roll=" << roll
          << endl;
 
-    // TCP Setup
-    const char* server = "35.2.120.213";
-    int port = 9998;
+
     size_t buffsize = 60;
     char str2 [buffsize]; 
 
-    // TCP Instructions
-    TCPConnector* connector = new TCPConnector();
-    TCPStream* stream = connector->connect(server, port, 100000);
+
     if (stream) {
         sprintf(str2, "ID:%d x= %f y= %f z= %f", detection.id, translation(0), translation(1), translation(2));
         stream->send(str2, buffsize);
@@ -397,7 +393,7 @@ public:
         //len = stream->receive(line, sizeof(line));
         //line[len] = 0;
         //printf("received - %s\n", line);
-        delete stream;
+        
     }
     // Also note that for SLAM/multi-view application it is better to
     // use reprojection error of corner points, because the noise in
@@ -512,6 +508,9 @@ public:
 }; // Demo
 
 
+TCPStream* stream;
+
+
 // here is were everything begins
 int main(int argc, char* argv[]) {
 
@@ -522,7 +521,13 @@ int main(int argc, char* argv[]) {
 
   demo.setup();
 
+    // TCP Setup
+    const char* server = "35.2.120.213";
+    int port = 9998;
 
+        // TCP Instructions
+    TCPConnector* connector = new TCPConnector();
+    stream = connector->connect(server, port, 100000);
 
 
   if (demo.isVideo()) {
@@ -542,5 +547,7 @@ int main(int argc, char* argv[]) {
 
   }
 
+  delete stream;
+  
   return 0;
 }
