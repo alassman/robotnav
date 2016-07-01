@@ -27,13 +27,7 @@
 
 class TCPComm : public Odometry
 {
-	//Robot *mpSensors;
 	Archer *archSensors;
-	//protected:
-	//	float mDisplacement;
-	//	float mRotation;
-	//	float mPeriod;
-	//	virtual void getDisplacements();
 	public:
 		TCPConnector* connector;
 		TCPStream* stream;

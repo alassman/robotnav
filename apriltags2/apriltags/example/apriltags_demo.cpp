@@ -172,8 +172,8 @@ public:
 
     m_width(640),
     m_height(480),
-    m_tagSize(0.045),
-    m_fx(600),
+    m_tagSize(0.105),
+    m_fx(700),
     m_fy(600),
     m_px(m_width/2),
     m_py(m_height/2),
@@ -386,12 +386,12 @@ public:
          << endl;
 
 
-    size_t buffsize = 60;
+    size_t buffsize = 70;
     char str2 [buffsize]; 
 
 
     if (stream) {
-        sprintf(str2, "ID:%d x= %f y= %f z= %f", detection.id, translation(0), translation(1), translation(2));
+        sprintf(str2, "ID:%d x= %f y= %f roll= %f", detection.id, translation(0), translation(1), roll);
         stream->send(str2, buffsize);
         printf("sent - %s\n", str2);
         //len = stream->receive(line, sizeof(line));

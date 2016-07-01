@@ -44,10 +44,10 @@ TCPComm::TCPComm(Archer *pSensors, char* server, int port) : Odometry(pSensors)
 void TCPComm::sndMessage()
 {
 	size_t buffsize;
-	buffsize = 60;
+	buffsize = 70;
     char str1 [buffsize];    //char line[256];
     if (stream) {
-       	sprintf(str1, "Current: %d X: %f Y: %f Speed:%f", archSensors->mCurrent, mX, mY, mSpeed);
+       	sprintf(str1, "Current: %d X: %f Y: %f Speed: %f", archSensors->mCurrent, mX, mY, mSpeed);
     	stream->send(str1, buffsize);
      	printf("sent - %s\n", str1);
       	//len = stream->receive(line, sizeof(line));
@@ -59,10 +59,10 @@ void TCPComm::sndMessage()
 void TCPComm::rcvMessage()
 {
 	size_t buffsize;
-	buffsize = 60;
+	buffsize = 70;
     char str1 [buffsize];    //char line[256];
     if (stream) {
-       	sprintf(str1, "Current: %d X: %f Y: %f Speed:%f", archSensors->mCurrent, mX, mY, mSpeed);
+       	sprintf(str1, "Current: %d X: %f Y: %f Speed: %f", archSensors->mCurrent, mX, mY, mSpeed);
     	stream->send(str1, buffsize);
      	printf("sent - %s\n", str1);
       	//len = stream->receive(line, sizeof(line));

@@ -77,11 +77,6 @@ int main()
 
 	Keyboard user_input;
 	Control control(&odometry);
-	
-	// TCP Setup
-
-    //TCPConnector* connector = new TCPConnector();
-    //TCPStream* stream = connector->connect(server, port);
 
 	//Create and initialize speed variables
 	float speed = 0;
