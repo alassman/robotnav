@@ -393,7 +393,7 @@ public:
 
     if (stream) {
         sprintf(str2, "ID:%d x= %f y= %f z= %f", detection.id, translation(0), translation(1), translation(2));
-        stream->send(str2, buffsize);
+        demo.stream->send(str2, buffsize);
         printf("sent - %s\n", str2);
         //len = stream->receive(line, sizeof(line));
         //line[len] = 0;
@@ -529,8 +529,8 @@ int main(int argc, char* argv[]) {
     int port = 9998;
 
         // TCP Instructions
-    connector = new TCPConnector();
-    stream = connector->connect(server, port);
+    demo.connector = new TCPConnector();
+    demo.stream = demo.connector->connect(server, port);
 
 
   if (demo.isVideo()) {
