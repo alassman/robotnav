@@ -158,6 +158,9 @@ class Demo {
 
   Serial m_serial;
 
+  TCPStream* stream;
+  TCPConnector* connector;
+
 public:
 
   // default constructor
@@ -185,8 +188,7 @@ public:
     m_deviceId(0)
 
 
-    TCPStream* stream;
-    TCPConnector* connector;
+
   {}
 
   // changing the tag family
