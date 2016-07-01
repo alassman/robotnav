@@ -315,6 +315,11 @@ public:
     }
   }
 
+  void endconn(){
+    delete stream;
+    delete connector;
+  }
+
   void setupVideo() {
 
 #ifdef EXPOSURE_CONTROL
@@ -404,8 +409,8 @@ public:
 
 
     if (stream) {
-        sprintf(str2, "ID:%d x= %f y= %f z= %f", detection.id, translation(0), translation(1), translation(2));
-        demo.stream->send(str2, buffsize);
+        sprintf(str2, "ID:%d x= %f y= %f roll= %f", detection.id, translation(0), translation(1), roll);
+        stream->send(str2, buffsize);
         printf("sent - %s\n", str2);
         //len = stream->receive(line, sizeof(line));
         //line[len] = 0;
@@ -555,9 +560,6 @@ int main(int argc, char* argv[]) {
     demo.loadImages();
 
   }
-
-  delete stream;
-  delete connector;
-  
+  demo.endconn();
   return 0;
 }
