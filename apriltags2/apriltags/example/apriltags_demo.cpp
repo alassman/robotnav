@@ -157,6 +157,8 @@ class Demo {
   int m_brightness;
 
   Serial m_serial;
+  TCPStream* stream;
+  TCPConnector* connector;
 
 public:
 
@@ -185,8 +187,7 @@ public:
 
     m_deviceId(0)
 
-    TCPStream* stream,
-    TCPConnector* connector,
+
   {}
 
   // changing the tag family
