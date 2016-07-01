@@ -160,6 +160,9 @@ class Demo {
   TCPStream* stream;
   TCPConnector* connector;
 
+
+
+
 public:
 
 
@@ -296,6 +299,15 @@ public:
     if (m_draw) {
       cv::namedWindow(windowName, 1);
     }
+
+    // TCP Setup
+    const char* server = "35.2.120.213";
+    int port = 9998;
+
+    // TCP Instructions
+    connector = new TCPConnector();
+    stream = connector->connect(server, port);
+
 
     // optional: prepare serial port for communication with Arduino
     if (m_arduino) {
@@ -524,13 +536,7 @@ int main(int argc, char* argv[]) {
 
   demo.setup();
 
-    // TCP Setup
-    const char* server = "35.2.120.213";
-    int port = 9998;
 
-        // TCP Instructions
-    demo.connector = new TCPConnector();
-    demo.stream = demo.connector->connect(server, port);
 
 
   if (demo.isVideo()) {
