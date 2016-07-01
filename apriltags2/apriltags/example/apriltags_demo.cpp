@@ -160,8 +160,7 @@ class Demo {
 
 public:
 
-  TCPStream* stream;
-  TCPConnector* connector;
+
   // default constructor
   Demo() :
     // default settings, most can be modified through command line options (see below)
@@ -185,6 +184,9 @@ public:
     m_brightness(-1),
 
     m_deviceId(0)
+
+    TCPStream* stream,
+    TCPConnector* connector,
   {}
 
   // changing the tag family
