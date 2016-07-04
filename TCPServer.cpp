@@ -34,8 +34,11 @@
 
 using namespace std;
 
-TCPServer::TCPServer(char* server, int port)
-{}
+TCPServer::TCPServer(char* pserver, int pport)
+{
+  server = pserver;
+  port = pport;
+}
 
 void TCPServer::makeServer()
 {

@@ -26,13 +26,15 @@
 
 class TCPServer
 {
+	char* server;
+	int port;
 	public:
 		TCPAcceptor* acceptor;
 		TCPConnector* connector;
 		TCPStream* stream;
 		char message[256];
 		//TCPComm(Robot *pSensors, char* server, int port);
-		TCPServer(char* server, int port);
+		TCPServer(char* pserver, int pport);
 		virtual void makeServer();
 		virtual void makeClient();
 		virtual void sndMessage();
