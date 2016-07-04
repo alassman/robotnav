@@ -96,7 +96,7 @@ int main()
 		//Compute position
 		odometry.updatePosition();
 
-		odometry.sndMessage();
+		//odometry.sndMessage();
 
 		//Define control instructions
 		//User interaction 
@@ -118,7 +118,7 @@ int main()
 			control.enable();
 			break;
 		case EXIT:
-			odometry.closeConn();
+			//odometry.closeConn();
 			quit_program = true;
 		case RESET:
 			odometry.reset();
