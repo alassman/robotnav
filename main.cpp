@@ -37,6 +37,7 @@
 #include <sstream>
 //#include "tcpconnector.h"
 #include "TCPComm.h"
+#include "Apriltags.h"
 
 using namespace std;
 
