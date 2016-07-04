@@ -18,13 +18,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TCPCOMM_H
-#define TCPCOMM_H
+#ifndef TCPSERVER_H
+#define TCPSERVER_H
 
 #include "tcpconnector.h"
 #include "tcpacceptor.h"
 
-class TCPComm
+class TCPServer
 {
 	public:
 		TCPAcceptor* acceptor;
@@ -32,7 +32,7 @@ class TCPComm
 		TCPStream* stream;
 		char message[256];
 		//TCPComm(Robot *pSensors, char* server, int port);
-		TCPComm(char* server, int port);
+		TCPServer(char* server, int port);
 		virtual void makeServer();
 		virtual void makeClient();
 		virtual void sndMessage();
