@@ -20,8 +20,9 @@
 
 #include <iostream>
 #include <cmath>
-#include <string>
+#include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "Apriltags.h"
 #include "MathFunctions.h"
 
@@ -57,19 +58,19 @@ void Apriltags::updatePosition()
 	
 	if (message) {
 		char * pID;
-		pID = strstr(message,"ID:");
+		pID = strstr(mpServer->message,"ID:");
 		aID = atoi(pID + 3);
 
 		char * px;
-		px = strstr(message,"x=");
+		px = strstr(mpServer->message,"x=");
 		ax = atof(px + 2);
 
 		char * py;
-		py = strstr(message,"y=");
+		py = strstr(mpServer->message,"y=");
 		ay = atof(py + 2);
 
 		char * proll;
-		proll = strstr(message,"roll=");
+		proll = strstr(mpServer->message,"roll=");
 		aroll = atof(proll + 5);
 
 		switch(aID)
