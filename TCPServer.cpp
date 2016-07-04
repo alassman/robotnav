@@ -37,7 +37,7 @@ using namespace std;
 TCPServer::TCPServer(char* server, int port)
 {}
 
-void TCPComm::makeServer()
+void TCPServer::makeServer()
 {
   acceptor = new TCPAcceptor(port, server);
   if (acceptor->start() == 0) {
@@ -45,28 +45,28 @@ void TCPComm::makeServer()
   }
 }
 
-TCPComm::makeClient()
+TCPServer::makeClient()
 {
   connector = new TCPConnector();
   stream = connector->connect(server, port);
 }
 
-void TCPComm::sndMessage()
+void TCPServer::sndMessage()
 {
 	size_t buffsize;
 	buffsize = 70;
     char str1 [buffsize];    //char line[256];
     if (stream) {
-       	sprintf(str1, "Current: %d X: %f Y: %f Speed: %f", archSensors->mCurrent, mX, mY, mSpeed);
-    	stream->send(str1, buffsize);
-     	printf("sent - %s\n", str1);
+      // 	sprintf(str1, "Current: %d X: %f Y: %f Speed: %f", archSensors->mCurrent, mX, mY, mSpeed);
+    	//stream->send(str1, buffsize);
+     	//printf("sent - %s\n", str1);
       	//len = stream->receive(line, sizeof(line));
       	//line[len] = 0;
       	//printf("received - %s\n", line);
     }
 }
 
-void TCPComm::rcvMessage()
+void TCPServer::rcvMessage()
 {
   int len;
   if (stream) {
@@ -76,7 +76,7 @@ void TCPComm::rcvMessage()
   }
 }
 
-void TCPComm::closeConn()
+void TCPServer::closeConn()
 {
     delete stream;
 }
