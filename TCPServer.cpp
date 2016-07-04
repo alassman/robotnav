@@ -48,7 +48,7 @@ void TCPServer::makeServer()
   }
 }
 
-TCPServer::makeClient()
+void TCPServer::makeClient()
 {
   connector = new TCPConnector();
   stream = connector->connect(server, port);
@@ -58,7 +58,7 @@ void TCPServer::sndMessage()
 {
 	size_t buffsize;
 	buffsize = 70;
-    char str1 [buffsize];    //char line[256];
+    //char str1 [buffsize];    //char line[256];
     if (stream) {
       // 	sprintf(str1, "Current: %d X: %f Y: %f Speed: %f", archSensors->mCurrent, mX, mY, mSpeed);
     	//stream->send(str1, buffsize);
