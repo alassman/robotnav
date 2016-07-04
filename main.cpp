@@ -78,7 +78,7 @@ int main()
 	//Odometry odometry(&robot); 
 	//TCPComm odometry(&robot, (char *)server, port);
 	TCPServer aptagServer((char *)serverat, portat)
-	Apriltags odometry(&robot, (char *)serverat, portat);
+	Apriltags odometry(&robot, &aptagServer);
 
 	Keyboard user_input;
 	Control control(&odometry);
