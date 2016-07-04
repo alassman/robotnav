@@ -21,7 +21,7 @@
 #include <iostream>
 #include <cmath>
 #include <string>
-#include <stdio>
+#include <stdio.h>
 #include "Apriltags.h"
 #include "MathFunctions.h"
 
