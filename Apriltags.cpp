@@ -56,7 +56,7 @@ void Apriltags::updatePosition()
 	mpServer->rcvMessage();
 
 	
-	if (message) {
+	if (mpServer->message) {
 		char * pID;
 		pID = strstr(mpServer->message,"ID:");
 		aID = atoi(pID + 3);
