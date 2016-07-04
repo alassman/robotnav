@@ -61,8 +61,10 @@ const float INC_RATE_RAD_SECOND = math_functions::deg2rad(10.0); //[rad/sec]
 const float PERIOD = 0.1; //[sec]
 
 // TCP Connection info
-const char server[] = "35.2.120.213";
-const int port = 9999;
+const char serverwp[] = "35.2.120.213";
+const int portwp = 9999;
+const char serverat[] = "localhost";
+const int portat = 9998;
 
 int main()
 {
@@ -73,7 +75,8 @@ int main()
 	CruizCoreGyro robot(PERIOD, TRACK, ENCODER_SCALE_FACTOR, COUNTS_REVOLUTION, (char *)GYRO_PORT); //Gyro Enhanced
 
 	//Odometry odometry(&robot); 
-	TCPComm odometry(&robot, (char *)server, port);
+	//TCPComm odometry(&robot, (char *)server, port);
+	Apriltags odometry(&robot, (char *)serverat, portat);
 
 	Keyboard user_input;
 	Control control(&odometry);

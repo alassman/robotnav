@@ -301,7 +301,7 @@ public:
     }
 
     // TCP Setup
-    const char* server = "35.2.120.213";
+    const char* server = "localhost";//"35.2.120.213";
     int port = 9998;
 
     // TCP Instructions
@@ -409,7 +409,7 @@ public:
 
 
     if (stream) {
-        sprintf(str2, "ID:%d x= %f y= %f roll= %f", detection.id, translation(0), translation(1), roll);
+        sprintf(str2, "ID:%d x=%f y=%f roll=%f", detection.id, translation(0), translation(1), roll);
         stream->send(str2, buffsize);
         printf("sent - %s\n", str2);
         //len = stream->receive(line, sizeof(line));
