@@ -29,14 +29,14 @@
 class Apriltags : public Odometry
 {
 	Robot *mpSensors;
-	TCPServer aptagServer(char* server, int port);
+	TCPServer *mpServer;//(char* server, int port);
 	protected:
 		int aID;
 		int ax;
 		int ay;
 		int aroll;
 	public:
-		Apriltags(Robot *pSensors, char* server, int port);
+		Apriltags(Robot *pSensors, TCPServer *pServer);
 		virtual void updatePosition();
 };
 

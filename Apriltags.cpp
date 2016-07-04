@@ -27,10 +27,11 @@
 
 using namespace std;
 
-Apriltags::Apriltags(Robot *pSensors, char* server, int port) : Odometry(pSensors)
+Apriltags::Apriltags(Robot *pSensors, TCPServer *pServer) : Odometry(pSensors)
 {
 	//TCP Server Setup
-	aptagServer->makeServer();
+	mpServer = pServer;
+	mpServer->makeServer();
 	
 	
 	//size_t n1 = message.find('ID:');
@@ -51,8 +52,8 @@ void Apriltags::updatePosition()
 	Odometry::updatePosition();
 	
 	//TCP server
-	aptagServer->rcvMessage();
-	
+	mpServer->rcvMessage();
+
 	
 	if (message) {
 		char * pID;
