@@ -38,6 +38,7 @@
 //#include "tcpconnector.h"
 #include "TCPComm.h"
 #include "Apriltags.h"
+#include "Waypoint.h"
 
 using namespace std;
 
@@ -62,7 +63,7 @@ const float INC_RATE_RAD_SECOND = math_functions::deg2rad(10.0); //[rad/sec]
 const float PERIOD = 0.1; //[sec]
 
 // TCP Connection info
-const char serverwp[] = "localhost" //"35.2.120.213";
+const char serverwp[] = "localhost"; //"35.2.120.213";
 const int portwp = 9999;
 const char serverat[] = "localhost";
 const int portat = 9998;

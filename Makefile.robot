@@ -1,5 +1,5 @@
-OBJS = Robot.o Archer.o Odometry.o Control.o CruizCoreGyro.o RoboteqDevice.o InputKeys.o Keyboard.o IrRemote.o MathFunctions.o tcpconnector.o tcpacceptor.o tcpstream.o TCPComm.o TCPServer.o Apriltags.o
-OBJS_t = Robot.o Archer.o Odometry.o Control.o CruizCore_test.o RoboteqDevice.o InputKeys.o Keyboard.o IrRemote.o MathFunctions.o tcpconnector.o tcpacceptor.o tcpstream.o TCPComm.o TCPServer.o Apriltags.o
+OBJS = Robot.o Archer.o Odometry.o Control.o CruizCoreGyro.o RoboteqDevice.o InputKeys.o Keyboard.o IrRemote.o MathFunctions.o tcpconnector.o tcpacceptor.o tcpstream.o TCPComm.o TCPServer.o Apriltags.o Waypoint.o
+OBJS_t = Robot.o Archer.o Odometry.o Control.o CruizCore_test.o RoboteqDevice.o InputKeys.o Keyboard.o IrRemote.o MathFunctions.o tcpconnector.o tcpacceptor.o tcpstream.o TCPComm.o TCPServer.o Apriltags.o Waypoint.o
 CC = g++
 CFLAGS = -Wall -Werror -static
 TARGET = main
@@ -42,7 +42,9 @@ TCPComm.o: TCPComm.cpp TCPComm.h Odometry.o Archer.o tcpconnector.o
 TCPServer.o: TCPServer.cpp TCPServer.h tcpconnector.o tcpacceptor.o
 	$(CC) $(CFLAGS) -c TCPServer.cpp 
 Apriltags.o: Apriltags.cpp Apriltags.h TCPServer.o Robot.o Odometry.o MathFunctions.o
-	$(CC) $(CFLAGS) -c Apriltags.cpp 
+	$(CC) $(CFLAGS) -c Apriltags.cpp
+Waypoint.o: Waypoint.cpp Waypoint.h TCPServer.o Control.o Odometry.o MathFunctions.o
+	$(CC) $(CFLAGS) -c Waypoint.cpp 
 test_MC_connection: Robot.o Archer.o RoboteqDevice.o MathFunctions.o test_connection.cpp
 	$(CC) $(CFLAGS) Robot.o Archer.o RoboteqDevice.o MathFunctions.o test_connection.cpp -o $@ 
 test_Gyro_connection: ccr1050.cpp

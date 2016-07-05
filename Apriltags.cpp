@@ -66,23 +66,23 @@ void Apriltags::updatePosition()
 		{
 			case 0:
 				mHeading = 3*PI/2 - aroll;
-				mX = ax*cos(mHeading) - ay*sin(mHeading) + 1610; //May have to flip mX like mY
+				mX = 1610 - (ax*cos(mHeading) - ay*sin(mHeading)); //May have to flip mX like mY
 				mY = 0 - (ax*sin(mHeading) - ay*cos(mHeading));
 				break;
 			case 1:
 				mHeading = 0 - aroll;
 				mX = 3340 - (ax*cos(mHeading) - ay*sin(mHeading));
-				mY = ax*sin(mHeading) - ay*cos(mHeading) + 1570;
+				mY = 1570 - (ax*sin(mHeading) - ay*cos(mHeading));
 				break;
 			case 2:
 				mHeading = PI/2 - aroll;
-				mX = ax*cos(mHeading) - ay*sin(mHeading) + 1740;
+				mX = 1740 - (ax*cos(mHeading) - ay*sin(mHeading));
 				mY = 3330 - ax*sin(mHeading) - ay*cos(mHeading);
 				break;
 			case 3:
 				mHeading = PI - aroll;
 				mX = 0 - (ax*cos(mHeading) - ay*sin(mHeading));
-				mY = ax*sin(mHeading) - ay*cos(mHeading) + 1720;
+				mY = 1720 - (ax*sin(mHeading) - ay*cos(mHeading));
 				break;
 		}
 		mHeading = math_functions::unwrap(mHeading);

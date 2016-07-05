@@ -22,8 +22,10 @@
 #ifndef WAYPOINT
 #define WAYPOINT 
 
+#include "Control.h"
 #include "Odometry.h"
 #include "TCPServer.h"
+
 
 class Waypoint : public Control
 {
