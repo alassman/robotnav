@@ -54,15 +54,21 @@ void Apriltags::updatePosition()
 	Odometry::updatePosition();
 	char a[2];
 	string str1;
+	string strID = "ID";
 	//TCP server
 	str1 = mpServer->rcvMessage();
+	size_t found = str.find(str2);
+  	if (found != string::npos){
+  		cout << "ATAGS: " << str1 << endl;
+  	}
+    
 	//cout << "ATAGS:" << mpServer->message << endl;
 	//string str1(mpServer->message);
-	stringstream into;
-	into << str1;
-	into >> a;
+	//stringstream into;
+	//into << str1;
+	//into >> a;
 	//cout << str1 << endl;
-	cout << "ATAGS:" << a << " String: "<<str1 << endl;// mpServer->message << endl;
+	//cout << "ATAGS:" << a << " String: "<< str1 << endl;// mpServer->message << endl;
 	//char * pID;
 	//pID = strstr(mpServer->message,"ID:");	
 	//cout << "POINTER ID: " << pID << endl;
