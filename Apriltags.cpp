@@ -35,14 +35,6 @@ Apriltags::Apriltags(Robot *pSensors, TCPServer *pServer) : Odometry(pSensors)
 	mpServer = pServer;
 	mpServer->makeServer();
 	
-	
-	//size_t n1 = message.find('ID:');
-	//size_t n2 = message.find('x=');
-	//size_t n3 = message.find('y=');
-	//size_t n4 = message.find('roll=');
-	//int ID_tag = atoi(message[n1+3])
-	//float ID_tag = atof(message[n1+3])
-
 	//mpSensors = pSensors;
 	//mPeriod = mpSensors->getPeriod();
 	//reset();
@@ -74,7 +66,7 @@ void Apriltags::updatePosition()
 		{
 			case 0:
 				mHeading = 3*PI/2 - aroll;
-				mX = ax*cos(mHeading) - ay*sin(mHeading) + 1610;
+				mX = ax*cos(mHeading) - ay*sin(mHeading) + 1610; //May have to flip mX like mY
 				mY = 0 - (ax*sin(mHeading) - ay*cos(mHeading));
 				break;
 			case 1:

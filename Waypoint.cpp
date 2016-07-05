@@ -21,7 +21,9 @@
 #include <iostream>
 #include <fstream>
 #include <cmath>
-#include <cstring>
+#include <string.h>
+#include <sstream>
+//#include <cstring>
 #include <stdlib.h>
 #include <stdio.h>
 #include "Control.h"
@@ -32,25 +34,26 @@ using namespace std;
 Waypoint::Waypoint(Odometry *pOdometry, TCPServer *pServer) : Control(pOdometry)
 {
 	mpServer = pServer;
-	mpServer->makeClient();
+	mpServer->makeServer();
 }
 
 void Control::createWaypoints()
 {
+	char c1[2];
+	string str1;
+	string strID = "WP";
 
-	//TCP server
-	mpServer->rcvMessage();
-
-	
-	if (mpServer->message) {
-		char * pWP;
-		char * pXY;
-		pWP = strstr(mpServer->message,"Nwp:");
-		mWaypointLength = atoi(pWP + 4);
+	str1 = mpServer->rcvMessage();
+	size_t found = str1.find(strID);
+  	if (found != string::npos){
+  		stringstream into;
+		into << str1;
+		into >> c1 >> mWaypointLength;
 		mpWaypoints = new float*[mWaypointLength];
 		mpWaypoints[0] = new float[Y_AXIS + 1];
+		
 		for (int i = 0, i < mWaypointLength, i = i + 1){
-			mpWaypoints[i][0] = ;
+			into >> mpWaypoints[i][X_AXIS] >> mpWaypoints[i][Y_AXIS];
 		}
 
 	}
