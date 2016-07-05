@@ -34,7 +34,7 @@ class Waypoint : public Control
 	TCPServer *mpServer;
 	Archer *mpSensors;
 	protected:
-		void getWaypoints();
+		void createWaypoints();
 		void sendData();
 	public :
 		Waypoint(Odometry *pOdometry, Archer *pSensors, TCPServer *pServer);
