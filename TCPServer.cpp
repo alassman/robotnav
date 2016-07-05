@@ -72,7 +72,7 @@ void TCPServer::sndMessage()
 void TCPServer::rcvMessage()
 {
   int len;
-  char message[256];
+  message = NULL;
   if (stream) {
     len = stream->receive(message, sizeof(message), 10000);
     message[len] = 0;
