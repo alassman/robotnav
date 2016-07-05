@@ -23,6 +23,7 @@
 
 #include "tcpconnector.h"
 #include "tcpacceptor.h"
+#include <string>
 
 class TCPServer
 {
@@ -38,7 +39,7 @@ class TCPServer
 		virtual void makeServer();
 		virtual void makeClient();
 		virtual void sndMessage();
-		virtual void rcvMessage();
+		virtual string rcvMessage();
 		virtual void closeConn();
 };
 
