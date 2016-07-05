@@ -65,57 +65,11 @@ void Apriltags::updatePosition()
   		stringstream into;
 		into << str1;
 		into >> c1 >> aID >> c2 >> ax >> c3 >> ay >> c4 >> aroll;
-		cout << "ATAGS: " << c1 << aID << c2 << ax << c3 << ay << c4 << aroll << endl;
-  	}
+		//cout << "ATAGS: " << c1 << aID << c2 << ax << c3 << ay << c4 << aroll << endl;
+  	
     
-	//cout << "ATAGS:" << mpServer->message << endl;
-	//string str1(mpServer->message);
-	//cout << str1 << endl;
-	//cout << "ATAGS:" << a << " String: "<< str1 << endl;// mpServer->message << endl;
-	//char * pID;
-	//pID = strstr(mpServer->message,"ID:");	
-	//cout << "POINTER ID: " << pID << endl;
-
-	/*if (pID == NULL) {	
-		cout << "NULL POINTER" << endl;
-	}
-	else {
-		cout << "Good pointer" << endl;
-		aID = atoi(pID + 3);
-
-		char * px;
-		px = strstr(mpServer->message,"x=");
-		ax = atof(px + 2);
-
-		char * py;
-		py = strstr(mpServer->message,"y=");
-		ay = atof(py + 2);
-
-		char * proll;
-		proll = strstr(mpServer->message,"roll=");
-		aroll = atof(proll + 5); */
-	/*
-
-	if (pID == NULL) {	
-		cout << "NULL POINTER" << endl;
-	}
-	else {
-		cout << "Good pointer" << endl;
-		aID = atoi(pID + 3);
-
-		char * px;
-		px = strstr(mpServer->message,"x=");
-		ax = atof(px + 2);
-
-		char * py;
-		py = strstr(mpServer->message,"y=");
-		ay = atof(py + 2);
-
-		char * proll;
-		proll = strstr(mpServer->message,"roll=");
-		aroll = atof(proll + 5); */
 	
-		/*switch(aID)
+		switch(aID)
 		{
 			case 0:
 				mHeading = 3*PI/2 - aroll;
@@ -138,9 +92,9 @@ void Apriltags::updatePosition()
 				mY = ax*sin(mHeading) - ay*cos(mHeading) + 5;
 				break;
 		}
-		mHeading = math_functions::unwrap(mHeading); */
+		mHeading = math_functions::unwrap(mHeading);
 	//	cout << "Apriltag ID:" << pID << " X: " << ax << " Y: " << ay << " Roll: " << aroll << endl;
 	
-	//cout << "POSITION " << mpSensors->getName() << ": X: " <<mX << " Y: " << mY << " heading: " << math_functions::rad2deg(mHeading) << " speed: " << mSpeed << " rate: " << math_functions::rad2deg(mRate) << endl;
-
+		cout << "POSITION " << mpSensors->getName() << ": X: " <<mX << " Y: " << mY << " heading: " << math_functions::rad2deg(mHeading) << " speed: " << mSpeed << " rate: " << math_functions::rad2deg(mRate) << endl;
+	}
 }
