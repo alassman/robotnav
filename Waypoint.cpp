@@ -37,7 +37,7 @@ Waypoint::Waypoint(Odometry *pOdometry, TCPServer *pServer) : Control(pOdometry)
 	mpServer->makeServer();
 }
 
-void Control::createWaypoints()
+void Waypoint::createWaypoints()
 {
 	char c1[2];
 	string str1;
