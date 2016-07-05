@@ -85,7 +85,7 @@ int main()
 
 	//Control setup
 	TCPServer wpServer((char *)serverwp, portwp);
-	Waypoint control(&odometry);
+	Waypoint control(&odometry, &wpServer);
 	//Control control(&odometry);
 
 	//Create and initialize speed variables
