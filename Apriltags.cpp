@@ -52,7 +52,7 @@ Apriltags::Apriltags(Robot *pSensors, TCPServer *pServer) : Odometry(pSensors)
 void Apriltags::updatePosition()
 {
 	Odometry::updatePosition();
-	char a;
+	char a[];
 	string str1;
 	//TCP server
 	str1 = mpServer->rcvMessage();
@@ -62,7 +62,7 @@ void Apriltags::updatePosition()
 	into << str1;
 	into >> a;
 	//cout << str1 << endl;
-	cout << "ATAGS:" << a << " idk "<< mpServer->message << endl;
+	cout << "ATAGS:" << a << " idk "<< endl;// mpServer->message << endl;
 	//char * pID;
 	//pID = strstr(mpServer->message,"ID:");	
 	//cout << "POINTER ID: " << pID << endl;
