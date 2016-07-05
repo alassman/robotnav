@@ -52,7 +52,7 @@ Apriltags::Apriltags(Robot *pSensors, TCPServer *pServer) : Odometry(pSensors)
 void Apriltags::updatePosition()
 {
 	Odometry::updatePosition();
-	char a[];
+	char a[2];
 	string str1;
 	//TCP server
 	str1 = mpServer->rcvMessage();
