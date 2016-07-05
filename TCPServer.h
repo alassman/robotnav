@@ -38,7 +38,7 @@ class TCPServer
 		TCPServer(char* pserver, int pport);
 		virtual void makeServer();
 		virtual void makeClient();
-		virtual void sndMessage();
+		virtual void sndMessage(string strmes);
 		virtual string rcvMessage();
 		virtual void closeConn();
 };
