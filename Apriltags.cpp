@@ -62,7 +62,7 @@ void Apriltags::updatePosition()
 	into << str1;
 	into >> a;
 	//cout << str1 << endl;
-	cout << "ATAGS:" << a << " idk "<< str1 << endl;
+	cout << "ATAGS:" << a << " idk "<< mpServer->message << endl;
 	//char * pID;
 	//pID = strstr(mpServer->message,"ID:");	
 	//cout << "POINTER ID: " << pID << endl;
