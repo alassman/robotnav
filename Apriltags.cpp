@@ -59,7 +59,7 @@ void Apriltags::updatePosition()
 	//cout << mpServer->message << endl;
 	str1 = str(mpServer->message);
 	stringstream into;
-	into << things;
+	into << str1;
 	into >> a;
 	//char * pID;
 	//pID = strstr(mpServer->message,"ID:");	
@@ -82,7 +82,7 @@ void Apriltags::updatePosition()
 
 		char * proll;
 		proll = strstr(mpServer->message,"roll=");
-		aroll = atof(proll + 5); 
+		aroll = atof(proll + 5); */
 	/*
 
 	if (pID == NULL) {	
@@ -102,7 +102,7 @@ void Apriltags::updatePosition()
 
 		char * proll;
 		proll = strstr(mpServer->message,"roll=");
-		aroll = atof(proll + 5); 
+		aroll = atof(proll + 5); */
 	
 		/*switch(aID)
 		{
@@ -128,8 +128,8 @@ void Apriltags::updatePosition()
 				break;
 		}
 		mHeading = math_functions::unwrap(mHeading); */
-		cout << "Apriltag ID:" << pID << " X: " << ax << " Y: " << ay << " Roll: " << aroll << endl;
-	}
+	//	cout << "Apriltag ID:" << pID << " X: " << ax << " Y: " << ay << " Roll: " << aroll << endl;
+	
 	//cout << "POSITION " << mpSensors->getName() << ": X: " <<mX << " Y: " << mY << " heading: " << math_functions::rad2deg(mHeading) << " speed: " << mSpeed << " rate: " << math_functions::rad2deg(mRate) << endl;
 
 }
