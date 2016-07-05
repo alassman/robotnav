@@ -25,6 +25,7 @@
 #include "Control.h"
 #include "Odometry.h"
 #include "TCPServer.h"
+#include "Archer.h"
 
 
 class Waypoint : public Control
