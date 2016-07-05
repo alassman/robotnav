@@ -73,14 +73,14 @@ string TCPServer::rcvMessage()
 {
   int len;
   char message[256];
-  string strmes;
+  string strmes = "test";
   if (stream) {
     len = stream->receive(message, sizeof(message), 10000);
     message[len] = 0;
     //printf("received - %s\n", message);
     strmes(message);
-    return strmes;
   }
+  return strmes;
 }
 
 void TCPServer::closeConn()
