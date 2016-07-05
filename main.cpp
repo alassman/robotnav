@@ -83,9 +83,9 @@ int main()
 	Keyboard user_input;
 
 	//Control setup
-	TCPServer aptagServer((char *)serverwp, portwp);
-	Waypoint control(&odometry)
-	//Control control(&odometry);
+	//TCPServer aptagServer((char *)serverwp, portwp);
+	//Waypoint control(&odometry)
+	Control control(&odometry);
 
 	//Create and initialize speed variables
 	float speed = 0;
