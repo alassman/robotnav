@@ -73,7 +73,7 @@ string TCPServer::rcvMessage()
 {
   int len;
   char message[256];
-  string strmes = "test";
+  string strmes = "NoMsg";
   if (stream) {
     len = stream->receive(message, sizeof(message), 10000);
     message[len] = 0;
