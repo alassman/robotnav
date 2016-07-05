@@ -81,7 +81,11 @@ int main()
 	Apriltags odometry(&robot, &aptagServer);
 
 	Keyboard user_input;
-	Control control(&odometry);
+
+	//Control setup
+	TCPServer aptagServer((char *)serverwp, portwp);
+	Waypoint control(&odometry)
+	//Control control(&odometry);
 
 	//Create and initialize speed variables
 	float speed = 0;
@@ -120,6 +124,7 @@ int main()
 			break;
 		case EXIT:
 			//odometry.closeConn();
+			aptagServer.closeConn();
 			quit_program = true;
 		case RESET:
 			odometry.reset();

@@ -27,10 +27,11 @@
 
 class Waypoint : public Control
 {
-	TCPServer wpServer(char* server, int port);
+	Odometry *mpOdometry;
+	TCPServer *mpServer;
 	protected:
 		void createWaypoints();
 	public :
-		Waypoint(Odometry *pOdometry);
+		Waypoint(Odometry *pOdometry, TCPServer *pServer);
 };
 #endif	

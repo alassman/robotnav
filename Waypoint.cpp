@@ -22,24 +22,43 @@
 #include <fstream>
 #include <cmath>
 #include <cstring>
+#include <stdlib.h>
+#include <stdio.h>
 #include "Control.h"
 #include "MathFunctions.h"
 
 using namespace std;
 
-Waypoint::Waypoint(Odometry *pOdometry) : Control(pOdometry)
+Waypoint::Waypoint(Odometry *pOdometry, TCPServer *pServer) : Control(pOdometry)
 {
-	wpServer.makeClient();
+	mpServer = pServer;
+	mpServer->makeClient();
 }
 
 void Control::createWaypoints()
 {
-	mWaypointLength = 1;
-	mpWaypoints = new float*[mWaypointLength];
-	mpWaypoints[0] = new float[Y_AXIS + 1];
-	mpWaypoints[0][X_AXIS] = 0.0;
-	mpWaypoints[0][Y_AXIS] = 0.0;
+
+	//TCP server
+	mpServer->rcvMessage();
+
+	
+	if (mpServer->message) {
+		char * pWP;
+		char * pXY;
+		pWP = strstr(mpServer->message,"Nwp:");
+		mWaypointLength = atoi(pWP + 4);
+		mpWaypoints = new float*[mWaypointLength];
+		mpWaypoints[0] = new float[Y_AXIS + 1];
+		for (int i = 0, i < mWaypointLength, i = i + 1){
+			mpWaypoints[i][0] = ;
+		}
+
+	}
+
+	//mpWaypoints[0][X_AXIS] = 0.0;
+	//mpWaypoints[0][Y_AXIS] = 0.0;
 	mStatus = STARTING_STS;
+
 }
 
 

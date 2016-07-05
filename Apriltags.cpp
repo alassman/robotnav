@@ -73,7 +73,7 @@ void Apriltags::updatePosition()
 		proll = strstr(mpServer->message,"roll=");
 		aroll = atof(proll + 5);
 
-		switch(aID)
+		/*switch(aID)
 		{
 			case 0:
 				mHeading = 3*PI/2 - aroll;
@@ -96,7 +96,8 @@ void Apriltags::updatePosition()
 				mY = ax*sin(mHeading) - ay*cos(mHeading) + 5;
 				break;
 		}
-		mHeading = math_functions::unwrap(mHeading);
+		mHeading = math_functions::unwrap(mHeading); */
 	}
-	cout << "POSITION " << mpSensors->getName() << ": X: " <<mX << " Y: " << mY << " heading: " << math_functions::rad2deg(mHeading) << " speed: " << mSpeed << " rate: " << math_functions::rad2deg(mRate) << endl;
+	//cout << "POSITION " << mpSensors->getName() << ": X: " <<mX << " Y: " << mY << " heading: " << math_functions::rad2deg(mHeading) << " speed: " << mSpeed << " rate: " << math_functions::rad2deg(mRate) << endl;
+	cout << "Apriltagdata:" << ax
 }
