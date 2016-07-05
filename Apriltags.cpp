@@ -74,21 +74,21 @@ void Apriltags::updatePosition()
 			case 0:
 				mHeading = 3*PI/2 - aroll;
 				mX = ax*cos(mHeading) - ay*sin(mHeading) + 1610;
-				mY = ax*sin(mHeading) - ay*cos(mHeading);
+				mY = 0 - (ax*sin(mHeading) - ay*cos(mHeading));
 				break;
 			case 1:
 				mHeading = 0 - aroll;
-				mX = ax*cos(mHeading) - ay*sin(mHeading) + 3340;
+				mX = 3340 - (ax*cos(mHeading) - ay*sin(mHeading));
 				mY = ax*sin(mHeading) - ay*cos(mHeading) + 1570;
 				break;
 			case 2:
 				mHeading = PI/2 - aroll;
 				mX = ax*cos(mHeading) - ay*sin(mHeading) + 1740;
-				mY = ax*sin(mHeading) - ay*cos(mHeading) + 3330;
+				mY = 3330 - ax*sin(mHeading) - ay*cos(mHeading);
 				break;
 			case 3:
 				mHeading = PI - aroll;
-				mX = ax*cos(mHeading) - ay*sin(mHeading);
+				mX = 0 - (ax*cos(mHeading) - ay*sin(mHeading));
 				mY = ax*sin(mHeading) - ay*cos(mHeading) + 1720;
 				break;
 		}
