@@ -56,13 +56,13 @@ void Apriltags::updatePosition()
 	
 	//TCP server
 	mpServer->rcvMessage();
-	//cout << mpServer->message << endl;
+	cout << "ATAGS:" << mpServer->message << endl;
 	string str1(mpServer->message);
 	stringstream into;
 	into << str1;
 	into >> a;
 	//cout << str1 << endl;
-	cout << "ATAGS:" << a << " idk "<< mpServer->message << endl;
+	//cout << "ATAGS:" << a << " idk "<< mpServer->message << endl;
 	//char * pID;
 	//pID = strstr(mpServer->message,"ID:");	
 	//cout << "POINTER ID: " << pID << endl;
