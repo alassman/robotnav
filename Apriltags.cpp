@@ -68,6 +68,7 @@ void Apriltags::updatePosition()
 		cout << "ATAGS: " << c1 << aID << c2 << ax << c3 << ay << c4 << aroll << endl;
   		ax = 1000*ax;
     	ay = 1000*ay;
+    	aroll = -1*aroll;
 	
 		switch(aID)
 		{
