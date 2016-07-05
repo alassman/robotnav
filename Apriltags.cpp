@@ -52,21 +52,24 @@ Apriltags::Apriltags(Robot *pSensors, TCPServer *pServer) : Odometry(pSensors)
 void Apriltags::updatePosition()
 {
 	Odometry::updatePosition();
-	//char a[2];
+	char c1[2];
+	char c2;
+	char c3;
+	char c4[4];
 	string str1;
 	string strID = "ID";
 	//TCP server
 	str1 = mpServer->rcvMessage();
 	size_t found = str1.find(strID);
   	if (found != string::npos){
-  		cout << "ATAGS: " << str1 << endl;
+  		stringstream into;
+		into << str1;
+		into >> c1 >> aID >> c2 >> ax >> c3 >> ay >> c4 >> aroll;
+		cout << "ATAGS: " << c1 << aID << c2 << ax << c3 << ay << c4 << aroll << endl;
   	}
     
 	//cout << "ATAGS:" << mpServer->message << endl;
 	//string str1(mpServer->message);
-	//stringstream into;
-	//into << str1;
-	//into >> a;
 	//cout << str1 << endl;
 	//cout << "ATAGS:" << a << " String: "<< str1 << endl;// mpServer->message << endl;
 	//char * pID;
