@@ -21,6 +21,7 @@
 #include <iostream>
 #include <cmath>
 #include <string.h>
+#include <sstream>
 #include <stdio.h>
 #include <stdlib.h>
 #include "Apriltags.h"
@@ -51,13 +52,39 @@ Apriltags::Apriltags(Robot *pSensors, TCPServer *pServer) : Odometry(pSensors)
 void Apriltags::updatePosition()
 {
 	Odometry::updatePosition();
-	
+	char a;
+	string str1;
 	//TCP server
 	mpServer->rcvMessage();
 	//cout << mpServer->message << endl;
-	char * pID;
-	pID = strstr(mpServer->message,"ID:");	
+	str1 = str(mpServer->message);
+	stringstream into;
+	into << things;
+	into >> a;
+	//char * pID;
+	//pID = strstr(mpServer->message,"ID:");	
 	//cout << "POINTER ID: " << pID << endl;
+
+	/*if (pID == NULL) {	
+		cout << "NULL POINTER" << endl;
+	}
+	else {
+		cout << "Good pointer" << endl;
+		aID = atoi(pID + 3);
+
+		char * px;
+		px = strstr(mpServer->message,"x=");
+		ax = atof(px + 2);
+
+		char * py;
+		py = strstr(mpServer->message,"y=");
+		ay = atof(py + 2);
+
+		char * proll;
+		proll = strstr(mpServer->message,"roll=");
+		aroll = atof(proll + 5); 
+	/*
+
 	if (pID == NULL) {	
 		cout << "NULL POINTER" << endl;
 	}
