@@ -72,8 +72,9 @@ void TCPServer::sndMessage()
 void TCPServer::rcvMessage()
 {
   int len;
+  //char message[256];
   if (stream) {
-    len = stream->receive(message, sizeof(message));
+    len = stream->receive(message, sizeof(message), 1000);
     message[len] = 0;
     printf("received - %s\n", message);
   }

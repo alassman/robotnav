@@ -32,9 +32,9 @@ class Apriltags : public Odometry
 	TCPServer *mpServer;//(char* server, int port);
 	protected:
 		int aID;
-		int ax;
-		int ay;
-		int aroll;
+		float ax;
+		float ay;
+		float aroll;
 	public:
 		Apriltags(Robot *pSensors, TCPServer *pServer);
 		virtual void updatePosition();
