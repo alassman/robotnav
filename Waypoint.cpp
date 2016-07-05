@@ -27,6 +27,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "Control.h"
+#include "Waypoint.h"
 #include "MathFunctions.h"
 
 using namespace std;
