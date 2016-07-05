@@ -52,7 +52,7 @@ void Waypoint::createWaypoints()
 		mpWaypoints = new float*[mWaypointLength];
 		mpWaypoints[0] = new float[Y_AXIS + 1];
 		
-		for (int i = 0, i < mWaypointLength, i = i + 1){
+		for (int i = 0; i < mWaypointLength; i = i + 1){
 			into >> mpWaypoints[i][X_AXIS] >> mpWaypoints[i][Y_AXIS];
 		}
 
