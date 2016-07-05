@@ -54,14 +54,14 @@ void TCPServer::makeClient()
   stream = connector->connect(server, port);
 }
 
-void TCPServer::sndMessage()
+void TCPServer::sndMessage(string strmes)
 {
 	//size_t buffsize;
-	//buffsize = 70;
+	//buffsize = 256;
     //char str1 [buffsize];    //char line[256];
     if (stream) {
       // 	sprintf(str1, "Current: %d X: %f Y: %f Speed: %f", archSensors->mCurrent, mX, mY, mSpeed);
-    	//stream->send(str1, buffsize);
+    	stream->send(strmes.c_str(), message.size());
      	//printf("sent - %s\n", str1);
       	//len = stream->receive(line, sizeof(line));
       	//line[len] = 0;

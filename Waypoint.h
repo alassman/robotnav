@@ -31,9 +31,11 @@ class Waypoint : public Control
 {
 	Odometry *mpOdometry;
 	TCPServer *mpServer;
+	Archer *mpSensors;
 	protected:
-		void createWaypoints();
+		void getWaypoints();
+		void sendData();
 	public :
-		Waypoint(Odometry *pOdometry, TCPServer *pServer);
+		Waypoint(Odometry *pOdometry, Archer *pSensors, TCPServer *pServer);
 };
 #endif	

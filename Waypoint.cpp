@@ -32,8 +32,9 @@
 
 using namespace std;
 
-Waypoint::Waypoint(Odometry *pOdometry, TCPServer *pServer) : Control(pOdometry)
+Waypoint::Waypoint(Odometry *pOdometry, Archer *pSensors, TCPServer *pServer) : Control(pOdometry)
 {
+	mpSensors = pSensors;
 	mpServer = pServer;
 	mpServer->makeServer();
 }
@@ -62,8 +63,15 @@ void Waypoint::createWaypoints()
 	//mpWaypoints[0][X_AXIS] = 0.0;
 	//mpWaypoints[0][Y_AXIS] = 0.0;
 	mStatus = STARTING_STS;
-
 }
 
+void Waypoint::sendData()
+{
+	string strdata;
+	stringstream ss;
 
+	ss << "Current: " << mpSensors->mCurrent << "X: " << mpOdometry->mX << "Y: " << mpOdometry->mY << "Heading: " << mpOdometry->mHeading << endl;
+	strdata = ss.str();
 
+	mpServer->sndMessage(strdata);
+}

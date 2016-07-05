@@ -85,7 +85,8 @@ int main()
 
 	//Control setup
 	TCPServer wpServer((char *)serverwp, portwp);
-	Waypoint control(&odometry, &wpServer);
+	Waypoint control(&odometry, &robot, &wpServer);
+	control.createWaypoints();
 	//Control control(&odometry);
 
 	//Create and initialize speed variables
@@ -103,6 +104,7 @@ int main()
 		odometry.updatePosition();
 
 		//odometry.sndMessage();
+		control.sendData();
 
 		//Define control instructions
 		//User interaction 
