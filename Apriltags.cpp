@@ -54,14 +54,15 @@ void Apriltags::updatePosition()
 	
 	//TCP server
 	mpServer->rcvMessage();
-	cout << mpServer->message << endl;
+	//cout << mpServer->message << endl;
 	char * pID;
 	pID = strstr(mpServer->message,"ID:");	
-	cout << "POINTER ID: " << pID << endl;
+	//cout << "POINTER ID: " << pID << endl;
 	if (pID == NULL) {	
 		cout << "NULL POINTER" << endl;
 	}
 	else {
+		cout << "Good pointer" << endl;
 		aID = atoi(pID + 3);
 
 		char * px;
