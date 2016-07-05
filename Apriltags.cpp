@@ -53,11 +53,11 @@ void Apriltags::updatePosition()
 {
 	Odometry::updatePosition();
 	char a;
-	string str1;
+	
 	//TCP server
 	mpServer->rcvMessage();
 	//cout << mpServer->message << endl;
-	str1 = str(mpServer->message);
+	string str1(mpServer->message);
 	stringstream into;
 	into << str1;
 	into >> a;
