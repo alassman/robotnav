@@ -44,12 +44,12 @@ class Control
 	void cmpTargetDirDist(float &rRelativeDistance, float &rRelativeAngle);
 	virtual int freeHeading();
 	bool faceTarget(float targetAngle = FACE_NEXT_WAYPOINT);
-	virtual void createWaypoints(); //changed by MQ to virtual
 	void reset();
 public :
 	void enable();
 	void disable();
 	void getTargetSpeedRate(float &rSpeed, float &rRate);
+	virtual void createWaypoints(); //changed by MQ to virtual and made public
 	Control(Odometry *pOdometry);
 	virtual ~Control();
 };
