@@ -78,7 +78,7 @@ string TCPServer::rcvMessage()
     len = stream->receive(message, sizeof(message), 10000);
     message[len] = 0;
     //printf("received - %s\n", message);
-    strmes(message);
+    string strmes(message);
   }
   return strmes;
 }
