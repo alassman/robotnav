@@ -75,7 +75,7 @@ void Apriltags::updatePosition()
 		char * proll;
 		proll = strstr(mpServer->message,"roll=");
 		aroll = atof(proll + 5); 
-	}
+	
 		/*switch(aID)
 		{
 			case 0:
