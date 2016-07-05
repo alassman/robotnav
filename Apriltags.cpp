@@ -61,8 +61,8 @@ void Apriltags::updatePosition()
 	stringstream into;
 	into << str1;
 	into >> a;
-	cout << str1 << endl;
-	cout << "ATAGS:" << a << endl;
+	//cout << str1 << endl;
+	cout << "ATAGS:" << a << " idk "<< str1 << endl;
 	//char * pID;
 	//pID = strstr(mpServer->message,"ID:");	
 	//cout << "POINTER ID: " << pID << endl;
