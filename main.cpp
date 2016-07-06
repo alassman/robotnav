@@ -104,7 +104,7 @@ int main()
 		odometry.updatePosition();
 
 		//odometry.sndMessage();
-		//control.sendData();
+		control.sendData();
 
 		//Define control instructions
 		//User interaction 

@@ -44,7 +44,8 @@ void Waypoint::createWaypoints()
 	char c1[2];
 	string str1;
 	string strID = "WP";
-
+	string strCall = "WP";
+	mpServer->sndMessage(strCall);
 	str1 = mpServer->rcvMessage();
 	size_t found = str1.find(strID);
   	if (found != string::npos){
