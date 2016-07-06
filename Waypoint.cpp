@@ -72,7 +72,7 @@ void Waypoint::sendData()
 	string strdata;
 	stringstream ss;
 
-	ss << "Current: " << mpSensors->mCurrent << "X: " << endl;// << mpOdometry->mX << "Y: " << mpOdometry->mY << "Heading: " << mpOdometry->mHeading << endl;
+	ss << "Current: " << mpSensors->mCurrent << "X: " << mpOdometry->mX << "Y: " << mpOdometry->mY << "Heading: " << mpOdometry->mHeading << endl;
 	strdata = ss.str();
 	cout << strdata << endl;
 	mpServer->sndMessage(strdata);
