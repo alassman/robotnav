@@ -44,6 +44,7 @@ void Waypoint::createWaypoints()
 {
 	char c1[2];
 	string strID = "WP";
+	cout << "Making Waypoints: " << str1 << endl;
 	//str1 = mpServer->rcvMessage();
 	size_t found = str1.find(strID);
   	if (found != string::npos){
