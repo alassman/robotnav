@@ -43,11 +43,8 @@ Waypoint::Waypoint(Odometry *pOdometry, Archer *pSensors, TCPServer *pServer) : 
 void Waypoint::createWaypoints()
 {
 	char c1[2];
-	string str1;
-	string strID = "WP";
-	string strCall = "WP";
-	mpServer->sndMessage(strCall);
-	str1 = mpServer->rcvMessage();
+	//string strID = "WP";
+	//str1 = mpServer->rcvMessage();
 	size_t found = str1.find(strID);
   	if (found != string::npos){
   		stringstream into;
@@ -67,12 +64,21 @@ void Waypoint::createWaypoints()
 	mStatus = STARTING_STS;
 }
 
+void Waypoint::getWaypoints()
+{
+	string str1;
+	string strCall = "WP";
+	mpServer->sndMessage(strCall);
+	str1 = mpServer->rcvMessage();
+	
+}
+
 void Waypoint::sendData()
 {
 	string strdata;
 	stringstream ss;
 
-	ss << "Current: " << mpSensors->mCurrent << "X: " << mpOdometry->mX << "Y: " << mpOdometry->mY << "Heading: " << mpOdometry->mHeading << endl;
+	ss << "Current: " << mpSensors->mCurrent << " X: " << mpOdometry->mX << " Y: " << mpOdometry->mY << " Heading: " << mpOdometry->mHeading << endl;
 	strdata = ss.str();
 	cout << strdata << endl;
 	mpServer->sndMessage(strdata);

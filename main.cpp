@@ -126,6 +126,7 @@ int main()
 			rate -= INC_RATE_RAD_SECOND;
 			break;
 		case ENABLE_CONTROL:
+			control.getWaypoints();
 			control.enable();
 			break;
 		case EXIT:

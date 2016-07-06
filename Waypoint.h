@@ -26,7 +26,7 @@
 #include "Odometry.h"
 #include "TCPServer.h"
 #include "Archer.h"
-
+#include "string.h"
 
 class Waypoint : public Control
 {
@@ -34,8 +34,10 @@ class Waypoint : public Control
 	TCPServer *mpServer;
 	Archer *mpSensors;
 	public :
+		string str1;
 		void sendData();
 		void createWaypoints();
+		void getWaypoints();
 		Waypoint(Odometry *pOdometry, Archer *pSensors, TCPServer *pServer);
 };
 #endif	
