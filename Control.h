@@ -48,7 +48,7 @@ class Control
 public :
 	void enable();
 	void disable();
-	void getTargetSpeedRate(float &rSpeed, float &rRate);
+	virtual void getTargetSpeedRate(float &rSpeed, float &rRate); //changed by MQ
 	virtual void createWaypoints(); //changed by MQ to virtual and made public
 	Control(Odometry *pOdometry);
 	virtual ~Control();

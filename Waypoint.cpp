@@ -83,3 +83,36 @@ void Waypoint::sendData()
 	cout << strdata << endl;
 	mpServer->sndMessage(strdata);
 }
+
+
+void Waypoint::getTargetSpeedRate(float &rSpeed, float &rRate)
+{
+	cout << "CONTROL " << mStatus << endl;
+	switch(mStatus)
+	{
+		case STANBY_STS:
+			//Do not change speed or rate while in this status
+			return;
+		case STARTING_STS:
+			createWaypoints();
+			mStatus = TURNING_STS;
+			break;
+		case TURNING_STS:
+			if(faceTarget()) 
+				mStatus = MOVING_STS;
+			break;
+		case MOVING_STS:
+			if(COMPLETED_WAYPOINT == freeHeading())
+				mStatus = FACING_ZERO_STS;
+			break;
+		case FACING_ZERO_STS:
+			if(faceTarget(0.0))
+			{
+				cout << "Finished commands! ...\n";
+				mStatus = STANBY_STS;
+			}
+			break;
+	}
+	rSpeed = mSpeed;
+	rRate = mRate;
+}

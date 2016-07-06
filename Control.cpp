@@ -23,6 +23,7 @@
 #include <cmath>
 #include <cstring>
 #include "Control.h"
+//#include "Waypoint.h" //Added by MQ
 #include "MathFunctions.h"
 using namespace std;
 
