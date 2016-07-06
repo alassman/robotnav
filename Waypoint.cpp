@@ -43,7 +43,7 @@ Waypoint::Waypoint(Odometry *pOdometry, Archer *pSensors, TCPServer *pServer) : 
 void Waypoint::createWaypoints()
 {
 	char c1[2];
-	//string strID = "WP";
+	string strID = "WP";
 	//str1 = mpServer->rcvMessage();
 	size_t found = str1.find(strID);
   	if (found != string::npos){
