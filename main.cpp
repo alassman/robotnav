@@ -63,8 +63,8 @@ const float INC_RATE_RAD_SECOND = math_functions::deg2rad(10.0); //[rad/sec]
 const float PERIOD = 0.1; //[sec]
 
 // TCP Connection info
-const char serverwp[] = "localhost"; //"35.2.120.213";
-const int portwp = 9999;
+//const char serverwp[] = "localhost"; //"35.2.120.213";
+//const int portwp = 9999;
 const char serverat[] = "localhost";
 const int portat = 9998;
 
@@ -84,10 +84,10 @@ int main()
 	Keyboard user_input;
 
 	//Control setup
-	TCPServer wpServer((char *)serverwp, portwp);
-	Waypoint control(&odometry, &robot, &wpServer);
-	control.createWaypoints();
-	//Control control(&odometry);
+	//TCPServer wpServer((char *)serverwp, portwp);
+	//Waypoint control(&odometry, &robot, &wpServer);
+	//control.createWaypoints();
+	Control control(&odometry);
 
 	//Create and initialize speed variables
 	float speed = 0;
@@ -104,7 +104,7 @@ int main()
 		odometry.updatePosition();
 
 		//odometry.sndMessage();
-		control.sendData();
+		//control.sendData();
 
 		//Define control instructions
 		//User interaction 
