@@ -128,6 +128,7 @@ int main()
 		case EXIT:
 			//odometry.closeConn();
 			aptagServer.closeConn();
+			wpServer.closeConn();
 			quit_program = true;
 		case RESET:
 			odometry.reset();
