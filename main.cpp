@@ -104,7 +104,10 @@ int main()
 		odometry.updatePosition();
 
 		//odometry.sndMessage();
+
+		cout << "Sending Data" << endl;
 		control.sendData();
+		cout << "Data Sent" << endl;
 
 		//Define control instructions
 		//User interaction 

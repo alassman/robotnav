@@ -61,8 +61,9 @@ void TCPServer::sndMessage(string strmes)
     //char str1 [buffsize];    //char line[256];
     if (stream) {
       // 	sprintf(str1, "Current: %d X: %f Y: %f Speed: %f", archSensors->mCurrent, mX, mY, mSpeed);
+      printf("Sending - %s\n", strmes.c_str());
     	stream->send(strmes.c_str(), strmes.size());
-     	//printf("sent - %s\n", str1);
+     	printf("sent - %s\n", strmes.c_str());
       	//len = stream->receive(line, sizeof(line));
       	//line[len] = 0;
       	//printf("received - %s\n", line);
