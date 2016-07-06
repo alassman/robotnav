@@ -59,7 +59,7 @@ void Waypoint::createWaypoints()
 		}
 
 	}
-
+	cout << "WAYPOINTS: " << mpWaypoints[0][X_AXIS] << " " << mpWaypoints[0][Y_AXIS] << endl;
 	//mpWaypoints[0][X_AXIS] = 0.0;
 	//mpWaypoints[0][Y_AXIS] = 0.0;
 	mStatus = STARTING_STS;
