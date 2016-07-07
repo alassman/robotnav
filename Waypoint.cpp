@@ -69,7 +69,7 @@ void Waypoint::createWaypoints()
 
 void Waypoint::getWaypoints()
 {
-	string str1;
+	//string str1;
 	string strCall = "WP";
 	mpServer->sndMessage(strCall);
 	str1 = mpServer->rcvMessage();
