@@ -34,7 +34,7 @@ using namespace std;
 
 Waypoint::Waypoint(Odometry *pOdometry, Archer *pSensors, TCPServer *pServer) : Control(pOdometry)
 {
-	mpOdometry = pOdometry;
+	//mpOdometry = pOdometry;
 	mpSensors = pSensors;
 	mpServer = pServer;
 	mpServer->makeServer();

@@ -30,7 +30,7 @@
 
 class Waypoint : public Control
 {
-	Odometry *mpOdometry;
+	//Odometry *mpOdometry;
 	TCPServer *mpServer;
 	Archer *mpSensors;
 	public :
