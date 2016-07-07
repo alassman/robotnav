@@ -30,11 +30,11 @@ using namespace std;
 //Free heading control constants
 const float DIST_ANGLE_SPEED_GAIN = 0.5; //Distance to target control
 const float CURRENT_SPEED_GAIN = 0.3; //Speed control
-const float DIST_ANGLE_ANGLE_RATE_GAIN = 0.5; //Rate control
-const float ANGLE_RATE_GAIN = 1.5; 
+const float DIST_ANGLE_ANGLE_RATE_GAIN = 2;//0.5; //Rate control
+const float ANGLE_RATE_GAIN = 4;//1.5; 
 
 //Dynamic constants
-const float	MAX_RATE = math_functions::deg2rad(90.0); //[deg/sec]
+const float	MAX_RATE = math_functions::deg2rad(180.0);//90.0); //[deg/sec]
 const float	MAX_SPEED = 200.0; //[mm/sec]
 const float	MIN_SPEED = 100.0; //[mm/sec]
 const float	TARGET_DIST = 100.0; //[mm]
