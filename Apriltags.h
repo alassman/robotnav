@@ -28,7 +28,7 @@
 
 class Apriltags : public Odometry
 {
-	Robot *mpSensors;
+	//Robot *mpSensors;
 	TCPServer *mpServer;//(char* server, int port);
 	protected:
 		int aID;
