@@ -30,11 +30,11 @@ using namespace std;
 //Free heading control constants
 const float DIST_ANGLE_SPEED_GAIN = 0.5; //Distance to target control
 const float CURRENT_SPEED_GAIN = 0.3; //Speed control
-const float DIST_ANGLE_ANGLE_RATE_GAIN = 1;//0.5; //Rate control
-const float ANGLE_RATE_GAIN = 3;//1.5; 
+const float DIST_ANGLE_ANGLE_RATE_GAIN = 0.6;//0.5; //Rate control
+const float ANGLE_RATE_GAIN = 1.7;//1.5; 
 
 //Dynamic constants
-const float	MAX_RATE = math_functions::deg2rad(180.0);//90.0); //[deg/sec]
+const float	MAX_RATE = math_functions::deg2rad(90.0);//90.0); //[deg/sec]
 const float	MAX_SPEED = 200.0; //[mm/sec]
 const float	MIN_SPEED = 100.0; //[mm/sec]
 const float	TARGET_DIST = 100.0; //[mm]
@@ -114,7 +114,7 @@ int Control::freeHeading()
 	if(mSpeed < MIN_SPEED) mSpeed = MIN_SPEED;
 	if(mSpeed > MAX_SPEED) mSpeed = MAX_SPEED;
 	
-	mRate = -DIST_ANGLE_ANGLE_RATE_GAIN * target_dist / speed * sin(target_ang_err); //changed to - by MQ
+	mRate = DIST_ANGLE_ANGLE_RATE_GAIN * target_dist / speed * sin(target_ang_err); //changed to - by MQ
 	if(fabsf(mRate) > MAX_RATE)
 		mRate = (mRate > 0.0) ? MAX_RATE : -MAX_RATE;
 
@@ -150,7 +150,7 @@ bool Control::faceTarget(float targetAngle)
 	}
 	float target_ang_err = - math_functions::unwrap(targetAngle - mpOdometry->mHeading);
 	cout << "FACING Target: " << math_functions::rad2deg(targetAngle) << " Current: " << math_functions::rad2deg(mpOdometry->mHeading) << " Diff: " << math_functions::rad2deg(target_ang_err) << endl;
-	mRate = target_ang_err * ANGLE_RATE_GAIN;
+	mRate = -target_ang_err * ANGLE_RATE_GAIN; //changed to - by MQ
 	
 	if(fabsf(mRate) > MAX_RATE) mRate = (mRate > 0.0) ? MAX_RATE : -MAX_RATE;
 
