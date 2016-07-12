@@ -150,6 +150,7 @@ int CruizCoreGyro::readSensors()
 	hold = read(file_descriptor,data_packet,PACKET_SIZE * 10);
 	if(PACKET_SIZE != hold) {
 		cout << "ERROR: # of bytes actually read(8): " << hold << endl;
+		mRotation = 0;
 		return 0;
 	}
 
