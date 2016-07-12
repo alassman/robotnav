@@ -110,7 +110,7 @@ int Archer::readSensors()
 	
 	//Compute robot average displacement and rotation
 	mDisplacement = (mDisplacementLeft + mDisplacementRight) / 2.0;
-	mRotation = 0;// -(mDisplacementRight - mDisplacementLeft) / mTrack;  //Changed to 0 by MQ
+	mRotation = -(mDisplacementRight - mDisplacementLeft) / mTrack;  //Changed to 0 by MQ
 	
 	cout << "ARCHER ACTUAL SPEED: " << " " << mDisplacementLeft/mEncoderScaleFactor/mPeriod << " " << mDisplacementRight/mEncoderScaleFactor/mPeriod << " " << mDisplacement << " " << math_functions::rad2deg(mRotation) << endl;
 	

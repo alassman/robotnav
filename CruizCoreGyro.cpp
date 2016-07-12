@@ -158,6 +158,7 @@ int CruizCoreGyro::readSensors()
 	if(header != (short)0xFFFF)
 	{
 		cout << "ERROR: HEADER(" << (short)0xFFFF << "): " << header << endl;
+		mRotation = 0;
 		return 0;
 	}
 
@@ -170,6 +171,7 @@ int CruizCoreGyro::readSensors()
 	if(check_sum != (short)(0xFFFF + rate_int + angle_int))
 	{
 		cout<< "ERROR: checksum\n";
+		mRotation = 0;
 		return 0;
 	}
 
