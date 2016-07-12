@@ -46,9 +46,9 @@ void Waypoint::createWaypoints()
 	string strID = "WP";
 	cout << "Making Waypoints: " << str1 << endl;
 	//str1 = mpServer->rcvMessage();
-	//size_t found = str1.find(strID);
+	size_t found = str1.find(strID);
 	//cout << "Found?: " << found << endl;
-  	//if (found != string::npos){
+  	if (found != string::npos){
   		stringstream into;
 		into << str1;
 		into >> c1 >> mWaypointLength;
@@ -60,7 +60,7 @@ void Waypoint::createWaypoints()
 			into >> mpWaypoints[i][0] >> mpWaypoints[i][1];//mpWaypoints[i][X_AXIS] >> mpWaypoints[i][Y_AXIS];
 		}
 
-	//}
+	}
 	cout << "WAYPOINTS: " << mpWaypoints[0][1] << " " << mpWaypoints[0][1] << endl;//[X_AXIS] << " " << mpWaypoints[0][Y_AXIS] << endl;
 	//mpWaypoints[0][X_AXIS] = 0.0;
 	//mpWaypoints[0][Y_AXIS] = 0.0;
