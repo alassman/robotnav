@@ -66,23 +66,23 @@ void Apriltags::updatePosition()
 		{
 			case 0:
 				//mHeading = -1*(3*PI/2 - aroll);
-				mX = 1620 - (ax*cos(-mHeading) - ay*sin(-mHeading)); //May have to flip mX like mY
-				mY = 3340 - (ax*sin(-mHeading) + ay*cos(-mHeading));
+				mX = 1620 - (ax*cos(mHeading) - ay*sin(mHeading)); //May have to flip mX like mY
+				mY = 3340 - (ax*sin(mHeading) + ay*cos(mHeading));
 				break;
 			case 1:
 				//mHeading = -1*(0 - aroll);
-				mX = 3360 - (ax*cos(-mHeading) - ay*sin(-mHeading));
-				mY = 1770 - (ax*sin(-mHeading) + ay*cos(-mHeading));
+				mX = 3360 - (ax*cos(mHeading) - ay*sin(mHeading));
+				mY = 1770 - (ax*sin(mHeading) + ay*cos(mHeading));
 				break;
 			case 2:
 				//mHeading = -1*(PI/2 - aroll);
-				mX = 1750 - (ax*cos(-mHeading) - ay*sin(-mHeading));
-				mY = -20 - (ax*sin(-mHeading) + ay*cos(-mHeading));
+				mX = 1750 - (ax*cos(mHeading) - ay*sin(mHeading));
+				mY = -20 - (ax*sin(mHeading) + ay*cos(mHeading));
 				break;
 			case 3:
 				//mHeading = -1*(PI - aroll);
-				mX = -20 - (ax*cos(-mHeading) - ay*sin(-mHeading));
-				mY = 1620 - (ax*sin(-mHeading) + ay*cos(-mHeading));
+				mX = -20 - (ax*cos(mHeading) - ay*sin(mHeading));
+				mY = 1620 - (ax*sin(mHeading) + ay*cos(mHeading));
 				break;
 		}
 		//mHeading = math_functions::unwrap(mHeading);
