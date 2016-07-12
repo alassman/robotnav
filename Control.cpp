@@ -150,7 +150,7 @@ bool Control::faceTarget(float targetAngle)
 	}
 	float target_ang_err = - math_functions::unwrap(targetAngle - mpOdometry->mHeading);
 	cout << "FACING Target: " << math_functions::rad2deg(targetAngle) << " Current: " << math_functions::rad2deg(mpOdometry->mHeading) << " Diff: " << math_functions::rad2deg(target_ang_err) << endl;
-	mRate = -target_ang_err * ANGLE_RATE_GAIN; //changed to - by MQ
+	mRate = target_ang_err * ANGLE_RATE_GAIN; //changed to - by MQ
 	
 	if(fabsf(mRate) > MAX_RATE) mRate = (mRate > 0.0) ? MAX_RATE : -MAX_RATE;
 
