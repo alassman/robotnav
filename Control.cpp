@@ -114,7 +114,7 @@ int Control::freeHeading()
 	if(mSpeed < MIN_SPEED) mSpeed = MIN_SPEED;
 	if(mSpeed > MAX_SPEED) mSpeed = MAX_SPEED;
 	
-	mRate = DIST_ANGLE_ANGLE_RATE_GAIN * target_dist / speed * sin(target_ang_err); //changed to - by MQ
+	mRate = -DIST_ANGLE_ANGLE_RATE_GAIN * target_dist / speed * sin(target_ang_err); //changed to - by MQ
 	if(fabsf(mRate) > MAX_RATE)
 		mRate = (mRate > 0.0) ? MAX_RATE : -MAX_RATE;
 
