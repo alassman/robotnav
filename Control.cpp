@@ -28,8 +28,8 @@
 using namespace std;
 
 //Free heading control constants
-const float DIST_ANGLE_SPEED_GAIN = 0.5; //Distance to target control
-const float CURRENT_SPEED_GAIN = 0.3; //Speed control
+const float DIST_ANGLE_SPEED_GAIN = 0.3;//0.5; //Distance to target control
+const float CURRENT_SPEED_GAIN = 0.2;//0.3; //Speed control
 const float DIST_ANGLE_ANGLE_RATE_GAIN = 0.6;//0.5; //Rate control
 const float ANGLE_RATE_GAIN = 1.7;//1.5; 
 
