@@ -44,6 +44,7 @@ Apriltags::Apriltags(Robot *pSensors, TCPServer *pServer) : Odometry(pSensors)
 void Apriltags::updatePosition()
 {
 	Odometry::updatePosition();
+	int yOff = 3340;
 	char c1[2];
 	char c2;
 	char c3;
@@ -61,28 +62,29 @@ void Apriltags::updatePosition()
   		ax = 1000*ax;
     	ay = 1000*ay;
     	aroll = -1*aroll;
+
 	
 		switch(aID)
 		{
 			case 0:
 				//mHeading = -1*(3*PI/2 - aroll);
-				mX = 1620 - (ax*cos(mHeading) - ay*sin(mHeading)); //May have to flip mX like mY
-				mY = (ax*sin(mHeading) + ay*cos(mHeading)) - 3340;
+				mX = 1620 - (ax*cos(-mHeading) - ay*sin(-mHeading)); //May have to flip mX like mY
+				mY = -1*(0 - (ax*sin(-mHeading) + ay*cos(-mHeading))) - yOff;
 				break;
 			case 1:
 				//mHeading = -1*(0 - aroll);
-				mX = 3360 - (ax*cos(mHeading) - ay*sin(mHeading));
-				mY = (ax*sin(mHeading) + ay*cos(mHeading)) - 1770;
+				mX = 3360 - (ax*cos(-mHeading) - ay*sin(-mHeading));
+				mY = -1*(1580 - (ax*sin(-mHeading) + ay*cos(-mHeading))) - yOff;
 				break;
 			case 2:
 				//mHeading = -1*(PI/2 - aroll);
-				mX = 1750 - (ax*cos(mHeading) - ay*sin(mHeading));
-				mY = (ax*sin(mHeading) + ay*cos(mHeading)) + 20;
+				mX = 1750 - (ax*cos(-mHeading) - ay*sin(-mHeading));
+				mY = -1*(3340 - (ax*sin(-mHeading) + ay*cos(-mHeading))) - yOff;
 				break;
 			case 3:
 				//mHeading = -1*(PI - aroll);
-				mX = -20 - (ax*cos(mHeading) - ay*sin(mHeading));
-				mY = (ax*sin(mHeading) + ay*cos(mHeading)) - 1620;
+				mX = 0 - (ax*cos(-mHeading) - ay*sin(-mHeading));
+				mY = -1*(1740 - (ax*sin(-mHeading) + ay*cos(-mHeading))) - yOff;
 				break;
 		}
 		//mHeading = math_functions::unwrap(mHeading);
