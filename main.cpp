@@ -76,10 +76,10 @@ int main()
 	//Only one robot can be created at the time
 	CruizCoreGyro robot(PERIOD, TRACK, ENCODER_SCALE_FACTOR, COUNTS_REVOLUTION, (char *)GYRO_PORT); //Gyro Enhanced
 
-	Odometry odometry(&robot); 
+	//Odometry odometry(&robot); 
 	//TCPComm odometry(&robot, (char *)server, port);
-	//TCPServer aptagServer((char *)serverat, portat);
-	//Apriltags odometry(&robot, &aptagServer);
+	TCPServer aptagServer((char *)serverat, portat);
+	Apriltags odometry(&robot, &aptagServer);
 
 	Keyboard user_input;
 
@@ -131,7 +131,7 @@ int main()
 			break;
 		case EXIT:
 			//odometry.closeConn();
-			//aptagServer.closeConn();
+			aptagServer.closeConn();
 			wpServer.closeConn();
 			quit_program = true;
 		case RESET:
