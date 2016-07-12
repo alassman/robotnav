@@ -135,7 +135,7 @@ int Control::freeHeading()
 void Control::cmpTargetDirDist(float &rRelativeDistance, float &rRelativeAngle)
 {
 	rRelativeDistance = sqrt((mpWaypoints[mpWaypointIndex][X_AXIS] - mpOdometry->mX) * (mpWaypoints[mpWaypointIndex][X_AXIS] - mpOdometry->mX) + (mpWaypoints[mpWaypointIndex][Y_AXIS] - mpOdometry->mY) * (mpWaypoints[mpWaypointIndex][Y_AXIS] - mpOdometry->mY));
-	rRelativeAngle = atan2(mpWaypoints[mpWaypointIndex][Y_AXIS] - mpOdometry->mY, mpWaypoints[mpWaypointIndex][X_AXIS] - mpOdometry->mX);
+	rRelativeAngle = -1*atan2(mpWaypoints[mpWaypointIndex][Y_AXIS] - mpOdometry->mY, mpWaypoints[mpWaypointIndex][X_AXIS] - mpOdometry->mX); // -1* by MQ
 }
 
 bool Control::faceTarget(float targetAngle)
