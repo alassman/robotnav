@@ -53,7 +53,7 @@ void Apriltags::updatePosition()
 	//TCP server
 	str1 = mpServer->rcvMessage();
 	size_t found = str1.find(strID);
-  	if (found != string::npos){
+  	if ((found != string::npos) && (mRate == 0) && (mSpeed == 0)){
   		stringstream into;
 		into << str1;
 		into >> c1 >> aID >> c2 >> ax >> c3 >> ay >> c4 >> aroll;
@@ -77,7 +77,7 @@ void Apriltags::updatePosition()
 			case 2:
 				//mHeading = -1*(PI/2 - aroll);
 				mX = 1750 - (ax*cos(-mHeading) - ay*sin(-mHeading));
-				mY = 3340 - ax*sin(-mHeading) + ay*cos(-mHeading);
+				mY = 3340 - (ax*sin(-mHeading) + ay*cos(-mHeading));
 				break;
 			case 3:
 				//mHeading = -1*(PI - aroll);
