@@ -35,8 +35,8 @@ const float ANGLE_RATE_GAIN = 1.7;//1.5;
 
 //Dynamic constants
 const float	MAX_RATE = math_functions::deg2rad(90.0);//90.0); //[deg/sec]
-const float	MAX_SPEED = 200.0; //[mm/sec]
-const float	MIN_SPEED = 100.0; //[mm/sec]
+const float	MAX_SPEED = 150.0;//200.0; //[mm/sec]
+const float	MIN_SPEED = 75.0;//100.0; //[mm/sec]
 const float	TARGET_DIST = 200.0; //[mm] //100.0
 const float	MIN_TARGET_DIST = 100.0;  //[mm] //50.0
 const float	TARGET_ANGLE = math_functions::deg2rad(5.0); //[deg]

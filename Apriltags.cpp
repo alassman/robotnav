@@ -65,27 +65,27 @@ void Apriltags::updatePosition()
 		switch(aID)
 		{
 			case 0:
-				mHeading = -1*(3*PI/2 - aroll);
+				//mHeading = -1*(3*PI/2 - aroll);
 				mX = 1620 - (ax*cos(-mHeading) - ay*sin(-mHeading)); //May have to flip mX like mY
 				mY = 0 - (ax*sin(-mHeading) + ay*cos(-mHeading));
 				break;
 			case 1:
-				mHeading = -1*(0 - aroll);
+				//mHeading = -1*(0 - aroll);
 				mX = 3360 - (ax*cos(-mHeading) - ay*sin(-mHeading));
 				mY = 1580 - (ax*sin(-mHeading) + ay*cos(-mHeading));
 				break;
 			case 2:
-				mHeading = -1*(PI/2 - aroll);
+				//mHeading = -1*(PI/2 - aroll);
 				mX = 1750 - (ax*cos(-mHeading) - ay*sin(-mHeading));
 				mY = 3340 - ax*sin(-mHeading) + ay*cos(-mHeading);
 				break;
 			case 3:
-				mHeading = -1*(PI - aroll);
+				//mHeading = -1*(PI - aroll);
 				mX = 0 - (ax*cos(-mHeading) - ay*sin(-mHeading));
 				mY = 1740 - (ax*sin(-mHeading) + ay*cos(-mHeading));
 				break;
 		}
-		mHeading = math_functions::unwrap(mHeading);
+		//mHeading = math_functions::unwrap(mHeading);
 	//	cout << "Apriltag ID:" << pID << " X: " << ax << " Y: " << ay << " Roll: " << aroll << endl;
 	
 	cout << "POSITION " << "Aptag Update " << " X: " <<mX << " Y: " << mY << " heading: " << math_functions::rad2deg(mHeading) << " speed: " << mSpeed << " rate: " << math_functions::rad2deg(mRate) << endl;
