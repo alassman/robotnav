@@ -34,7 +34,7 @@ class Waypoint : public Control
 	TCPServer *mpServer;
 	Archer *mpSensors;
 	public :
-		string str2;
+		//string str2;
 		void sendData();
 		void createWaypoints();
 		void getWaypoints();
