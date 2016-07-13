@@ -44,8 +44,8 @@ void Waypoint::createWaypoints()
 {
 	char c1[2];
 	//string strID = "WP";
-	mpWaypoints[0][0] = 1000.0;
-	mpWaypoints[0][1] = 1000.0;
+	//mpWaypoints[0][0] = 1000.0;
+	//mpWaypoints[0][1] = 1000.0;
 	//cout << "Making Waypoints: " << str1 << endl;
 	//cout << str2 << endl;
 	//str1 = mpServer->rcvMessage();
@@ -70,6 +70,12 @@ void Waypoint::createWaypoints()
 			into >> mpWaypoints[i][0] >> mpWaypoints[i][1];//mpWaypoints[i][X_AXIS] >> mpWaypoints[i][Y_AXIS];
 		}
 
+	}
+	else{
+		mpWaypoints = new float*[1];
+		mpWaypoints[0] = new float[2];//[Y_AXIS + 1];
+		mpWaypoints[0][0] = 1000.0;
+		mpWaypoints[0][1] = 1000.0;
 	}
 	cout << "WAYPOINTS: " << mpWaypoints[0][0] << " " << mpWaypoints[0][1] << endl;//[X_AXIS] << " " << mpWaypoints[0][Y_AXIS] << endl;
 	//mpWaypoints[0][X_AXIS] = 0.0;
