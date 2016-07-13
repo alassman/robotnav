@@ -65,8 +65,9 @@ void Waypoint::createWaypoints()
 		cout << "WPLen?: " << mWaypointLength << endl;
 		mpWaypoints = new float*[mWaypointLength];
 		mpWaypoints[0] = new float[2];//[Y_AXIS + 1];
-		
+		int i = 0;
 		while (into >> mpWaypoints[i][0] >> mpWaypoints[i][1]){
+			i++;
 		}
 
 		//for (int i = 0; i < mWaypointLength; i++){
