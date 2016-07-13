@@ -66,8 +66,9 @@ void Waypoint::createWaypoints()
 		mpWaypoints = new float*[mWaypointLength];
 		mpWaypoints[0] = new float[2];//[Y_AXIS + 1];
 		
-		for (int i = 0; i < mWaypointLength; i = i + 1){
+		for (int i = 0; i < mWaypointLength-1; i = i + 1){
 			into >> mpWaypoints[i][0] >> mpWaypoints[i][1];//mpWaypoints[i][X_AXIS] >> mpWaypoints[i][Y_AXIS];
+			cout << mpWaypoints[i][0] << " " << mpWaypoints[i][1] << endl;
 		}
 
 	}
