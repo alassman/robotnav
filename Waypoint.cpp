@@ -53,6 +53,7 @@ void Waypoint::createWaypoints()
 	//cout << "Found?: " << found << endl;
 	string strCall = "WP";
 	string str2;
+	cout << strCall << endl;
 	mpServer->sndMessage(strCall);
 	usleep(100000);
 	str2 = mpServer->rcvMessage();
