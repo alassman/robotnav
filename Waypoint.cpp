@@ -100,7 +100,7 @@ void Waypoint::sendData()
 	mpServer->sndMessage(strdata);
 }
 
-
+/*
 void Waypoint::getTargetSpeedRate(float &rSpeed, float &rRate)
 {
 	cout << "CONTROL " << mStatus << endl;
@@ -130,5 +130,5 @@ void Waypoint::getTargetSpeedRate(float &rSpeed, float &rRate)
 			break;
 	}
 	rSpeed = mSpeed;
-	rRate = mRate;
-}
+	rRate = mRate; 
+} */

@@ -68,6 +68,7 @@ void Control::getTargetSpeedRate(float &rSpeed, float &rRate)
 			//Do not change speed or rate while in this status
 			return;
 		case STARTING_STS:
+			cout << "Creating Waypoints" << endl;
 			createWaypoints();
 			mStatus = TURNING_STS;
 			break;

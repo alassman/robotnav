@@ -38,7 +38,7 @@ class Waypoint : public Control
 		void sendData();
 		void createWaypoints();
 		void getWaypoints();
-		void getTargetSpeedRate(float &rSpeed, float &rRate);
+		//void getTargetSpeedRate(float &rSpeed, float &rRate);
 		Waypoint(Odometry *pOdometry, Archer *pSensors, TCPServer *pServer);
 };
 #endif	
