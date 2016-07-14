@@ -59,7 +59,7 @@ void Apriltags::updatePosition()
 		into << str1;
 		into >> c1 >> aID >> c2 >> ax >> c3 >> ay >> c4 >> aroll;
 		cout << "ATAGS: " << c1 << aID << c2 << ax << c3 << ay << c4 << aroll << endl;
-  		ax = 1000*ax;
+  		ax = 1000*ax-150;
     	ay = 1000*ay;
     	aroll = -1*aroll;
 
