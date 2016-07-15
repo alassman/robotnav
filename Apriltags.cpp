@@ -54,7 +54,7 @@ void Apriltags::updatePosition()
 	//TCP server
 	str1 = mpServer->rcvMessage();
 	size_t found = str1.find(strID);
-  	if ((found != string::npos) && (mRate == 0) && (mSpeed == 0)){
+  	if ((found != string::npos)){//&& (mRate == 0) && (mSpeed == 0)){
   		stringstream into;
 		into << str1;
 		into >> c1 >> aID >> c2 >> ax >> c3 >> ay >> c4 >> aroll;
