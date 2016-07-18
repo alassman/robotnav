@@ -78,15 +78,17 @@ void Control::getTargetSpeedRate(float &rSpeed, float &rRate)
 			break;
 		case MOVING_STS:
 			if(COMPLETED_WAYPOINT == freeHeading())
-				mStatus = FACING_ZERO_STS;
+				mStatus = STANBY_STS;
+			else if(FOUND_NEW_WAYPOINT == freeHeading())
+				mStatus = TURNING_STS;
 			break;
-		case FACING_ZERO_STS:
+/*		case FACING_ZERO_STS:
 			if(faceTarget(0.0))
 			{
 				cout << "Finished commands! ...\n";
 				mStatus = STANBY_STS;
 			}
-			break;
+			break; */
 	}
 	rSpeed = mSpeed;
 	rRate = mRate;
