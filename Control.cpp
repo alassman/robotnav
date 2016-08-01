@@ -32,6 +32,7 @@ const float DIST_ANGLE_SPEED_GAIN = 0.5;//0.3;//0.5; //Distance to target contro
 const float CURRENT_SPEED_GAIN = 0.3;//0.2;//0.3; //Speed control
 const float DIST_ANGLE_ANGLE_RATE_GAIN = 0.3;//0.6;//0.5; //Rate control
 const float ANGLE_RATE_GAIN = 0.8;//1.7;//1.5; 
+const float K_D = 8;
 
 //Dynamic constants
 const float	MAX_RATE = math_functions::deg2rad(90.0);//90.0); //[deg/sec]
@@ -152,8 +153,9 @@ bool Control::faceTarget(float targetAngle)
 		cmpTargetDirDist(target_dist, targetAngle);
 	}
 	float target_ang_err = - math_functions::unwrap(targetAngle - mpOdometry->mHeading);
+	float d_target_ang_err  = target_ang_err - s_last_target_ang_err;
 	cout << "FACING Target: " << math_functions::rad2deg(targetAngle) << " Current: " << math_functions::rad2deg(mpOdometry->mHeading) << " Diff: " << math_functions::rad2deg(target_ang_err) << endl;
-	mRate = target_ang_err * ANGLE_RATE_GAIN; //changed to - by MQ
+	mRate = target_ang_err * ANGLE_RATE_GAIN + d_target_ang_err * K_D; //changed to - by MQ
 	
 	if(fabsf(mRate) > MAX_RATE) mRate = (mRate > 0.0) ? MAX_RATE : -MAX_RATE;
 
