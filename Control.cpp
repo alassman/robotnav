@@ -32,7 +32,7 @@ const float DIST_ANGLE_SPEED_GAIN = 0.5;//0.3;//0.5; //Distance to target contro
 const float CURRENT_SPEED_GAIN = 0.3;//0.2;//0.3; //Speed control
 const float DIST_ANGLE_ANGLE_RATE_GAIN = 0.3;//0.6;//0.5; //Rate control
 const float ANGLE_RATE_GAIN = 1.6;//1.7;//1.5; 
-const float K_D = 16;
+const float K_D = 10;
 const float K_D2 = 0;
 const float K_I = 0.1;
 const float K_I2 = 0.1;
@@ -81,9 +81,10 @@ void Control::getTargetSpeedRate(float &rSpeed, float &rRate)
 				mStatus = MOVING_STS;
 			break;
 		case MOVING_STS:
-			if(COMPLETED_WAYPOINT == freeHeading())
+			int C_STATUS = freeHeading
+			if(COMPLETED_WAYPOINT == C_STATUS)
 				mStatus = STANBY_STS;
-			else if(FOUND_NEW_WAYPOINT == freeHeading())
+			else if(FOUND_NEW_WAYPOINT == C_STATUS)
 				mStatus = TURNING_STS;
 			break;
 /*		case FACING_ZERO_STS:
