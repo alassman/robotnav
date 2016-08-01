@@ -33,6 +33,7 @@ const float CURRENT_SPEED_GAIN = 0.3;//0.2;//0.3; //Speed control
 const float DIST_ANGLE_ANGLE_RATE_GAIN = 0.3;//0.6;//0.5; //Rate control
 const float ANGLE_RATE_GAIN = 1.6;//1.7;//1.5; 
 const float K_D = 16;
+const float K_D2 = 8;
 
 //Dynamic constants
 const float	MAX_RATE = math_functions::deg2rad(90.0);//90.0); //[deg/sec]
@@ -119,7 +120,8 @@ int Control::freeHeading()
 	if(mSpeed < MIN_SPEED) mSpeed = MIN_SPEED;
 	if(mSpeed > MAX_SPEED) mSpeed = MAX_SPEED;
 	
-	mRate = DIST_ANGLE_ANGLE_RATE_GAIN * target_dist / speed * sin(target_ang_err) + d_target_ang_err * K_D; //changed to - by MQ
+	//mRate = DIST_ANGLE_ANGLE_RATE_GAIN * target_dist / speed * sin(target_ang_err) + d_target_ang_err * K_D2; //changed to - by MQ
+	mRate = target_ang_err * ANGLE_RATE_GAIN + d_target_ang_err2 * K_D2; //changed to - by MQ
 	if(fabsf(mRate) > MAX_RATE)
 		mRate = (mRate > 0.0) ? MAX_RATE : -MAX_RATE;
 
