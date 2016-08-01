@@ -81,7 +81,7 @@ void Control::getTargetSpeedRate(float &rSpeed, float &rRate)
 				mStatus = MOVING_STS;
 			break;
 		case MOVING_STS:
-			int C_STATUS = freeHeading
+			int C_STATUS = freeHeading();
 			if(COMPLETED_WAYPOINT == C_STATUS)
 				mStatus = STANBY_STS;
 			else if(FOUND_NEW_WAYPOINT == C_STATUS)
