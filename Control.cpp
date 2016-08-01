@@ -33,7 +33,9 @@ const float CURRENT_SPEED_GAIN = 0.3;//0.2;//0.3; //Speed control
 const float DIST_ANGLE_ANGLE_RATE_GAIN = 0.3;//0.6;//0.5; //Rate control
 const float ANGLE_RATE_GAIN = 1.6;//1.7;//1.5; 
 const float K_D = 16;
-const float K_D2 = 8;
+const float K_D2 = 0;
+const float K_I = 0.1;
+const float K_I2 = 0.1;
 
 //Dynamic constants
 const float	MAX_RATE = math_functions::deg2rad(90.0);//90.0); //[deg/sec]
@@ -101,6 +103,7 @@ int Control::freeHeading()
 {
 	static float s_last_dist = TARGET_ANGLE;
 	static float s_last_target_ang_err2 = 0.0;
+	static float target_ang_err_int2 = 0;
 	if(mpWaypointIndex >= mWaypointLength)
 		return COMPLETED_WAYPOINT;
 
@@ -113,6 +116,7 @@ int Control::freeHeading()
 	float speed = mpOdometry->mSpeed;
 	float accel = DIST_ANGLE_SPEED_GAIN * target_dist * cos(target_ang_err) - CURRENT_SPEED_GAIN * speed;
 	float d_target_ang_err  = target_ang_err - s_last_target_ang_err2;
+	target_ang_err_int2 += target_ang_err;
 	
 	cout << "WPT: " << mpWaypoints[mpWaypointIndex][X_AXIS] << " " << mpWaypoints[mpWaypointIndex][Y_AXIS] << " " << math_functions::rad2deg(target_ang) << " " << math_functions::rad2deg(target_ang_err) << " " << mpWaypointIndex << " " << mWaypointLength << endl;
 	
@@ -121,7 +125,7 @@ int Control::freeHeading()
 	if(mSpeed > MAX_SPEED) mSpeed = MAX_SPEED;
 	
 	//mRate = DIST_ANGLE_ANGLE_RATE_GAIN * target_dist / speed * sin(target_ang_err) + d_target_ang_err * K_D2; //changed to - by MQ
-	mRate = target_ang_err * ANGLE_RATE_GAIN + d_target_ang_err * K_D2; //changed to - by MQ
+	mRate = target_ang_err * ANGLE_RATE_GAIN + d_target_ang_err * K_D2 + target_ang_err_int2 * K_I2; //changed to - by MQ
 	if(fabsf(mRate) > MAX_RATE)
 		mRate = (mRate > 0.0) ? MAX_RATE : -MAX_RATE;
 
@@ -148,6 +152,7 @@ void Control::cmpTargetDirDist(float &rRelativeDistance, float &rRelativeAngle)
 bool Control::faceTarget(float targetAngle)
 {
 	static float s_last_target_ang_err = 0.0;
+	static float target_ang_err_int = 0;
 	float target_dist;
 	//Impossible condition, is true when no argument is passed, in that case make the robot face the next WP
 	if(targetAngle == FACE_NEXT_WAYPOINT)
@@ -157,8 +162,9 @@ bool Control::faceTarget(float targetAngle)
 	}
 	float target_ang_err = - math_functions::unwrap(targetAngle - mpOdometry->mHeading);
 	float d_target_ang_err  = target_ang_err - s_last_target_ang_err;
+	target_ang_err_int += target_ang_err;
 	cout << "FACING Target: " << math_functions::rad2deg(targetAngle) << " Current: " << math_functions::rad2deg(mpOdometry->mHeading) << " Diff: " << math_functions::rad2deg(target_ang_err) << endl;
-	mRate = target_ang_err * ANGLE_RATE_GAIN + d_target_ang_err * K_D; //changed to - by MQ
+	mRate = target_ang_err * ANGLE_RATE_GAIN + d_target_ang_err * K_D + target_ang_err_int * K_I; //changed to - by MQ
 	
 	if(fabsf(mRate) > MAX_RATE) mRate = (mRate > 0.0) ? MAX_RATE : -MAX_RATE;
 
