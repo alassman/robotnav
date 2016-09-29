@@ -23,22 +23,27 @@
 #include <cmath>
 #include <cstring>
 #include "Control.h"
+//#include "Waypoint.h" //Added by MQ
 #include "MathFunctions.h"
 using namespace std;
 
 //Free heading control constants
-const float DIST_ANGLE_SPEED_GAIN = 0.5; //Distance to target control
-const float CURRENT_SPEED_GAIN = 0.3; //Speed control
-const float DIST_ANGLE_ANGLE_RATE_GAIN = 0.5; //Rate control
-const float ANGLE_RATE_GAIN = 1.5; 
+const float DIST_ANGLE_SPEED_GAIN = 0.5;//0.3;//0.5; //Distance to target control
+const float CURRENT_SPEED_GAIN = 0.3;//0.2;//0.3; //Speed control
+const float DIST_ANGLE_ANGLE_RATE_GAIN = 0.3;//0.6;//0.5; //Rate control
+const float ANGLE_RATE_GAIN = 1.6;//1.7;//1.5; 
+const float K_D = 10;
+const float K_D2 = 0;
+const float K_I = 0.1;
+const float K_I2 = 0.1;
 
 //Dynamic constants
-const float	MAX_RATE = math_functions::deg2rad(90.0); //[deg/sec]
-const float	MAX_SPEED = 200.0; //[mm/sec]
-const float	MIN_SPEED = 100.0; //[mm/sec]
-const float	TARGET_DIST = 100.0; //[mm]
-const float	MIN_TARGET_DIST = 50.0;  //[mm]
-const float	TARGET_ANGLE = math_functions::deg2rad(5.0); //[deg]
+const float	MAX_RATE = math_functions::deg2rad(90.0);//90.0); //[deg/sec]
+const float	MAX_SPEED = 170.0;//150.0;//200.0; //[mm/sec]
+const float	MIN_SPEED = 0;//149.0;//100.0; //[mm/sec]
+const float	TARGET_DIST = 250.0;//200.0; //[mm] //100.0
+const float	MIN_TARGET_DIST = 250.0;//100.0;  //[mm] //50.0
+const float	TARGET_ANGLE = math_functions::deg2rad(7.0); //[deg]
 const float	MIN_TARGET_ANGLE = TARGET_ANGLE / 2.0; //[deg]
 
 Control::Control(Odometry *pOdometry)
@@ -67,6 +72,7 @@ void Control::getTargetSpeedRate(float &rSpeed, float &rRate)
 			//Do not change speed or rate while in this status
 			return;
 		case STARTING_STS:
+			cout << "Creating Waypoints" << endl;
 			createWaypoints();
 			mStatus = TURNING_STS;
 			break;
@@ -75,16 +81,19 @@ void Control::getTargetSpeedRate(float &rSpeed, float &rRate)
 				mStatus = MOVING_STS;
 			break;
 		case MOVING_STS:
-			if(COMPLETED_WAYPOINT == freeHeading())
-				mStatus = FACING_ZERO_STS;
+			int C_STATUS = freeHeading();
+			if(COMPLETED_WAYPOINT == C_STATUS)
+				mStatus = STANBY_STS;
+			else if(FOUND_NEW_WAYPOINT == C_STATUS)
+				mStatus = TURNING_STS;
 			break;
-		case FACING_ZERO_STS:
+/*		case FACING_ZERO_STS:
 			if(faceTarget(0.0))
 			{
 				cout << "Finished commands! ...\n";
 				mStatus = STANBY_STS;
 			}
-			break;
+			break; */
 	}
 	rSpeed = mSpeed;
 	rRate = mRate;
@@ -94,7 +103,8 @@ void Control::getTargetSpeedRate(float &rSpeed, float &rRate)
 int Control::freeHeading()
 {
 	static float s_last_dist = TARGET_ANGLE;
-	
+	static float s_last_target_ang_err2 = 0.0;
+	static float target_ang_err_int2 = 0;
 	if(mpWaypointIndex >= mWaypointLength)
 		return COMPLETED_WAYPOINT;
 
@@ -106,14 +116,17 @@ int Control::freeHeading()
 	float target_ang_err = - math_functions::unwrap(target_ang - mpOdometry->mHeading);
 	float speed = mpOdometry->mSpeed;
 	float accel = DIST_ANGLE_SPEED_GAIN * target_dist * cos(target_ang_err) - CURRENT_SPEED_GAIN * speed;
-
+	float d_target_ang_err  = target_ang_err - s_last_target_ang_err2;
+	target_ang_err_int2 += target_ang_err;
+	
 	cout << "WPT: " << mpWaypoints[mpWaypointIndex][X_AXIS] << " " << mpWaypoints[mpWaypointIndex][Y_AXIS] << " " << math_functions::rad2deg(target_ang) << " " << math_functions::rad2deg(target_ang_err) << " " << mpWaypointIndex << " " << mWaypointLength << endl;
 	
 	mSpeed = ((speed < MIN_SPEED) ? MIN_SPEED : speed) + accel * mPeriod;
 	if(mSpeed < MIN_SPEED) mSpeed = MIN_SPEED;
 	if(mSpeed > MAX_SPEED) mSpeed = MAX_SPEED;
 	
-	mRate = DIST_ANGLE_ANGLE_RATE_GAIN * target_dist / speed * sin(target_ang_err);
+	//mRate = DIST_ANGLE_ANGLE_RATE_GAIN * target_dist / speed * sin(target_ang_err) + d_target_ang_err * K_D2; //changed to - by MQ
+	mRate = 0*( target_ang_err * ANGLE_RATE_GAIN + d_target_ang_err * K_D2 + target_ang_err_int2 * K_I2); //changed to - by MQ
 	if(fabsf(mRate) > MAX_RATE)
 		mRate = (mRate > 0.0) ? MAX_RATE : -MAX_RATE;
 
@@ -134,12 +147,13 @@ int Control::freeHeading()
 void Control::cmpTargetDirDist(float &rRelativeDistance, float &rRelativeAngle)
 {
 	rRelativeDistance = sqrt((mpWaypoints[mpWaypointIndex][X_AXIS] - mpOdometry->mX) * (mpWaypoints[mpWaypointIndex][X_AXIS] - mpOdometry->mX) + (mpWaypoints[mpWaypointIndex][Y_AXIS] - mpOdometry->mY) * (mpWaypoints[mpWaypointIndex][Y_AXIS] - mpOdometry->mY));
-	rRelativeAngle = atan2(mpWaypoints[mpWaypointIndex][Y_AXIS] - mpOdometry->mY, mpWaypoints[mpWaypointIndex][X_AXIS] - mpOdometry->mX);
+	rRelativeAngle = atan2(mpWaypoints[mpWaypointIndex][Y_AXIS] - mpOdometry->mY, mpWaypoints[mpWaypointIndex][X_AXIS] - mpOdometry->mX); // -1* by MQ
 }
 
 bool Control::faceTarget(float targetAngle)
 {
 	static float s_last_target_ang_err = 0.0;
+	static float target_ang_err_int = 0;
 	float target_dist;
 	//Impossible condition, is true when no argument is passed, in that case make the robot face the next WP
 	if(targetAngle == FACE_NEXT_WAYPOINT)
@@ -148,8 +162,10 @@ bool Control::faceTarget(float targetAngle)
 		cmpTargetDirDist(target_dist, targetAngle);
 	}
 	float target_ang_err = - math_functions::unwrap(targetAngle - mpOdometry->mHeading);
+	float d_target_ang_err  = target_ang_err - s_last_target_ang_err;
+	target_ang_err_int += target_ang_err;
 	cout << "FACING Target: " << math_functions::rad2deg(targetAngle) << " Current: " << math_functions::rad2deg(mpOdometry->mHeading) << " Diff: " << math_functions::rad2deg(target_ang_err) << endl;
-	mRate = target_ang_err * ANGLE_RATE_GAIN;
+	mRate = target_ang_err * ANGLE_RATE_GAIN + d_target_ang_err * K_D + target_ang_err_int * K_I; //changed to - by MQ
 	
 	if(fabsf(mRate) > MAX_RATE) mRate = (mRate > 0.0) ? MAX_RATE : -MAX_RATE;
 

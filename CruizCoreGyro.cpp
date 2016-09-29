@@ -150,6 +150,7 @@ int CruizCoreGyro::readSensors()
 	hold = read(file_descriptor,data_packet,PACKET_SIZE * 10);
 	if(PACKET_SIZE != hold) {
 		cout << "ERROR: # of bytes actually read(8): " << hold << endl;
+		mRotation = 0;
 		return 0;
 	}
 
@@ -158,6 +159,7 @@ int CruizCoreGyro::readSensors()
 	if(header != (short)0xFFFF)
 	{
 		cout << "ERROR: HEADER(" << (short)0xFFFF << "): " << header << endl;
+		mRotation = 0;
 		return 0;
 	}
 
@@ -170,6 +172,7 @@ int CruizCoreGyro::readSensors()
 	if(check_sum != (short)(0xFFFF + rate_int + angle_int))
 	{
 		cout<< "ERROR: checksum\n";
+		mRotation = 0;
 		return 0;
 	}
 

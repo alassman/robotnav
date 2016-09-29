@@ -30,6 +30,16 @@
 //#include "Buttons.h"
 #include "MathFunctions.h"
 
+//TCP
+#include <stdio.h>
+#include <stdlib.h>
+#include <string>
+#include <sstream>
+//#include "tcpconnector.h"
+#include "TCPComm.h"
+#include "Apriltags.h"
+#include "Waypoint.h"
+
 using namespace std;
 
 //Left and right motor ports, as shown in EV3 brick labels
@@ -52,6 +62,12 @@ const float INC_SPEED_MM_SECOND = 100.0; //[mm/sec]
 const float INC_RATE_RAD_SECOND = math_functions::deg2rad(10.0); //[rad/sec]
 const float PERIOD = 0.1; //[sec]
 
+// TCP Connection info
+const char serverwp[] = "localhost"; //"35.2.120.213";
+const int portwp = 9999;
+const char serverat[] = "localhost";
+const int portat = 9998;
+
 int main()
 {
     //Only one robot can be created at the time
@@ -59,10 +75,20 @@ int main()
     
 	//Only one robot can be created at the time
 	CruizCoreGyro robot(PERIOD, TRACK, ENCODER_SCALE_FACTOR, COUNTS_REVOLUTION, (char *)GYRO_PORT); //Gyro Enhanced
-	Odometry odometry(&robot); 
+
+	//Odometry odometry(&robot); 
+	//TCPComm odometry(&robot, (char *)server, port);
+	TCPServer aptagServer((char *)serverat, portat);
+	Apriltags odometry(&robot, &aptagServer);
+
 	Keyboard user_input;
-	Control control(&odometry);
-	
+
+	//Control setup
+	TCPServer wpServer((char *)serverwp, portwp);
+	Waypoint control(&odometry, &robot, &wpServer);
+	//control.createWaypoints();
+	//Control control(&odometry);
+
 	//Create and initialize speed variables
 	float speed = 0;
 	float rate = 0;
@@ -76,6 +102,12 @@ int main()
 
 		//Compute position
 		odometry.updatePosition();
+
+		//odometry.sndMessage();
+
+		cout << "Sending Data" << endl;
+		control.sendData();
+		cout << "Data Sent" << endl;
 
 		//Define control instructions
 		//User interaction 
@@ -94,9 +126,13 @@ int main()
 			rate -= INC_RATE_RAD_SECOND;
 			break;
 		case ENABLE_CONTROL:
+			//control.getWaypoints();
 			control.enable();
 			break;
 		case EXIT:
+			//odometry.closeConn();
+			aptagServer.closeConn();
+			wpServer.closeConn();
 			quit_program = true;
 		case RESET:
 			odometry.reset();

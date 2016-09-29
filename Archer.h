@@ -36,7 +36,7 @@ class Archer : public Robot
 	protected:
 		RoboteqDevice device;
 		double COUNTS_REVOLUTION;
-		int mCurrent;
+		
 		int MAX_COMMAND_SPEED;
 		int left_motor;
 		int right_motor;
@@ -44,6 +44,7 @@ class Archer : public Robot
 		int RIGHT;
 		
 	public:
+		int mCurrent;
 		Archer(float period, float track, float encoderScaleFactor, int COUNTS_REVOLUTION);
 		virtual ~Archer();
 		virtual int readSensors();
