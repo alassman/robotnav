@@ -1,3 +1,6 @@
+#python executables
+*.pyc
+
 # Object files
 *.o
 
