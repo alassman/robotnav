@@ -1,0 +1,2 @@
+1.) complete todos in GPSRobot.cpp
+2.) correct packet transfer for gyro using Lauro's code (sent in email)

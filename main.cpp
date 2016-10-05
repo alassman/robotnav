@@ -50,6 +50,8 @@ using namespace std;
 
 //Sensor ports, as shown in EV3 brick labels
 const char GYRO_PORT[] = "/dev/ttyUSB0";
+//TODO
+//const char GPS_PORT[] = "";
 
 //Platform measurements
 const float TRACK = 347.0; // [mm]
