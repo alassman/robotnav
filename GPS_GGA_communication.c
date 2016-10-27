@@ -88,32 +88,32 @@ int main(void) {
   do {
       charRead = com_rx();  	/* read char from serial port */
       if(charRead == '$') {     /* GPS messages start with $ char */
-	  i = 0;
-	  numLinesRead++;
-	  stringRead[i] = charRead;
-	  do {
-	     charRead = com_rx();
-	     if( (charRead != '\0') && (isalnum(charRead) ||  isspace(charRead) || ispunct(charRead)) ) {
-		i++;
-		stringRead[i] = charRead;
-	     }
-	  } while(charRead != CR);
+	  	i = 0;
+	  	numLinesRead++;
+	  	stringRead[i] = charRead;
+	  	do {
+	     	charRead = com_rx();
+	     	if( (charRead != '\0') && (isalnum(charRead) ||  isspace(charRead) || ispunct(charRead)) ) {
+			i++;
+			stringRead[i] = charRead;
+	     	}
+	  	} while(charRead != CR);
 
-	  /* By this point, a complete GPS string has been read so save it to file */
-	  /* Append the null terminator to the string read */
-	  stringRead[i+1] = '\0';
+	  	/* By this point, a complete GPS string has been read so save it to file */
+	  	/* Append the null terminator to the string read */
+	  	stringRead[i+1] = '\0';
 
-	  /* Analyze string that we collected */
-	  j = 0;
-	  pChar = stringRead;
-	  while(*(pChar+j) != COMMA) {
+	  	/* Analyze string that we collected */
+	  	j = 0;
+	  	pChar = stringRead;
+	  	while(*(pChar+j) != COMMA) {
 	       tempString[j] = *(pChar+j);
 	       j++;
-	  }
-	  tempString[j] = '\0';
+	  	}
+	  	tempString[j] = '\0';
 
-	  /* Check if string we collected is the $GPGGA message */
-	  if(tempString[3] == 'G' && tempString[4] == 'G' && tempString[5] == 'A') {
+	  	/* Check if string we collected is the $GPGGA message */
+	  	if(tempString[3] == 'G' && tempString[4] == 'G' && tempString[5] == 'A') {
 	      /*
 		 Found GPGGA string.  It has 14 commas total.  Its NMEA sentence structure is:
 
@@ -138,84 +138,86 @@ int main(void) {
 		 *CC		: checksum for the sentence
 	      */
 
-	      pChar = stringRead;
+	      	pChar = stringRead;
 
-	      /* Get UTC time */
-	      j = 7;  /* start of time field */
-	      k = 0;
-	      while(*(pChar+j) != COMMA) {
-		   timeString[k] = *(pChar+j);
-		   j++;
-		   k++;
-	      }
-	      lastCommaPosition = j;
-	      timeString[k] = '\0';
-	      sscanf(timeString, "%ld", &utcTime);
-	      utcHour = (utcTime/10000);   /* extract Hours from long */
-	      utcMinutes = (utcTime - (utcHour*10000))/100;  /* extract minutes from long */
-	      utcSeconds = utcTime - (utcHour*10000) - (utcMinutes*100); /* extract seconds from long */
+	      	/* Get UTC time */
+	      	j = 7;  /* start of time field */
+	      	k = 0;
+	      	while(*(pChar+j) != COMMA) {
+		   		timeString[k] = *(pChar+j);
+		   		j++;
+		   		k++;
+	      	}
+			lastCommaPosition = j;
+			timeString[k] = '\0';
+			sscanf(timeString, "%ld", &utcTime);
+			utcHour = (utcTime/10000);   /* extract Hours from long */
+			utcMinutes = (utcTime - (utcHour*10000))/100;  /* extract minutes from long */
+			utcSeconds = utcTime - (utcHour*10000) - (utcMinutes*100); /* extract seconds from long */
 
-	      if(utcHour >= 4 && utcHour <= 23) estHour = utcHour - 4;
-		else estHour = utcHour + 20;
-	      estMinutes = utcMinutes;
-	      estSeconds = utcSeconds;
+			if(utcHour >= 4 && utcHour <= 23) 
+				estHour = utcHour - 4;
+			else 
+				estHour = utcHour + 20;
+			estMinutes = utcMinutes;
+			estSeconds = utcSeconds;
 
-	      /* NB: %02ld formats long to print 2 chars wide, padding with 0 if necessary */
-	      printf("%02ld:%02ld:%02ld UTC = %02ld:%02ld:%02ld EST", utcHour, utcMinutes, utcSeconds, estHour, estMinutes, estSeconds);
+	      	/* NB: %02ld formats long to print 2 chars wide, padding with 0 if necessary */
+	      	printf("%02ld:%02ld:%02ld UTC = %02ld:%02ld:%02ld EST", utcHour, utcMinutes, utcSeconds, estHour, estMinutes, estSeconds);
 
-	      /* Get lattitude: ddmm.mmmm */
-	      pChar = stringRead;
-	      j = lastCommaPosition + 1;
-	      k = 0;
-	      while(*(pChar+j) != COMMA) {
-		   latitudeString[k] = *(pChar+j);
-		   j++;
-		   k++;
-	      }
-	      lastCommaPosition = j;
-	      latitudeString[k] = '\0';
+	      	/* Get lattitude: ddmm.mmmm */
+	      	pChar = stringRead;
+	      	j = lastCommaPosition + 1;
+	      	k = 0;
+	      	while(*(pChar+j) != COMMA) {
+		   		latitudeString[k] = *(pChar+j);
+		   		j++;
+		   		k++;
+	      	}
+	      	lastCommaPosition = j;
+	      	latitudeString[k] = '\0';
 
-	      sscanf(latitudeString, "%f", &latitude);
-	      latDegrees = (int)(latitude/100);
-	      latMinutes = (float)(latitude - latDegrees*100);
-	      printf("\t%02d DEG\t%2.4f MIN", latDegrees, latMinutes);
+			sscanf(latitudeString, "%f", &latitude);
+			latDegrees = (int)(latitude/100);
+			latMinutes = (float)(latitude - latDegrees*100);
+			printf("\t%02d DEG\t%2.4f MIN", latDegrees, latMinutes);
 
-	      /* Get lattitude Cardinal direction */
-	      pChar = stringRead;
-	      j = lastCommaPosition + 1;
-	      k = 0;
-	      while(*(pChar+j) != COMMA) {
-		   latitudeCardinalString[k] = *(pChar+j);
-		   j++;
-		   k++;
-	      }
-	      lastCommaPosition = j;
-	      latitudeCardinalString[k] = '\0';
-	      printf(" %s", latitudeCardinalString);
+			/* Get lattitude Cardinal direction */
+			pChar = stringRead;
+			j = lastCommaPosition + 1;
+			k = 0;
+			while(*(pChar+j) != COMMA) {
+				latitudeCardinalString[k] = *(pChar+j);
+				j++;
+				k++;
+	      	}
+			lastCommaPosition = j;
+			latitudeCardinalString[k] = '\0';
+			printf(" %s", latitudeCardinalString);
 
-	      /* Get longitude: dddmm.mmmm */
-	      pChar = stringRead;
-	      j = lastCommaPosition + 1;
-	      k = 0;
-	      while(*(pChar+j) != COMMA) {
-		   longitudeString[k] = *(pChar+j);
-		   j++;
-		   k++;
-	      }
-	      lastCommaPosition = j;
-	      longitudeString[k] = '\0';
+			/* Get longitude: dddmm.mmmm */
+			pChar = stringRead;
+			j = lastCommaPosition + 1;
+			k = 0;
+			while(*(pChar+j) != COMMA) {
+			   longitudeString[k] = *(pChar+j);
+			   j++;
+			   k++;
+	      	}
+	      	lastCommaPosition = j;
+	      	longitudeString[k] = '\0';
 
-	      sscanf(longitudeString, "%f", &longitude);
-	      longDegrees = (int)(longitude/100);
-	      longMinutes = (float)(longitude - longDegrees*100);
-	      printf("\t%03d DEG\t%2.4f MIN", longDegrees, longMinutes);
+	      	sscanf(longitudeString, "%f", &longitude);
+	      	longDegrees = (int)(longitude/100);
+	      	longMinutes = (float)(longitude - longDegrees*100);
+	      	printf("\t%03d DEG\t%2.4f MIN", longDegrees, longMinutes);
 
-	      printf("\n");
-	  } /* else not a GPGGA sentence */
+	      	printf("\n");
+	  	} /* else not a GPGGA sentence */
 
-	  fprintf(gpsFile, "%d: (%d) %s\n", numLinesRead, i, stringRead);
+	  	fprintf(gpsFile, "%d: (%d) %s\n", numLinesRead, i, stringRead);
 
-      } /* otherwise not a $ character... so loop back until one arrives */
+    } /* otherwise not a $ character... so loop back until one arrives */
   } while(!kbhit());
 
   printf("Exiting...");
